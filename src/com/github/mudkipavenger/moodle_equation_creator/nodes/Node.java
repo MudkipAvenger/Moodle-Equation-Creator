@@ -11,17 +11,5 @@ package com.github.mudkipavenger.moodle_equation_creator.nodes;
  */
 public abstract class Node {
     
-    private int value;
-    
-    public int getValue()
-    {
-        return value;
-    }
-    
-    public void setValue(int v)
-    {
-        value = v;
-    }
-    
     public abstract void traverse();
 }
