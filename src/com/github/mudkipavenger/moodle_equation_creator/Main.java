@@ -13,6 +13,7 @@ public class Main {
     
     public static void main(String [] args)
     {
-        System.out.println("hi");
+        double d = 5;
+        System.out.println(d);
     }
 }
