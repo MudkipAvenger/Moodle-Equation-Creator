@@ -42,6 +42,21 @@ public class OperatorNode extends Node {
         left = l;
     }
     
+    public char getOperator()
+    {
+        return operator;
+    }
+    
+    public Node getLeft()
+    {
+        return left;
+    }
+    
+    public Node getRight()
+    {
+        return right;
+    }
+    
     @Override
     public void traverse()
     {
