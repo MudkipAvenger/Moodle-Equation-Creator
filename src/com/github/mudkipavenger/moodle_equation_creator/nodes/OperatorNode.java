@@ -27,6 +27,21 @@ public class OperatorNode extends Node {
         operator = c;
     }
     
+    public void setRight(Node r)
+    {
+        right = r;
+    }
+    
+    public void setOperator(char c)
+    {
+        operator = c;
+    }
+    
+    public void setLeft(Node l)
+    {
+        left = l;
+    }
+    
     @Override
     public void traverse()
     {
