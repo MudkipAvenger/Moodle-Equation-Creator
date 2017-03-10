@@ -36,6 +36,6 @@ public class OperandNode extends Node {
     @Override
     public void traverse()
     {
-        
+        System.out.print(value);
     }
 }
