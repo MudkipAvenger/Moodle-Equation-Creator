@@ -62,7 +62,7 @@ public class OperatorNode extends Node {
     {
         System.out.print("(");
         left.traverse();
-        System.out.print(") " + operator + " (");
+        System.out.print(") " + getOperator() + " (");
         right.traverse();
         System.out.print(")");
     }
