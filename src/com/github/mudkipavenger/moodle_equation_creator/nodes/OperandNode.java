@@ -11,24 +11,24 @@ package com.github.mudkipavenger.moodle_equation_creator.nodes;
  */
 public class OperandNode extends Node {
     
-    private double value;
+    private String value;
     
     public OperandNode()
     {
-        setValue(0);
+        setValue("");
     }
     
-    public OperandNode(double d)
+    public OperandNode(String d)
     {
         setValue(d);
     }
     
-    public void setValue(double d)
+    public void setValue(String d)
     {
         value = d;
     }
     
-    public double getValue()
+    public String getValue()
     {
         return value;
     }
