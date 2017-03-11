@@ -21,7 +21,7 @@ public class itof{
 	}
 // Private methods:
 
-   private boolean isOperator(char c) { // Tell whether c is an operator.
+   public static boolean isOperator(char c) { // Tell whether c is an operator.
 
      return c == '+'  ||  c == '-'  ||  c == '*'  ||  c == '/'  ||  c == '^'
            || c=='(' || c==')';
