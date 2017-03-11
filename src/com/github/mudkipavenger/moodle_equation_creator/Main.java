@@ -6,6 +6,8 @@
 package com.github.mudkipavenger.moodle_equation_creator;
 
 import com.github.mudkipavenger.moodle_equation_creator.nodes.*;
+import java.util.Scanner;
+import java.util.Stack;
 
 /**
  *
@@ -15,42 +17,30 @@ public class Main {
     
     public static void main(String [] args)
     {
-        Node root;
-        OperatorNode operator1 = new OperatorNode();
-        operator1.setOperator('*');
-        OperandNode operand1 = new OperandNode(5);
-        OperandNode operand2 = new OperandNode(6);
-        root = operator1;
-        operator1.setLeft(operand1);
-        operator1.setRight(operand2);
-        root.traverse();
-        
-        System.out.println();
-        
-        Node tempRoot;
-        OperatorNode tempOperator = new OperatorNode();
-        tempOperator.setOperator('/');
-        OperandNode tempOperand = new OperandNode(120);
-        tempOperator.setLeft(tempOperand);
-        tempOperator.setRight(root);
-        tempRoot = tempOperator;
-        root = tempRoot;
-        root.traverse();
-        System.out.println();
         
         itof i = new itof();
         
-        String s = "(5 + 55) * (log(5)) + 33^3";
-        String s2 = "\frac{{a}}{2}";
+        Scanner scanner = new Scanner(System.in);
         
-        int b = s2.indexOf("\frac");
+        System.out.println("Enter a formula in LaTex form:");
+        String formula = scanner.nextLine();
+        formula = formula.replace("\\", "\\\\");
+        System.out.println(formula);
         
-        while(b != -1)
+        //String s = "(5 + 55) * (log(5)) + 33^3";
+        //String s2 = "(\frac{{a}}{2.5}) \times (\frac{(45 + 5)^{{b}}} {32})";
+        //
+        
+        //s2 = s2.replace("\\\\f", "\\\\\\\\f");
+        //System.out.println(s2);
+        
+        int index = formula.indexOf("\\\\frac");
+        
+        while(index != -1)
         {
             
-            int index = b;
-            StringBuilder str = new StringBuilder(s2);
-            str.replace(b, b + 4, "");
+            StringBuilder str = new StringBuilder(formula);
+            str.replace(index, index + 6, "");
             str.setCharAt(index, '(');
             for(int j = index+1, braceCnt = 0; j < str.length(); j++)
             {
@@ -89,7 +79,113 @@ public class Main {
                     if(braceCnt == 0)
                     {
                         str.setCharAt(j, ')');
+                        break;
+                    }
+                    else
+                    {
+                        braceCnt--;
+                    }
+                }
+            }
+            index = str.indexOf("\\\\frac");
+            formula = str.toString();
+        }
+        
+        
+        formula = formula.replace("\\\\times", "*");
+        formula = formula.replace("\\\\ast", "*");
+        formula = formula.replace("\\\\div", "/");
+        
+        formula = formula.replace("\\\\;", "");
+        formula = formula.replace("\\\\left(", "(");
+        formula = formula.replace("\\\\right)", ")");
+        
+        index = formula.indexOf("^");
+        int indexAfterExponent = 0;
+        
+        while(index != -1)
+        {
+            StringBuilder str = new StringBuilder(formula);
+            if(str.charAt(index + 1) == '{')
+            {
+                indexAfterExponent = index + 1;
+                str.setCharAt(index + 1, '(');
+                for(int j = index+1, braceCnt = 0; j < str.length(); j++)
+                {
+                    if(str.charAt(j) == '{')
+                        braceCnt++;
+                    if(str.charAt(j) == '}')
+                    {
+                        if(braceCnt == 0)
+                        {
+                            str.setCharAt(j, ')');
+                            break;
+                        }
+                        else
+                        {
+                            braceCnt--;
+                        }
+                    }
+                }
+            }
+            index = str.indexOf("^", indexAfterExponent);
+            formula = str.toString();
+        }
+        
+        index = formula.indexOf("\\\\sqrt");
+        
+        while(index != -1)
+        {
+            StringBuilder str = new StringBuilder(formula);
+            str.replace(index, index + 6, "");
+            String rootNumber = "";
+            int startIndex = index;
+            
+            for(int j = index + 1, braceCnt = 0; j < str.length(); j++)
+            {
+                if(str.charAt(j) == '[')
+                    braceCnt++;
+                else if(str.charAt(j) == ']')
+                {
+                    if(braceCnt == 0)
+                    {
                         index = j + 1;
+                        break;
+                        
+                    }
+                    else
+                        braceCnt--;
+                }
+                else
+                {
+                    rootNumber += str.charAt(j);
+                }
+            }
+            str.replace(startIndex, index, "");
+            index = index - (index - startIndex);
+            System.out.println(rootNumber);
+            
+            for(int j = index; j < str.length(); j++)
+            {
+                if(str.charAt(j) == '{')
+                {
+                    str.setCharAt(j, '(');
+                    index = j + 1;
+                    break;
+                }
+            }
+            
+            for(int j = index, braceCnt = 0; j < str.length(); j++)
+            {
+                if(str.charAt(j) == '{')
+                    braceCnt++;
+                if(str.charAt(j) == '}')
+                {
+                    if(braceCnt == 0)
+                    {
+                        str.setCharAt(j, ')');
+                        index = j + 1;
+                        str.insert(index, "^((1) / (" + rootNumber + "))");
                         break;
                     }
                     else
@@ -99,14 +195,44 @@ public class Main {
                 }
             }
             
-            s2 = str.toString();
-            b= str.indexOf("\frac");
+            
+            formula = str.toString();
+            index = -1;
         }
         
-        //s2 = s2.replace("\frac{", "(");
-        System.out.println(s2);
+        System.out.println(formula);
+        String formula_out = i.convertToPostfix(formula);
         
-        System.out.println(i.convertToPostfix(s));
+        System.out.println(formula_out);
+        
+        String [] tokens = formula_out.split("\\s+");
+        System.out.println(tokens.length);
+        
+        Stack<Node> stack = new Stack();
+        
+        for(int j = 1; j < tokens.length; j++)
+        {
+            String temp = tokens[j];
+            if(temp.length() == 1 && itof.isOperator(temp.charAt(0)))
+            {
+                OperatorNode operatorNode = new OperatorNode();
+                operatorNode.setOperator(temp.charAt(0));
+                Node right = stack.pop();
+                Node left = stack.pop();
+                operatorNode.setLeft(left);
+                operatorNode.setRight(right);
+                stack.push(operatorNode);
+            }
+            else
+            {
+                OperandNode operandNode = new OperandNode(temp);
+                stack.push(operandNode);
+            }
+        }
+        
+        Node root = stack.pop();
+        root.traverse();
+        System.out.println();
         
         //double d = 5;
         //System.out.println(d);
