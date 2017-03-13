@@ -213,7 +213,23 @@ public class Main {
         for(int j = 1; j < tokens.length; j++)
         {
             String temp = tokens[j];
-            if(temp.length() == 1 && itof.isOperator(temp.charAt(0)))
+            
+            Node node = NodeFactory.getNode(temp);
+            
+            if(node instanceof OperatorNode)
+            {
+                ((OperatorNode) node).setRight(stack.pop());
+                ((OperatorNode) node).setLeft(stack.pop());
+                stack.push(node);
+            }
+            else if(node instanceof OperandNode)
+            {
+                stack.push(node);
+            }
+            
+            
+            
+            /*if(temp.length() == 1 && itof.isOperator(temp.charAt(0)))
             {
                 OperatorNode operatorNode = new OperatorNode();
                 operatorNode.setOperator(temp.charAt(0));
@@ -227,14 +243,12 @@ public class Main {
             {
                 OperandNode operandNode = new OperandNode(temp);
                 stack.push(operandNode);
-            }
+            }*/
         }
         
         Node root = stack.pop();
         root.traverse();
         System.out.println();
         
-        //double d = 5;
-        //System.out.println(d);
     }
 }
