@@ -35,31 +35,51 @@ public class itof{
      return (c == ' ');
    
    }//end isSpace
+   
+   public static boolean isFunctionOperator(String op)
+   {
+       return Objects.equals(op, "ln") || Objects.equals(op, "log");
+   }
+   
+   public int getPrecedence(String op)
+   {
+       if(op.length() == 1)
+       {
+           switch(op.charAt(0))
+           {
+               case '+':
+               case '-':
+                   return 1;
+               case '*':
+               case '/':
+                   return 2;
+               case '^':
+                   return 3;
+               case '(':
+               case ')':
+                   return 5;
+               default:
+                   return 0;
+           }
+       }
+       else if(isFunctionOperator(op))
+       {
+           return 4;
+       }
+       else
+           return 0;   
+   }
 
 
-   private boolean lowerPrecedence(char op1, char op2) {
+   private boolean lowerPrecedence(String o1, String o2) {
       // Tell whether op1 has lower precedence than op2, where op1 is an
       // operator on the left and op2 is an operator on the right.
       // op1 and op2 are assumed to be operator characters (+,-,*,/,^).
       
-      switch (op1) {
-
-         case '+':
-         case '-':
-            return !(op2=='+' || op2=='-') ;
-
-         case '*':
-         case '/':
-            return op2=='^' || op2=='(';
-
-         case '^':
-            return op2=='(';
-
-         case '(': return true;
-
-         default:  // (shouldn't happen)
-            return false;
-      }
+      if(o1.length() == 1 && o1.charAt(0) == '(')
+          return true;
+      
+      return (getPrecedence(o1) < getPrecedence(o2));
  
    } // end lowerPrecedence
 
@@ -74,14 +94,22 @@ public class itof{
         while (parser.hasMoreTokens()) {     
            String token = parser.nextToken();
            c = token.charAt(0);         
-           if ( (token.length() == 1) && isOperator(c) ) {    
+           if(isFunctionOperator(token))
+           {
+               operatorStack.push(token);
+           }
+           else if ( (token.length() == 1) && isOperator(c)) 
+           {    
               while (!operatorStack.empty() &&
-                  !lowerPrecedence(((String)operatorStack.peek()).charAt(0), c))
-             
-                 postfix.append(" ").append((String)operatorStack.pop());
-              if (c==')') {
+                  !lowerPrecedence(((String)operatorStack.peek()), token))
+              {
+                postfix.append(" ").append((String)operatorStack.pop());
+              }
+              if (c==')') 
+              {
                     String operator = (String)operatorStack.pop();
-                    while (operator.charAt(0)!='(') {
+                    while (operator.charAt(0)!='(') 
+                    {
                        postfix.append(" ").append(operator);
                        operator = (String)operatorStack.pop();  
                     }
