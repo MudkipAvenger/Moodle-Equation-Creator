@@ -25,7 +25,7 @@ public class Main {
         System.out.println("Enter a formula in LaTex form:");
         String formula = scanner.nextLine();
         formula = formula.replace("\\", "\\\\");
-        //System.out.println(formula);
+        System.out.println(formula);
         
         //String s = "(5 + 55) * (log(5)) + 33^3";
         //String s2 = "(\frac{{a}}{2.5}) \times (\frac{(45 + 5)^{{b}}} {32})";
@@ -97,8 +97,25 @@ public class Main {
         formula = formula.replace("\\\\div", "/");
         
         formula = formula.replace("\\\\;", "");
+        formula = formula.replace("\\\\:", "");
         formula = formula.replace("\\\\left(", "(");
         formula = formula.replace("\\\\right)", ")");
+        
+        formula = formula.replace("\\\\left[", "(");
+        formula = formula.replace("\\\\right]", ")");
+        
+        formula = formula.replace("\\\\left\\\\{", "(");
+        formula = formula.replace("\\\\right\\\\}", ")");
+        
+        formula = formula.replace("\\\\lbrack", "(");
+        formula = formula.replace("\\\\rbrack", ")");
+        
+        formula = formula.replace("\\\\left|", "abs(");
+        formula = formula.replace("\\\\right|", ")");
+        
+        formula = formula.replace("\\\\ln", "log(");
+        
+        System.out.println(formula);
         
         index = formula.indexOf("^");
         int indexAfterExponent = 0;
