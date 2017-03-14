@@ -30,6 +30,10 @@ public class NodeFactory {
                     return null;
             }
         }
+        else if(itof.isFunctionOperator(s))
+        {
+            return FunctionNodeFactory.getFunctionNode(s);
+        }
         else
         {
             return new OperandNode(s);
