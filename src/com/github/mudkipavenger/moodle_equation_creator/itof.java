@@ -38,7 +38,7 @@ public class itof{
    
    public static boolean isFunctionOperator(String op)
    {
-       return Objects.equals(op, "ln") || Objects.equals(op, "log");
+       return Objects.equals(op, "ln") || Objects.equals(op, "log") || Objects.equals(op, "abs");
    }
    
    public int getPrecedence(String op)
