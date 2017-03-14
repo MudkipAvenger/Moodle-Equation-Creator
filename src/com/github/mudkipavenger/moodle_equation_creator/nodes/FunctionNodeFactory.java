@@ -18,6 +18,9 @@ public class FunctionNodeFactory {
             case "log":
             case "ln":
                 return new LogFunctionNode();
+            case "abs":
+                return new AbsFunctionNode();
+                    
             default:
                 return null;
         }
