@@ -25,7 +25,7 @@ public class Main {
         System.out.println("Enter a formula in LaTex form:");
         String formula = scanner.nextLine();
         formula = formula.replace("\\", "\\\\");
-        System.out.println(formula);
+        //System.out.println(formula);
         
         //String s = "(5 + 55) * (log(5)) + 33^3";
         //String s2 = "(\frac{{a}}{2.5}) \times (\frac{(45 + 5)^{{b}}} {32})";
@@ -163,7 +163,7 @@ public class Main {
             }
             str.replace(startIndex, index, "");
             index = index - (index - startIndex);
-            System.out.println(rootNumber);
+            //System.out.println(rootNumber);
             
             for(int j = index; j < str.length(); j++)
             {
@@ -200,20 +200,19 @@ public class Main {
             index = -1;
         }
         
-        System.out.println(formula);
+        //System.out.println(formula);
         String formula_out = i.convertToPostfix(formula);
         
         System.out.println(formula_out);
         
         String [] tokens = formula_out.split("\\s+");
-        System.out.println(tokens.length);
+        //System.out.println(tokens.length);
         
         Stack<Node> stack = new Stack();
         
         for(int j = 1; j < tokens.length; j++)
         {
             String temp = tokens[j];
-            
             Node node = NodeFactory.getNode(temp);
             
             if(node instanceof OperatorNode)
@@ -226,24 +225,12 @@ public class Main {
             {
                 stack.push(node);
             }
-            
-            
-            
-            /*if(temp.length() == 1 && itof.isOperator(temp.charAt(0)))
+            else if(node instanceof FunctionOperatorNode)
             {
-                OperatorNode operatorNode = new OperatorNode();
-                operatorNode.setOperator(temp.charAt(0));
-                Node right = stack.pop();
-                Node left = stack.pop();
-                operatorNode.setLeft(left);
-                operatorNode.setRight(right);
-                stack.push(operatorNode);
+                for(int k = 0; k < ((FunctionOperatorNode) node).getNumberOfArguments(); k++)
+                    ((FunctionOperatorNode) node).addArgument(stack.pop());
+                stack.push(node);
             }
-            else
-            {
-                OperandNode operandNode = new OperandNode(temp);
-                stack.push(operandNode);
-            }*/
         }
         
         Node root = stack.pop();
