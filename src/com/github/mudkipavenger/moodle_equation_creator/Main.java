@@ -5,10 +5,8 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator;
 
-import com.github.mudkipavenger.moodle_equation_creator.nodes.*;
+import com.github.mudkipavenger.moodle_equation_creator.Tree.NodeTreebuilder;
 import java.util.Scanner;
-import java.util.Stack;
-
 /**
  *
  * @author levi
@@ -18,12 +16,15 @@ public class Main {
     public static void main(String [] args)
     {
         
-        itof i = new itof();
-        
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Enter a formula in LaTex form:");
         String formula = scanner.nextLine();
+        
+        NodeTreebuilder.buildTreeFromLaTex(formula).printExpression();
+        System.out.println();
+        
+        /*
         formula = formula.replace("\\", "\\\\");
         //System.out.println(formula);
         
@@ -42,16 +43,16 @@ public class Main {
             StringBuilder str = new StringBuilder(formula);
             str.replace(index, index + 6, "");
             str.setCharAt(index, '(');
-            for(int j = index+1, braceCnt = 0; j < str.length(); j++)
+            for(int i = index+1, braceCnt = 0; i < str.length(); i++)
             {
-                if(str.charAt(j) == '{')
+                if(str.charAt(i) == '{')
                     braceCnt++;
-                if(str.charAt(j) == '}')
+                if(str.charAt(i) == '}')
                 {
                     if(braceCnt == 0)
                     {
-                        str.setCharAt(j, ')');
-                        index = j + 1;
+                        str.setCharAt(i, ')');
+                        index = i + 1;
                         break;
                     }
                     else
@@ -60,25 +61,25 @@ public class Main {
                     }
                 }
             }
-            for(int j = index; j < str.length(); j++)
+            for(int i = index; i < str.length(); i++)
             {
-                if(str.charAt(j) == '{')
+                if(str.charAt(i) == '{')
                 {
-                    str.insert(j, " / ");
-                    str.setCharAt(j + 3, '(');
-                    index = j + 1;
+                    str.insert(i, " / ");
+                    str.setCharAt(i + 3, '(');
+                    index = i + 1;
                     break;
                 }
             }
-            for(int j = index, braceCnt = 0; j < str.length(); j++)
+            for(int i = index, braceCnt = 0; i < str.length(); i++)
             {
-                if(str.charAt(j) == '{')
+                if(str.charAt(i) == '{')
                     braceCnt++;
-                if(str.charAt(j) == '}')
+                if(str.charAt(i) == '}')
                 {
                     if(braceCnt == 0)
                     {
-                        str.setCharAt(j, ')');
+                        str.setCharAt(i, ')');
                         break;
                     }
                     else
@@ -113,7 +114,7 @@ public class Main {
         formula = formula.replace("\\\\left|", "abs(");
         formula = formula.replace("\\\\right|", ")");
         
-        formula = formula.replace("\\\\ln", "log(");
+        formula = formula.replace("\\\\ln", "log");
         
         //System.out.println(formula);
         
@@ -127,15 +128,15 @@ public class Main {
             {
                 indexAfterExponent = index + 1;
                 str.setCharAt(index + 1, '(');
-                for(int j = index+1, braceCnt = 0; j < str.length(); j++)
+                for(int i = index+1, braceCnt = 0; i < str.length(); i++)
                 {
-                    if(str.charAt(j) == '{')
+                    if(str.charAt(i) == '{')
                         braceCnt++;
-                    if(str.charAt(j) == '}')
+                    if(str.charAt(i) == '}')
                     {
                         if(braceCnt == 0)
                         {
-                            str.setCharAt(j, ')');
+                            str.setCharAt(i, ')');
                             break;
                         }
                         else
@@ -158,15 +159,15 @@ public class Main {
             String rootNumber = "";
             int startIndex = index;
             
-            for(int j = index + 1, braceCnt = 0; j < str.length(); j++)
+            for(int i = index + 1, braceCnt = 0; i < str.length(); i++)
             {
-                if(str.charAt(j) == '[')
+                if(str.charAt(i) == '[')
                     braceCnt++;
-                else if(str.charAt(j) == ']')
+                else if(str.charAt(i) == ']')
                 {
                     if(braceCnt == 0)
                     {
-                        index = j + 1;
+                        index = i + 1;
                         break;
                         
                     }
@@ -175,33 +176,33 @@ public class Main {
                 }
                 else
                 {
-                    rootNumber += str.charAt(j);
+                    rootNumber += str.charAt(i);
                 }
             }
             str.replace(startIndex, index, "");
             index = index - (index - startIndex);
             //System.out.println(rootNumber);
             
-            for(int j = index; j < str.length(); j++)
+            for(int i = index; i < str.length(); i++)
             {
-                if(str.charAt(j) == '{')
+                if(str.charAt(i) == '{')
                 {
-                    str.setCharAt(j, '(');
-                    index = j + 1;
+                    str.setCharAt(i, '(');
+                    index = i + 1;
                     break;
                 }
             }
             
-            for(int j = index, braceCnt = 0; j < str.length(); j++)
+            for(int i = index, braceCnt = 0; i < str.length(); i++)
             {
-                if(str.charAt(j) == '{')
+                if(str.charAt(i) == '{')
                     braceCnt++;
-                if(str.charAt(j) == '}')
+                if(str.charAt(i) == '}')
                 {
                     if(braceCnt == 0)
                     {
-                        str.setCharAt(j, ')');
-                        index = j + 1;
+                        str.setCharAt(i, ')');
+                        index = i + 1;
                         str.insert(index, "^((1) / (" + rootNumber + "))");
                         break;
                     }
@@ -218,7 +219,7 @@ public class Main {
         }
         
         //System.out.println(formula);
-        String formula_out = i.convertToPostfix(formula);
+        String formula_out = InfixToPostfix.convertToPostfix(formula);
         
         System.out.println(formula_out);
         
@@ -227,9 +228,9 @@ public class Main {
         
         Stack<Node> stack = new Stack();
         
-        for(int j = 1; j < tokens.length; j++)
+        for(int i = 1; i < tokens.length; i++)
         {
-            String temp = tokens[j];
+            String temp = tokens[i];
             Node node = NodeFactory.getNode(temp);
             
             if(node instanceof OperatorNode)
@@ -253,6 +254,6 @@ public class Main {
         Node root = stack.pop();
         root.traverse();
         System.out.println();
-        
+        */
     }
 }
