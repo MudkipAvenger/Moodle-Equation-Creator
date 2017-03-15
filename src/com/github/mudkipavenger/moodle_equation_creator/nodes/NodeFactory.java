@@ -5,7 +5,7 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.nodes;
 
-import com.github.mudkipavenger.moodle_equation_creator.itof;
+import com.github.mudkipavenger.moodle_equation_creator.InfixToPostfix;
 
 /**
  *
@@ -15,7 +15,7 @@ public class NodeFactory {
     
     public static Node getNode(String s)
     {
-        if(s.length() == 1 && itof.isOperator(s.charAt(0)))
+        if(s.length() == 1 && InfixToPostfix.isOperator(s.charAt(0)))
         {
             switch(s.charAt(0))
             {
@@ -30,7 +30,7 @@ public class NodeFactory {
                     return null;
             }
         }
-        else if(itof.isFunctionOperator(s))
+        else if(InfixToPostfix.isFunctionOperator(s))
         {
             return FunctionNodeFactory.getFunctionNode(s);
         }
