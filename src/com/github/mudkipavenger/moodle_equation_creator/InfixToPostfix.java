@@ -23,7 +23,7 @@ public class InfixToPostfix{
 
  
 
-   private static boolean isSpace(char c) {  // Tell whether c is a space.
+   public static boolean isSpace(char c) {  // Tell whether c is a space.
 
      return (c == ' ');
    
