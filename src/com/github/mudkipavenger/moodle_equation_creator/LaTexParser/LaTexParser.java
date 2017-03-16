@@ -5,6 +5,8 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.LaTexParser;
 
+import com.github.mudkipavenger.moodle_equation_creator.InfixToPostfix;
+
 /**
  *
  * @author levi
@@ -83,6 +85,25 @@ public class LaTexParser {
         {
             //str = new StringBuilder(in);
             str.replace(index, index + 6, "");
+            
+            int tempIndex = index;
+            
+            for(int i = tempIndex; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
+                {
+                    str.insert(i, '{');         //enclose next char in {}
+                    str.insert(i + 2, '}');
+                    tempIndex = i + 3;
+                    break;
+                }
+                else if(str.charAt(i) == '{')
+                    break;
+            }
+            
+             
+            //index = 0;
+            
             str.setCharAt(index, '(');
             for(int i = index+1, braceCnt = 0; i < str.length(); i++)
             {
@@ -102,6 +123,20 @@ public class LaTexParser {
                     }
                 }
             }
+            tempIndex = index;
+            
+            for(int i = tempIndex; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
+                {
+                    str.insert(i, '{');         //enclose next char in {}
+                    str.insert(i + 2, '}');
+                    break;
+                }
+                else if(str.charAt(i) == '{')
+                    break;
+            }
+            
             for(int i = index; i < str.length(); i++)
             {
                 if(str.charAt(i) == '{')
@@ -142,6 +177,19 @@ public class LaTexParser {
         
         while(index != -1)
         {
+            
+            for(int i = index + 1; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
+                {
+                    str.insert(i, '{');         //enclose next char in {}
+                    str.insert(i + 2, '}');
+                    break;
+                }
+                else if(str.charAt(i) == '{')
+                    break;
+            }
+            
             if(str.charAt(index + 1) == '{')
             {
                 indexAfterExponent = index + 1;
@@ -181,6 +229,18 @@ public class LaTexParser {
             String rootNumber = "";
             int startIndex = index;
             
+            for(int i = index; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '[')  //not space or {
+                {
+                    str.insert(i, "[2]");         //enclose next char in []
+                    break;
+                }
+                else if(str.charAt(i) == '[')
+                    break;
+            }
+            
+            
             for(int i = index + 1, braceCnt = 0; i < str.length(); i++)
             {
                 if(str.charAt(i) == '[')
@@ -203,6 +263,18 @@ public class LaTexParser {
             }
             str.replace(startIndex, index, "");
             index = index - (index - startIndex);
+            
+            for(int i = index; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
+                {
+                    str.insert(i, '{');         //enclose next char in {}
+                    str.insert(i + 2, '}');
+                    break;
+                }
+                else if(str.charAt(i) == '{')
+                    break;
+            }
             
             for(int i = index; i < str.length(); i++)
             {
