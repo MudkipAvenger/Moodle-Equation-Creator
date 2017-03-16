@@ -17,13 +17,15 @@ public class PowerOperatorNode extends OperatorNode {
     }
     
     @Override
-    public void traverse()
+    public String traverse()
     {
-        System.out.print("pow((");
-        getLeft().traverse();
-        System.out.print("), (");
-        getRight().traverse();
-        System.out.print("))");
+        String output = "";
+        output += "pow((";
+        output += getLeft().traverse();
+        output += "), (";
+        output += getRight().traverse();
+        output +="))";
+        return output;
     }
     
 }

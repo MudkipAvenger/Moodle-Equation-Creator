@@ -35,8 +35,8 @@ public class NodeTree {
         return root;
     }
     
-    public void printExpression()
+    public String printExpression()
     {
-        root.traverse();
+        return root.traverse();
     }
 }

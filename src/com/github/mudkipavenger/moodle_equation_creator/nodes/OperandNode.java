@@ -34,8 +34,8 @@ public class OperandNode extends Node {
     }
     
     @Override
-    public void traverse()
+    public String traverse()
     {
-        System.out.print(value);
+        return value;
     }
 }

@@ -58,13 +58,15 @@ public class OperatorNode extends Node {
     }
     
     @Override
-    public void traverse()
+    public String traverse()
     {
-        System.out.print("(");
-        left.traverse();
-        System.out.print(") " + getOperator() + " (");
-        right.traverse();
-        System.out.print(")");
+        String output = "";
+        output += "(";
+        output += left.traverse();
+        output += ") " + getOperator() + " (";
+        output += right.traverse();
+        output += ")";
+        return output;
     }
     
 }

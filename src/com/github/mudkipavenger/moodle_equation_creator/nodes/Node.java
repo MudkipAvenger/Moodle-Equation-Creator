@@ -11,5 +11,5 @@ package com.github.mudkipavenger.moodle_equation_creator.nodes;
  */
 public abstract class Node {
     
-    public abstract void traverse();
+    public abstract String traverse();
 }

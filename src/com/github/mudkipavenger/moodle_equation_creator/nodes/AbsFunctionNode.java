@@ -21,18 +21,20 @@ public class AbsFunctionNode extends FunctionOperatorNode {
     }
     
     @Override
-    public void traverse()
+    public String traverse()
     {
-        System.out.print(getFunctionName() + "(");
+        String output = "";
+        output += getFunctionName() + "(";
         for(int i = 0; i < getArgs().size(); i++)
         {
             if(i >= 1)
             {
-                System.out.print(", ");
+                output += ", ";
             }
-            getArgs().get(i).traverse();
+            output += getArgs().get(i).traverse();
         }
-        System.out.print(")");
+        output += ")";
+        return output;
     }
     
 }
