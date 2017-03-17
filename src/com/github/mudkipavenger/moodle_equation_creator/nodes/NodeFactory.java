@@ -15,7 +15,11 @@ public class NodeFactory {
     
     public static Node getNode(String s)
     {
-        if(s.length() == 1 && InfixToPostfix.isOperator(s.charAt(0)))
+        if(InfixToPostfix.isFunctionOperator(s))
+        {
+            return FunctionNodeFactory.getFunctionNode(s);
+        }
+        else if(s.length() == 1 && InfixToPostfix.isOperator(s.charAt(0)))
         {
             switch(s.charAt(0))
             {
@@ -29,10 +33,6 @@ public class NodeFactory {
                 default:
                     return null;
             }
-        }
-        else if(InfixToPostfix.isFunctionOperator(s))
-        {
-            return FunctionNodeFactory.getFunctionNode(s);
         }
         else
         {
