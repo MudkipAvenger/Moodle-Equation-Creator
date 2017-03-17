@@ -28,6 +28,7 @@ public class LaTexParser {
         output = LaTexParser.replaceFracWithDivision(output);
         output = LaTexParser.replaceExponentWithPow(output);
         output = LaTexParser.replaceSqrtWithPow(output);
+        output = replaceParenthesisWithMult(output);
         return output;
     }
     
@@ -86,15 +87,14 @@ public class LaTexParser {
             //str = new StringBuilder(in);
             str.replace(index, index + 6, "");
             
-            int tempIndex = index;
+            //int tempIndex = index;
             
-            for(int i = tempIndex; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            for(int i = index; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
             {
                 if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
                 {
                     str.insert(i, '{');         //enclose next char in {}
                     str.insert(i + 2, '}');
-                    tempIndex = i + 3;
                     break;
                 }
                 else if(str.charAt(i) == '{')
@@ -123,9 +123,9 @@ public class LaTexParser {
                     }
                 }
             }
-            tempIndex = index;
+            //tempIndex = index;
             
-            for(int i = tempIndex; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            for(int i = index; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
             {
                 if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
                 {
@@ -307,6 +307,76 @@ public class LaTexParser {
             }
             index = str.indexOf("\\\\sqrt");
         }
+        return str.toString();
+    }
+    
+    private static String replaceParenthesisWithMult(String in)
+    {
+        StringBuilder str = new StringBuilder(in);
+        
+        int index = str.indexOf(")", 0);
+        
+        while(index != -1)
+        {
+            for(int i = index + 1; i < str.length(); i++)
+            {
+                if(InfixToPostfix.isSpace(str.charAt(i)))
+                    continue;
+                else if(!InfixToPostfix.isOperator(str.charAt(i)))
+                {
+                    index = i;
+                    break;
+                }
+                else if(InfixToPostfix.isOperator(str.charAt(i)) && str.charAt(i) != '(')
+                {
+                    //index = i;
+                    break;
+                }
+                else if(str.charAt(i) == '(')
+                {
+                    str.insert(i, " * ");
+                    index = i;
+                    break;
+                }
+            }
+            index += 1;
+            index = str.indexOf(")", index);
+        }
+        
+        index = str.indexOf("(", 0);
+        
+        while(index != -1)
+        {
+            String operand = "";
+            for(int i = index - 1; i >= 0; i--)
+            {
+                if(str.charAt(i) == ' ')
+                    continue;
+                else if(InfixToPostfix.isOperator(str.charAt(i)))
+                {
+                    break;
+                }
+                else
+                {
+                    while(i >= 0 && str.charAt(i) != ' ' && !InfixToPostfix.isOperator(str.charAt(i)))
+                    {
+                        operand = str.charAt(i) + operand;
+                        i--;
+                    }
+                    if(InfixToPostfix.isFunctionOperator(operand))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        str.insert(index, " * ");
+                        break;
+                    }
+                }
+            }
+            index = str.indexOf("(", index + 1);
+        }
+        
         return str.toString();
     }
 }
