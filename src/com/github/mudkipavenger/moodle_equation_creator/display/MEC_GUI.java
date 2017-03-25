@@ -5,6 +5,7 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.display;
 
+import com.github.mudkipavenger.moodle_equation_creator.LaTexParser.LaTexParser;
 import com.github.mudkipavenger.moodle_equation_creator.Tree.NodeTreebuilder;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCard;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCardManager;
@@ -46,7 +47,22 @@ public class MEC_GUI extends javax.swing.JFrame {
         newWildCardDialog_maxTextField = new javax.swing.JTextField();
         newWildCardDialog_intervalLabel = new javax.swing.JLabel();
         newWildCardDialog_intervalTextField = new javax.swing.JTextField();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        NewWildCardFromExpressionDialog = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        NewWildCardFromExpressionDialog_wildCardValueTextArea = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        NewWildCardFromExpressionDialog_enterNameTextField = new javax.swing.JTextField();
+        NewWildCardFromExpressionDialog_enterNameLabel = new javax.swing.JLabel();
+        NewWildCardFromExpressionDialog_wildcardValueLabel = new javax.swing.JLabel();
+        NewWildCardFromExpressionDialog_convertButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        NewWildCardFromExpressionDialog_outputNameTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        NewWildCardFromExpressionDialog_outputValueTextArea = new javax.swing.JTextArea();
+        NewWildCardFromExpressionDialog_okButton = new javax.swing.JButton();
+        NewWildCardFromExpressionDialog_infoCorrectLabel = new javax.swing.JLabel();
+        MainTabPane = new javax.swing.JTabbedPane();
         ExpressionsPanel = new javax.swing.JPanel();
         ExpressionsPanel_outputTextAreaScollPane = new javax.swing.JScrollPane();
         ExpressionsPanel_outputTextArea = new javax.swing.JTextArea();
@@ -63,6 +79,7 @@ public class MEC_GUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         WildcardPanel_wildcardTable = new javax.swing.JTable();
         WildcardPanel_addNewWildcardButton = new javax.swing.JButton();
+        WildcardPanel_addNewWildcardExpressionButton = new javax.swing.JButton();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -163,6 +180,152 @@ public class MEC_GUI extends javax.swing.JFrame {
                 .addComponent(newWildCardDialog_okButton)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
+
+        NewWildCardFromExpressionDialog.setModal(true);
+        NewWildCardFromExpressionDialog.setSize(new java.awt.Dimension(500, 415));
+        NewWildCardFromExpressionDialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                NewWildCardFromExpressionDialogWindowActivated(evt);
+            }
+        });
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        NewWildCardFromExpressionDialog_wildCardValueTextArea.setColumns(20);
+        NewWildCardFromExpressionDialog_wildCardValueTextArea.setLineWrap(true);
+        NewWildCardFromExpressionDialog_wildCardValueTextArea.setRows(5);
+        jScrollPane1.setViewportView(NewWildCardFromExpressionDialog_wildCardValueTextArea);
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        jLabel1.setText("=");
+
+        NewWildCardFromExpressionDialog_enterNameLabel.setText("Enter Wildcard Name");
+
+        NewWildCardFromExpressionDialog_wildcardValueLabel.setText("Enter Wildcard value as LaTex expression");
+
+        NewWildCardFromExpressionDialog_convertButton.setText("Convert");
+        NewWildCardFromExpressionDialog_convertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewWildCardFromExpressionDialog_convertButtonActionPerformed(evt);
+            }
+        });
+
+        NewWildCardFromExpressionDialog_outputNameTextField.setEditable(false);
+
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("=");
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        NewWildCardFromExpressionDialog_outputValueTextArea.setEditable(false);
+        NewWildCardFromExpressionDialog_outputValueTextArea.setColumns(20);
+        NewWildCardFromExpressionDialog_outputValueTextArea.setRows(5);
+        jScrollPane2.setViewportView(NewWildCardFromExpressionDialog_outputValueTextArea);
+
+        NewWildCardFromExpressionDialog_okButton.setText("OK");
+        NewWildCardFromExpressionDialog_okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewWildCardFromExpressionDialog_okButtonActionPerformed(evt);
+            }
+        });
+
+        NewWildCardFromExpressionDialog_infoCorrectLabel.setText("If the information above is correct click OK");
+
+        javax.swing.GroupLayout NewWildCardFromExpressionDialogLayout = new javax.swing.GroupLayout(NewWildCardFromExpressionDialog.getContentPane());
+        NewWildCardFromExpressionDialog.getContentPane().setLayout(NewWildCardFromExpressionDialogLayout);
+        NewWildCardFromExpressionDialogLayout.setHorizontalGroup(
+            NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                        .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                                .addComponent(NewWildCardFromExpressionDialog_outputNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                                .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(NewWildCardFromExpressionDialog_enterNameLabel)
+                                    .addComponent(NewWildCardFromExpressionDialog_enterNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addGap(12, 12, 12)))
+                        .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                        .addComponent(NewWildCardFromExpressionDialog_convertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111))))
+            .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jSeparator1))
+                    .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                        .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                                .addGap(203, 203, 203)
+                                .addComponent(NewWildCardFromExpressionDialog_okButton))
+                            .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                                .addGap(186, 186, 186)
+                                .addComponent(NewWildCardFromExpressionDialog_wildcardValueLabel))
+                            .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                                .addGap(94, 94, 94)
+                                .addComponent(NewWildCardFromExpressionDialog_infoCorrectLabel)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {NewWildCardFromExpressionDialog_enterNameTextField, NewWildCardFromExpressionDialog_outputNameTextField});
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel4});
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane1, jScrollPane2});
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {NewWildCardFromExpressionDialog_convertButton, NewWildCardFromExpressionDialog_okButton});
+
+        NewWildCardFromExpressionDialogLayout.setVerticalGroup(
+            NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                        .addComponent(NewWildCardFromExpressionDialog_wildcardValueLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(NewWildCardFromExpressionDialogLayout.createSequentialGroup()
+                        .addComponent(NewWildCardFromExpressionDialog_enterNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NewWildCardFromExpressionDialog_enterNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NewWildCardFromExpressionDialog_convertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(NewWildCardFromExpressionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(NewWildCardFromExpressionDialog_outputNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NewWildCardFromExpressionDialog_infoCorrectLabel)
+                .addGap(27, 27, 27)
+                .addComponent(NewWildCardFromExpressionDialog_okButton)
+                .addContainerGap())
+        );
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {NewWildCardFromExpressionDialog_enterNameTextField, NewWildCardFromExpressionDialog_outputNameTextField});
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel4});
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane2});
+
+        NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {NewWildCardFromExpressionDialog_convertButton, NewWildCardFromExpressionDialog_okButton});
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Moodle Equation Creator");
@@ -270,7 +433,7 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         ExpressionsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ExpressionsPanel_convertButton, ExpressionsPanel_copyButton, ExpressionsPanel_insertWildcardsButton});
 
-        jTabbedPane1.addTab("tab1", ExpressionsPanel);
+        MainTabPane.addTab("Expression", ExpressionsPanel);
 
         WildcardPanel_wildcardTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -306,6 +469,14 @@ public class MEC_GUI extends javax.swing.JFrame {
             }
         });
 
+        WildcardPanel_addNewWildcardExpressionButton.setText("<html><p style=\"text-align: center\">Add New<br />Wildcard<br /> From Expression</p></html>");
+        WildcardPanel_addNewWildcardExpressionButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        WildcardPanel_addNewWildcardExpressionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WildcardPanel_addNewWildcardExpressionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout WildcardPanelLayout = new javax.swing.GroupLayout(WildcardPanel);
         WildcardPanel.setLayout(WildcardPanelLayout);
         WildcardPanelLayout.setHorizontalGroup(
@@ -313,28 +484,37 @@ public class MEC_GUI extends javax.swing.JFrame {
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
             .addGroup(WildcardPanelLayout.createSequentialGroup()
                 .addComponent(WildcardPanel_addNewWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(WildcardPanel_addNewWildcardExpressionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton});
+
         WildcardPanelLayout.setVerticalGroup(
             WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WildcardPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(WildcardPanel_addNewWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(WildcardPanel_addNewWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WildcardPanel_addNewWildcardExpressionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("tab2", WildcardPanel);
+        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton});
+
+        MainTabPane.addTab("Wildcards", WildcardPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(MainTabPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(MainTabPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -378,7 +558,7 @@ public class MEC_GUI extends javax.swing.JFrame {
             wildcard.setMin(min);
             wildcard.setMax(max);
             wildcard.setInterval(interval);
-            WildCardManager.addWildCardToTable(wildcard, WildcardPanel_wildcardTable);
+            WildCardManager.addWildCard(wildcard, WildcardPanel_wildcardTable);
         }
         newWildCardDialog.setVisible(false);    
     }//GEN-LAST:event_newWildCardDialog_okButtonActionPerformed
@@ -387,8 +567,6 @@ public class MEC_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String output = WildCardManager.insertWildcardsIntoExpression(ExpressionsPanel_outputTextArea.getText());
-        
-        
         ExpressionsPanel_outputTextArea.setText(output);
         
     }//GEN-LAST:event_ExpressionsPanel_insertWildcardsButtonActionPerformed
@@ -400,6 +578,51 @@ public class MEC_GUI extends javax.swing.JFrame {
         newWildCardDialog_maxTextField.setText("10");
         newWildCardDialog_intervalTextField.setText("1");
     }//GEN-LAST:event_newWildCardDialogWindowActivated
+
+    private void WildcardPanel_addNewWildcardExpressionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WildcardPanel_addNewWildcardExpressionButtonActionPerformed
+        // TODO add your handling code here:
+        NewWildCardFromExpressionDialog.setVisible(true);
+    }//GEN-LAST:event_WildcardPanel_addNewWildcardExpressionButtonActionPerformed
+
+    private void NewWildCardFromExpressionDialog_okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialog_okButtonActionPerformed
+        // TODO add your handling code here:
+        String name = NewWildCardFromExpressionDialog_outputNameTextField.getText();
+        String value = NewWildCardFromExpressionDialog_outputValueTextArea.getText();
+        
+        if(Objects.equals(name, "") || Objects.equals(value, ""))
+            return;
+        
+        WildCard wildcard = new WildCard();
+        wildcard.setName(name);
+        wildcard.setValue(value);
+        
+        if(WildCardManager.wildCardExists(wildcard))
+            return;
+        else
+        {
+            WildCardManager.addWildCard(wildcard, WildcardPanel_wildcardTable);
+        }
+        
+        
+        NewWildCardFromExpressionDialog.setVisible(false);
+    }//GEN-LAST:event_NewWildCardFromExpressionDialog_okButtonActionPerformed
+
+    private void NewWildCardFromExpressionDialogWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialogWindowActivated
+        // TODO add your handling code here:
+        NewWildCardFromExpressionDialog_enterNameTextField.setText("");
+        NewWildCardFromExpressionDialog_wildCardValueTextArea.setText("");
+        NewWildCardFromExpressionDialog_outputValueTextArea.setText("");
+        NewWildCardFromExpressionDialog_outputNameTextField.setText("");
+    }//GEN-LAST:event_NewWildCardFromExpressionDialogWindowActivated
+
+    private void NewWildCardFromExpressionDialog_convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialog_convertButtonActionPerformed
+        // TODO add your handling code here:
+        if(!Objects.equals(NewWildCardFromExpressionDialog_wildCardValueTextArea.getText(), ""))
+        {
+            NewWildCardFromExpressionDialog_outputValueTextArea.setText(NodeTreebuilder.buildTreeFromLaTex(NewWildCardFromExpressionDialog_wildCardValueTextArea.getText()).printExpression());
+            NewWildCardFromExpressionDialog_outputNameTextField.setText(NewWildCardFromExpressionDialog_enterNameTextField.getText());
+        }
+    }//GEN-LAST:event_NewWildCardFromExpressionDialog_convertButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,11 +675,27 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel ExpressionsPanel_outputLabel;
     private javax.swing.JTextArea ExpressionsPanel_outputTextArea;
     private javax.swing.JScrollPane ExpressionsPanel_outputTextAreaScollPane;
+    private javax.swing.JTabbedPane MainTabPane;
+    private javax.swing.JDialog NewWildCardFromExpressionDialog;
+    private javax.swing.JButton NewWildCardFromExpressionDialog_convertButton;
+    private javax.swing.JLabel NewWildCardFromExpressionDialog_enterNameLabel;
+    private javax.swing.JTextField NewWildCardFromExpressionDialog_enterNameTextField;
+    private javax.swing.JLabel NewWildCardFromExpressionDialog_infoCorrectLabel;
+    private javax.swing.JButton NewWildCardFromExpressionDialog_okButton;
+    private javax.swing.JTextField NewWildCardFromExpressionDialog_outputNameTextField;
+    private javax.swing.JTextArea NewWildCardFromExpressionDialog_outputValueTextArea;
+    private javax.swing.JTextArea NewWildCardFromExpressionDialog_wildCardValueTextArea;
+    private javax.swing.JLabel NewWildCardFromExpressionDialog_wildcardValueLabel;
     private javax.swing.JPanel WildcardPanel;
     private javax.swing.JButton WildcardPanel_addNewWildcardButton;
+    private javax.swing.JButton WildcardPanel_addNewWildcardExpressionButton;
     private javax.swing.JTable WildcardPanel_wildcardTable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JDialog newWildCardDialog;
     private javax.swing.JLabel newWildCardDialog_enterNameLabel;
     private javax.swing.JLabel newWildCardDialog_intervalLabel;
