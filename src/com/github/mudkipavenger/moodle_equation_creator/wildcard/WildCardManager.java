@@ -6,8 +6,7 @@
 package com.github.mudkipavenger.moodle_equation_creator.wildcard;
 
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Objects;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,23 +23,22 @@ public class WildCardManager {
         return wildcards;
     }
     
-    public static void addWildCard(WildCard w)
+    public static void addWildCard(WildCard w, JTable table)
     {
-        if(!wildcards.containsKey(w.getName()))
+        if(!wildCardExists(w))
         {
-            wildcards.put(w.getName(), w.getValue());
+            addWildCardToTable(w, table);
         }
+    }
+    
+    private static void addWildCardToHashMap(WildCard w)
+    {
+            wildcards.put(w.getName(), w.getValue());
+
     }
     
     public static String insertWildcardsIntoExpression(String expression)
     {
-        //Pattern pattern = Pattern.compile("[^\\s)(]+");
-        //Matcher matcher = pattern.matcher(expression);
-        //while(matcher.find())
-        //{
-        //    System.out.println(matcher.group());
-        //}
-        //System.out.println("Done");
         StringBuilder output = new StringBuilder(expression);
         boolean replaced = false;
         do
@@ -60,12 +58,16 @@ public class WildCardManager {
         return output.toString();
     }
     
-    public static void addWildCardToTable(WildCard wildcard, JTable table)
+    private static void addWildCardToTable(WildCard wildcard, JTable table)
     {
-        if(wildcards.containsKey(wildcard.getName()))
-            return;
-        
         DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+        if(Objects.equals(wildcard.getMin(), "") || Objects.equals(wildcard.getMax(), "") || Objects.equals(wildcard.getInterval(), ""))
+        {
+            model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), "", ""});
+            addWildCardToHashMap(wildcard);
+            return;
+        }
         
         float min = (Float.valueOf(wildcard.getMin()));
         float max = (Float.valueOf(wildcard.getMax())); 
@@ -74,7 +76,7 @@ public class WildCardManager {
         if(interval == 1)
         {
             model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), wildcard.getMin(), wildcard.getMax()});
-            addWildCard(wildcard);
+            addWildCardToHashMap(wildcard);
         }
         else
         {
@@ -86,7 +88,7 @@ public class WildCardManager {
             w2 = new WildCard();
             w2.setName("#" + w1.getName());
             
-            w1.setValue("{=(" + wildcard.getMin() + ") + ((" + w2.getName() + ") * (" + wildcard.getInterval() + "))}");
+            w1.setValue("((" + wildcard.getMin() + ") + ((" + w2.getName() + ") * (" + wildcard.getInterval() + ")))");
             w2.setValue("{" + w2.getName() + "}");
             
             w1.setMin("");
@@ -97,9 +99,14 @@ public class WildCardManager {
             model.addRow(new Object[] {w1.getName(), w1.getValue(), w1.getMin(), w1.getMax()});
             model.addRow(new Object[] {w2.getName(), w2.getValue(), w2.getMin(), w2.getMax()});
             
-            addWildCard(w1);
-            addWildCard(w2);
+            addWildCardToHashMap(w1);
+            addWildCardToHashMap(w2);
         }
+    }
+    
+    public static boolean wildCardExists(WildCard w)
+    {
+        return wildcards.containsKey(w.getName());
     }
     
 }
