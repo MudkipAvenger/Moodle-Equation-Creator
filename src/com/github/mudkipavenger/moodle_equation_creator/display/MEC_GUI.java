@@ -80,6 +80,13 @@ public class MEC_GUI extends javax.swing.JFrame {
         WildcardPanel_wildcardTable = new javax.swing.JTable();
         WildcardPanel_addNewWildcardButton = new javax.swing.JButton();
         WildcardPanel_addNewWildcardExpressionButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        QuestionPanel = new javax.swing.JPanel();
+        QuestionPanel_insertWildcardButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        QuestionPanel_questionTextArea = new javax.swing.JTextArea();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -403,7 +410,7 @@ public class MEC_GUI extends javax.swing.JFrame {
                         .addComponent(ExpressionsPanel_insertWildcardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(ExpressionsPanel_copyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         ExpressionsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ExpressionsPanel_convertButton, ExpressionsPanel_copyButton, ExpressionsPanel_insertWildcardsButton});
@@ -428,7 +435,7 @@ public class MEC_GUI extends javax.swing.JFrame {
                     .addComponent(ExpressionsPanel_copyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ExpressionsPanel_outputTextAreaScollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ExpressionsPanel_insertWildcardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         ExpressionsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ExpressionsPanel_convertButton, ExpressionsPanel_copyButton, ExpressionsPanel_insertWildcardsButton});
@@ -477,34 +484,92 @@ public class MEC_GUI extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("<html><p style=\"text-align: center\">Edit<br/> Wildcard</p></html>");
+
+        jButton2.setText("<html><p style=\"text-align: center\">Remove<br/>Wildcard</p></html>");
+
         javax.swing.GroupLayout WildcardPanelLayout = new javax.swing.GroupLayout(WildcardPanel);
         WildcardPanel.setLayout(WildcardPanelLayout);
         WildcardPanelLayout.setHorizontalGroup(
             WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
             .addGroup(WildcardPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(WildcardPanel_addNewWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(WildcardPanel_addNewWildcardExpressionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton});
+        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton, jButton1, jButton2});
 
         WildcardPanelLayout.setVerticalGroup(
             WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WildcardPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(WildcardPanel_addNewWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WildcardPanel_addNewWildcardExpressionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WildcardPanel_addNewWildcardExpressionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WildcardPanel_addNewWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton});
+        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton, jButton1, jButton2});
 
         MainTabPane.addTab("Wildcards", WildcardPanel);
+
+        QuestionPanel_insertWildcardButton.setText("<html><p style=\"text-align: center\">Insert<br/>Wildcards</p></html>");
+        QuestionPanel_insertWildcardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuestionPanel_insertWildcardButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setText("Enter Question Text Below:");
+
+        jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        QuestionPanel_questionTextArea.setColumns(20);
+        QuestionPanel_questionTextArea.setLineWrap(true);
+        QuestionPanel_questionTextArea.setRows(5);
+        jScrollPane5.setViewportView(QuestionPanel_questionTextArea);
+
+        javax.swing.GroupLayout QuestionPanelLayout = new javax.swing.GroupLayout(QuestionPanel);
+        QuestionPanel.setLayout(QuestionPanelLayout);
+        QuestionPanelLayout.setHorizontalGroup(
+            QuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(QuestionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(QuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                    .addGroup(QuestionPanelLayout.createSequentialGroup()
+                        .addGroup(QuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(QuestionPanel_insertWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        QuestionPanelLayout.setVerticalGroup(
+            QuestionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(QuestionPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(QuestionPanel_insertWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        MainTabPane.addTab("Question", QuestionPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -566,7 +631,7 @@ public class MEC_GUI extends javax.swing.JFrame {
     private void ExpressionsPanel_insertWildcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionsPanel_insertWildcardsButtonActionPerformed
         // TODO add your handling code here:
         
-        String output = WildCardManager.insertWildcardsIntoExpression(ExpressionsPanel_outputTextArea.getText());
+        String output = WildCardManager.insertWildCardsIntoExpression(ExpressionsPanel_outputTextArea.getText());
         ExpressionsPanel_outputTextArea.setText(output);
         
     }//GEN-LAST:event_ExpressionsPanel_insertWildcardsButtonActionPerformed
@@ -623,6 +688,12 @@ public class MEC_GUI extends javax.swing.JFrame {
             NewWildCardFromExpressionDialog_outputNameTextField.setText(NewWildCardFromExpressionDialog_enterNameTextField.getText());
         }
     }//GEN-LAST:event_NewWildCardFromExpressionDialog_convertButtonActionPerformed
+
+    private void QuestionPanel_insertWildcardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuestionPanel_insertWildcardButtonActionPerformed
+        // TODO add your handling code here:
+        QuestionPanel_questionTextArea.setText(WildCardManager.insertWildCardsIntoQuestion(QuestionPanel_questionTextArea.getText()));
+        
+    }//GEN-LAST:event_QuestionPanel_insertWildcardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -686,15 +757,22 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea NewWildCardFromExpressionDialog_outputValueTextArea;
     private javax.swing.JTextArea NewWildCardFromExpressionDialog_wildCardValueTextArea;
     private javax.swing.JLabel NewWildCardFromExpressionDialog_wildcardValueLabel;
+    private javax.swing.JPanel QuestionPanel;
+    private javax.swing.JButton QuestionPanel_insertWildcardButton;
+    private javax.swing.JTextArea QuestionPanel_questionTextArea;
     private javax.swing.JPanel WildcardPanel;
     private javax.swing.JButton WildcardPanel_addNewWildcardButton;
     private javax.swing.JButton WildcardPanel_addNewWildcardExpressionButton;
     private javax.swing.JTable WildcardPanel_wildcardTable;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JDialog newWildCardDialog;
     private javax.swing.JLabel newWildCardDialog_enterNameLabel;
