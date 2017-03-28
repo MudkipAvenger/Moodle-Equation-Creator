@@ -7,6 +7,8 @@ package com.github.mudkipavenger.moodle_equation_creator.wildcard;
 
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -37,24 +39,35 @@ public class WildCardManager {
 
     }
     
-    public static String insertWildcardsIntoExpression(String expression)
+    public static String insertWildCardsIntoExpression(String expression)
     {
         StringBuilder output = new StringBuilder(expression);
-        boolean replaced = false;
-        do
+        for ( String key : wildcards.keySet() ) 
         {
-            replaced = false;
-            for ( String key : wildcards.keySet() ) {
-                int index = output.indexOf("(" + key + ")");
-                while(index != -1)
-                {
-                    replaced = true;
-                    output.replace(index + 1, index + 1 + key.length(), wildcards.get(key));
-                    index = output.indexOf("(" + key + ")", index + 1);
-                }
+            Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
+            Matcher matcher = pattern.matcher(output);
+            while(matcher.find())
+            {
+                output.replace(matcher.start(), matcher.end(), insertWildCardsIntoExpression("(" + wildcards.get(key) + ")"));
+                matcher = pattern.matcher(output);
             }
-        }while(replaced);
-        
+        }
+        return output.toString();
+    }
+    
+    public static String insertWildCardsIntoQuestion(String question)
+    {
+        StringBuilder output = new StringBuilder(question);
+        for ( String key : wildcards.keySet() ) 
+        {
+            Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
+            Matcher matcher = pattern.matcher(output);
+            while(matcher.find())
+            {
+                output.replace(matcher.start(), matcher.end(), "{=" + insertWildCardsIntoExpression("(" + wildcards.get(key) + ")") + "}");
+                matcher = pattern.matcher(output);
+            } 
+        }
         return output.toString();
     }
     
@@ -86,9 +99,9 @@ public class WildCardManager {
             w1.setName(wildcard.getName());
             
             w2 = new WildCard();
-            w2.setName("#" + w1.getName());
+            w2.setName(w1.getName() + "_");
             
-            w1.setValue("((" + wildcard.getMin() + ") + ((" + w2.getName() + ") * (" + wildcard.getInterval() + ")))");
+            w1.setValue("(" + wildcard.getMin() + ") + ((" + w2.getName() + ") * (" + wildcard.getInterval() + "))");
             w2.setValue("{" + w2.getName() + "}");
             
             w1.setMin("");
