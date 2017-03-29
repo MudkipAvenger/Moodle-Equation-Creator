@@ -5,10 +5,10 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.display;
 
-import com.github.mudkipavenger.moodle_equation_creator.LaTexParser.LaTexParser;
 import com.github.mudkipavenger.moodle_equation_creator.Tree.NodeTreebuilder;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCard;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCardManager;
+import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -62,6 +62,14 @@ public class MEC_GUI extends javax.swing.JFrame {
         NewWildCardFromExpressionDialog_outputValueTextArea = new javax.swing.JTextArea();
         NewWildCardFromExpressionDialog_okButton = new javax.swing.JButton();
         NewWildCardFromExpressionDialog_infoCorrectLabel = new javax.swing.JLabel();
+        ErrorDialog = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        ErrorDialog_okButton = new javax.swing.JButton();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        ErrorDialog_errorMessageLabel = new javax.swing.JLabel();
         MainTabPane = new javax.swing.JTabbedPane();
         ExpressionsPanel = new javax.swing.JPanel();
         ExpressionsPanel_outputTextAreaScollPane = new javax.swing.JScrollPane();
@@ -80,8 +88,8 @@ public class MEC_GUI extends javax.swing.JFrame {
         WildcardPanel_wildcardTable = new javax.swing.JTable();
         WildcardPanel_addNewWildcardButton = new javax.swing.JButton();
         WildcardPanel_addNewWildcardExpressionButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        WildcardPanel_editWildcardButton = new javax.swing.JButton();
+        WildcardPanel_removeWildcardButton = new javax.swing.JButton();
         QuestionPanel = new javax.swing.JPanel();
         QuestionPanel_insertWildcardButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -91,9 +99,9 @@ public class MEC_GUI extends javax.swing.JFrame {
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
         newWildCardDialog.setSize(new java.awt.Dimension(400, 300));
-        newWildCardDialog.addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                newWildCardDialogWindowActivated(evt);
+        newWildCardDialog.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                newWildCardDialogComponentShown(evt);
             }
         });
 
@@ -334,6 +342,32 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         NewWildCardFromExpressionDialogLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {NewWildCardFromExpressionDialog_convertButton, NewWildCardFromExpressionDialog_okButton});
 
+        ErrorDialog.setModal(true);
+        ErrorDialog.setResizable(false);
+        ErrorDialog.setSize(new java.awt.Dimension(300, 200));
+
+        jPanel1.setLayout(new java.awt.GridLayout(2, 3));
+        jPanel1.add(filler5);
+
+        ErrorDialog_okButton.setText("OK");
+        ErrorDialog_okButton.setPreferredSize(new java.awt.Dimension(70, 40));
+        ErrorDialog_okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ErrorDialog_okButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ErrorDialog_okButton);
+        jPanel1.add(filler3);
+        jPanel1.add(filler4);
+        jPanel1.add(filler6);
+
+        ErrorDialog.getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        ErrorDialog_errorMessageLabel.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        ErrorDialog_errorMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ErrorDialog_errorMessageLabel.setText("ERROR");
+        ErrorDialog.getContentPane().add(ErrorDialog_errorMessageLabel, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Moodle Equation Creator");
         setSize(new java.awt.Dimension(550, 480));
@@ -484,9 +518,14 @@ public class MEC_GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("<html><p style=\"text-align: center\">Edit<br/> Wildcard</p></html>");
+        WildcardPanel_editWildcardButton.setText("<html><p style=\"text-align: center\">Edit<br/> Wildcard</p></html>");
+        WildcardPanel_editWildcardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WildcardPanel_editWildcardButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("<html><p style=\"text-align: center\">Remove<br/>Wildcard</p></html>");
+        WildcardPanel_removeWildcardButton.setText("<html><p style=\"text-align: center\">Remove<br/>Wildcard</p></html>");
 
         javax.swing.GroupLayout WildcardPanelLayout = new javax.swing.GroupLayout(WildcardPanel);
         WildcardPanel.setLayout(WildcardPanelLayout);
@@ -499,13 +538,13 @@ public class MEC_GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(WildcardPanel_addNewWildcardExpressionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(WildcardPanel_editWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(WildcardPanel_removeWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton, jButton1, jButton2});
+        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton, WildcardPanel_editWildcardButton, WildcardPanel_removeWildcardButton});
 
         WildcardPanelLayout.setVerticalGroup(
             WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,14 +552,14 @@ public class MEC_GUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WildcardPanel_removeWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WildcardPanel_editWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(WildcardPanel_addNewWildcardExpressionButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(WildcardPanel_addNewWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton, jButton1, jButton2});
+        WildcardPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {WildcardPanel_addNewWildcardButton, WildcardPanel_addNewWildcardExpressionButton, WildcardPanel_editWildcardButton, WildcardPanel_removeWildcardButton});
 
         MainTabPane.addTab("Wildcards", WildcardPanel);
 
@@ -602,29 +641,108 @@ public class MEC_GUI extends javax.swing.JFrame {
         newWildCardDialog.setVisible(true);
     }//GEN-LAST:event_WildcardPanel_addNewWildcardButtonActionPerformed
 
+    public static boolean isNumeric(String str)
+    {
+        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+    
     private void newWildCardDialog_okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWildCardDialog_okButtonActionPerformed
         // TODO add your handling code here:
-        String name = newWildCardDialog_nameTextField.getText();
-        String min = newWildCardDialog_minTextField.getText();
-        String max = newWildCardDialog_maxTextField.getText();
-        String interval = newWildCardDialog_intervalTextField.getText();
+        String name = newWildCardDialog_nameTextField.getText().trim();
+        String min = newWildCardDialog_minTextField.getText().trim();
+        String max = newWildCardDialog_maxTextField.getText().trim();
+        String interval = newWildCardDialog_intervalTextField.getText().trim();
+        
+        Component source = (Component)evt.getSource();
+        Component parent = source.getParent();
 
-        if(Objects.equals(name, "") || Objects.equals(min, "") || Objects.equals(max, "") || Objects.equals(interval, ""))
+        
+        if(Objects.equals(name, ""))
         {
-            //error
-            System.out.println("error");
+            displayErrorMessage("Name is required", parent);
             return;
         }
         else
         {
-            WildCard wildcard = new WildCard();
-            wildcard.setName(name);
-            wildcard.setValue("{" + name + "}");
-            wildcard.setMin(min);
-            wildcard.setMax(max);
-            wildcard.setInterval(interval);
-            WildCardManager.addWildCard(wildcard, WildcardPanel_wildcardTable);
+            if(WildCardManager.wildCardExists(name))
+            {
+                displayErrorMessage("Name " + name + " is already taken", parent);
+                return;
+            }
         }
+        if(Objects.equals(min, ""))
+        {
+            displayErrorMessage("Min Range is required", parent);
+            return;
+        }
+        if(Objects.equals(max, ""))
+        {
+            displayErrorMessage("Max Range is required", parent);
+            return;
+        }
+        if(Objects.equals(interval, ""))
+        {
+            displayErrorMessage("Interval is required", parent);
+            return;
+        }
+        
+        if(!isNumeric(min))
+        {
+            displayErrorMessage("Min Range must be a number", parent);
+            return;
+        }
+        if(!isNumeric(max))
+        {
+            displayErrorMessage("Max Range must be a number", parent);
+            return;
+        }
+        if(!isNumeric(interval))
+        {
+            displayErrorMessage("Interval must be a number", parent);
+            return;
+        }
+        else
+        {
+            float interval_ = (Float.valueOf(interval));
+            if(interval_ == 0)
+            {
+                displayErrorMessage("Interval cannot be 0", parent);
+                return;
+            }
+            if(interval_ < 0)
+            {
+                displayErrorMessage("Interval must be positive", parent);
+                return;
+            }
+            
+            float min_ = Float.valueOf(min);
+            float max_ = Float.valueOf(max);
+            
+            if(min_ > max_)
+            {
+                displayErrorMessage("Min Range must be less than Max Range", parent);
+                return;
+            }
+            if(min_ == max_)
+            {
+                displayErrorMessage("Min Range and Max Range should not be equal. If you want a wildcard to be a constant then you should use the Add Wildcard from Expression Button on the Wildcards page", parent);
+                return;
+            }
+            if((max_ - min_) % interval_ != 0)
+            {
+                displayErrorMessage("Min Range cannot reach Max Range by the interval provided", parent);
+                return;
+            }
+            
+        }
+
+        WildCard wildcard = new WildCard();
+        wildcard.setName(name);
+        wildcard.setValue("{" + name + "}");
+        wildcard.setMin(min);
+        wildcard.setMax(max);
+        wildcard.setInterval(interval);
+        WildCardManager.addWildCard(wildcard, WildcardPanel_wildcardTable);
         newWildCardDialog.setVisible(false);    
     }//GEN-LAST:event_newWildCardDialog_okButtonActionPerformed
 
@@ -635,14 +753,6 @@ public class MEC_GUI extends javax.swing.JFrame {
         ExpressionsPanel_outputTextArea.setText(output);
         
     }//GEN-LAST:event_ExpressionsPanel_insertWildcardsButtonActionPerformed
-
-    private void newWildCardDialogWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_newWildCardDialogWindowActivated
-        // TODO add your handling code here:
-        newWildCardDialog_nameTextField.setText("");
-        newWildCardDialog_minTextField.setText("1");
-        newWildCardDialog_maxTextField.setText("10");
-        newWildCardDialog_intervalTextField.setText("1");
-    }//GEN-LAST:event_newWildCardDialogWindowActivated
 
     private void WildcardPanel_addNewWildcardExpressionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WildcardPanel_addNewWildcardExpressionButtonActionPerformed
         // TODO add your handling code here:
@@ -695,6 +805,33 @@ public class MEC_GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_QuestionPanel_insertWildcardButtonActionPerformed
 
+    private void WildcardPanel_editWildcardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WildcardPanel_editWildcardButtonActionPerformed
+        // TODO add your handling code here:
+        Component source=(Component)evt.getSource();
+        displayErrorMessage("Hello world my name is error and I love pie apple pir dkhfsdjkfhsjkf asdkjfhs sdkjfhskf ddbd ddgad dadgadjsgfjasf", source.getParent());
+        //ErrorDialog.setVisible(true);
+    }//GEN-LAST:event_WildcardPanel_editWildcardButtonActionPerformed
+
+    private void ErrorDialog_okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ErrorDialog_okButtonActionPerformed
+        // TODO add your handling code here:
+        ErrorDialog.setVisible(false);
+    }//GEN-LAST:event_ErrorDialog_okButtonActionPerformed
+
+    private void newWildCardDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_newWildCardDialogComponentShown
+        // TODO add your handling code here:
+        newWildCardDialog_nameTextField.setText("");
+        newWildCardDialog_minTextField.setText("1");
+        newWildCardDialog_maxTextField.setText("10");
+        newWildCardDialog_intervalTextField.setText("1");
+    }//GEN-LAST:event_newWildCardDialogComponentShown
+
+    public void displayErrorMessage(String message, Component parent)
+    {
+        ErrorDialog_errorMessageLabel.setText("<html><p style= \"text-align: center; width: 90%\">" + message + "</p></html>");
+        ErrorDialog.setLocationRelativeTo(parent);
+        ErrorDialog.setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -732,8 +869,13 @@ public class MEC_GUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog ErrorDialog;
+    private javax.swing.JLabel ErrorDialog_errorMessageLabel;
+    private javax.swing.JButton ErrorDialog_okButton;
     private javax.swing.JPanel ExpressionsPanel;
     private javax.swing.JButton ExpressionsPanel_convertButton;
     private javax.swing.JButton ExpressionsPanel_copyButton;
@@ -763,12 +905,17 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel WildcardPanel;
     private javax.swing.JButton WildcardPanel_addNewWildcardButton;
     private javax.swing.JButton WildcardPanel_addNewWildcardExpressionButton;
+    private javax.swing.JButton WildcardPanel_editWildcardButton;
+    private javax.swing.JButton WildcardPanel_removeWildcardButton;
     private javax.swing.JTable WildcardPanel_wildcardTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
