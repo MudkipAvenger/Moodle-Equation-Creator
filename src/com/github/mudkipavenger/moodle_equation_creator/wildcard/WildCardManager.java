@@ -122,4 +122,9 @@ public class WildCardManager {
         return wildcards.containsKey(w.getName());
     }
     
+    public static boolean wildCardExists(String name)
+    {
+        return wildcards.containsKey(name);
+    }
+    
 }
