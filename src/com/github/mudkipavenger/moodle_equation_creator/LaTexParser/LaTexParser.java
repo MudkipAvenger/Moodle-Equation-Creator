@@ -6,6 +6,8 @@
 package com.github.mudkipavenger.moodle_equation_creator.LaTexParser;
 
 import com.github.mudkipavenger.moodle_equation_creator.InfixToPostfix;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -29,6 +31,8 @@ public class LaTexParser {
         output = LaTexParser.replaceExponentWithPow(output);
         output = LaTexParser.replaceSqrtWithPow(output);
         output = replaceParenthesisWithMult(output);
+        output = replaceNegatives(output);
+        //System.out.println(output);
         return output;
     }
     
@@ -378,5 +382,74 @@ public class LaTexParser {
         }
         
         return str.toString();
+    }
+    
+    private static String replaceNegatives(String in)
+    {
+        StringBuilder output = new StringBuilder(in);
+        final String regex = "((?<=[+\\-*\\/])|^)\\s*-\\s*((\\d+(\\.\\d+)?)|[\\(])";
+        
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(output);
+        while(matcher.find())
+        {
+            String match = matcher.group();
+            int index = match.indexOf("-");
+            boolean paren = false;
+            
+            for(int i = index+1; i < match.length(); i++)
+            {
+                if(match.charAt(i) == '(')
+                {
+                    paren = true;
+                    index = i;
+                    break;
+                }
+                else if(!InfixToPostfix.isSpace(match.charAt(i)))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            
+            if(paren)
+            {
+                index = index + matcher.start();
+                int startIndex = index;
+                int endIndex = output.length() - 1;
+                for(int i = index + 1, braceCnt = 0; i < output.length(); i++)
+                {
+                    if(output.charAt(i) == '(')
+                        braceCnt++;
+                    else if(output.charAt(index) == ')')
+                    {
+                        if(braceCnt == 0)
+                        {
+                            endIndex = i;
+                        }
+                        else
+                        {
+                            braceCnt--;
+                        }
+                    }
+                }
+                String sub = output.substring(startIndex, endIndex);
+                String temp = "((0) - " + sub + ")";
+                output.replace(matcher.start(), endIndex, temp);
+            }
+            else
+            {
+                String sub = match.substring(index);
+                String temp = "((0) - (" + sub + "))";
+                output.replace(matcher.start(), matcher.end(), temp);
+            }
+            matcher = pattern.matcher(output);
+            
+        }
+        return output.toString();
+        
+        //((?<=[+\-*\/])|^)\s*-\s*(?(?=\()(\(\d+(\.\d+)?\))|(\d+(\.\d+)?))  find negative signs
+        
+        
     }
 }
