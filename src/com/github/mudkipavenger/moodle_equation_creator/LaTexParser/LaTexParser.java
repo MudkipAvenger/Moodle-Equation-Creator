@@ -387,7 +387,7 @@ public class LaTexParser {
     private static String replaceNegatives(String in)
     {
         StringBuilder output = new StringBuilder(in);
-        final String regex = "((?<=[+\\-*\\/])|^)\\s*-\\s*((\\d+(\\.\\d+)?)|[\\(])";
+        final String regex = "((?<=[+\\-*\\/\\(])|^)\\s*-\\s*((\\d+(\\.\\d+)?)|[\\(])";
         
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(output);
@@ -447,9 +447,6 @@ public class LaTexParser {
             
         }
         return output.toString();
-        
-        //((?<=[+\-*\/])|^)\s*-\s*(?(?=\()(\(\d+(\.\d+)?\))|(\d+(\.\d+)?))  find negative signs
-        
-        
+ 
     }
 }
