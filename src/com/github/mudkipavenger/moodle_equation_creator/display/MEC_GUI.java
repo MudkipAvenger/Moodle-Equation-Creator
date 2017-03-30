@@ -25,6 +25,7 @@ public class MEC_GUI extends javax.swing.JFrame {
      */
     public MEC_GUI() {
         initComponents();
+        addRightClickMenuMouseListeners();
     }
 
     /**
@@ -861,6 +862,22 @@ public class MEC_GUI extends javax.swing.JFrame {
         ErrorDialog_errorMessageLabel.setText("<html><p style= \"text-align: center; width: 90%\">" + message + "</p></html>");
         ErrorDialog.setLocationRelativeTo(parent);
         ErrorDialog.setVisible(true);
+    }
+    
+    public void addRightClickMenuMouseListeners()
+    {
+        ExpressionsPanel_inputTextArea.addMouseListener(new ContextMenuMouseListener());
+        ExpressionsPanel_outputTextArea.addMouseListener(new ContextMenuMouseListener());
+        QuestionPanel_questionTextArea.addMouseListener(new ContextMenuMouseListener());
+        newWildCardDialog_nameTextField.addMouseListener(new ContextMenuMouseListener());
+        newWildCardDialog_minTextField.addMouseListener(new ContextMenuMouseListener());
+        newWildCardDialog_maxTextField.addMouseListener(new ContextMenuMouseListener());
+        newWildCardDialog_intervalTextField.addMouseListener(new ContextMenuMouseListener());
+        NewWildCardFromExpressionDialog_inputNameTextField.addMouseListener(new ContextMenuMouseListener());
+        NewWildCardFromExpressionDialog_inputValueTextArea.addMouseListener(new ContextMenuMouseListener());
+        NewWildCardFromExpressionDialog_outputNameTextField.addMouseListener(new ContextMenuMouseListener());
+        NewWildCardFromExpressionDialog_outputValueTextArea.addMouseListener(new ContextMenuMouseListener());
+        
     }
     
     /**
