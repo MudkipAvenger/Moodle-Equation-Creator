@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class WildCardManager {
     
-    private static HashMap<String, String> wildcards = new HashMap();
+    private static final HashMap<String, WildCard> wildcards = new HashMap();
     
     public static HashMap getWildCards()
     {
@@ -33,42 +33,14 @@ public class WildCardManager {
         }
     }
     
+    public static WildCard getWildCard(String key)
+    {
+        return wildcards.get(key);
+    }
+    
     private static void addWildCardToHashMap(WildCard w)
     {
-            wildcards.put(w.getName(), w.getValue());
-
-    }
-    
-    public static String insertWildCardsIntoExpression(String expression)
-    {
-        StringBuilder output = new StringBuilder(expression);
-        for ( String key : wildcards.keySet() ) 
-        {
-            Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
-            Matcher matcher = pattern.matcher(output);
-            while(matcher.find())
-            {
-                output.replace(matcher.start(), matcher.end(), insertWildCardsIntoExpression("(" + wildcards.get(key) + ")"));
-                matcher = pattern.matcher(output);
-            }
-        }
-        return output.toString();
-    }
-    
-    public static String insertWildCardsIntoQuestion(String question)
-    {
-        StringBuilder output = new StringBuilder(question);
-        for ( String key : wildcards.keySet() ) 
-        {
-            Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
-            Matcher matcher = pattern.matcher(output);
-            while(matcher.find())
-            {
-                output.replace(matcher.start(), matcher.end(), "{=" + insertWildCardsIntoExpression("(" + wildcards.get(key) + ")") + "}");
-                matcher = pattern.matcher(output);
-            } 
-        }
-        return output.toString();
+            wildcards.put(w.getName(), w);
     }
     
     private static void addWildCardToTable(WildCard wildcard, JTable table)
@@ -109,6 +81,9 @@ public class WildCardManager {
             w2.setMin("0");
             w2.setMax("" + ((max - min) / (interval)));
             
+            w1.setInterval(wildcard.getInterval());
+            
+            
             model.addRow(new Object[] {w1.getName(), w1.getValue(), w1.getMin(), w1.getMax()});
             model.addRow(new Object[] {w2.getName(), w2.getValue(), w2.getMin(), w2.getMax()});
             
@@ -116,6 +91,40 @@ public class WildCardManager {
             addWildCardToHashMap(w2);
         }
     }
+    
+    public static String insertWildCardsIntoExpression(String expression)
+    {
+        StringBuilder output = new StringBuilder(expression);
+        for ( String key : wildcards.keySet() ) 
+        {
+            Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
+            Matcher matcher = pattern.matcher(output);
+            while(matcher.find())
+            {
+                output.replace(matcher.start(), matcher.end(), insertWildCardsIntoExpression("(" + wildcards.get(key) + ")"));
+                matcher = pattern.matcher(output);
+            }
+        }
+        return output.toString();
+    }
+    
+    public static String insertWildCardsIntoQuestion(String question)
+    {
+        StringBuilder output = new StringBuilder(question);
+        for ( String key : wildcards.keySet() ) 
+        {
+            Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
+            Matcher matcher = pattern.matcher(output);
+            while(matcher.find())
+            {
+                output.replace(matcher.start(), matcher.end(), "{=" + insertWildCardsIntoExpression("(" + wildcards.get(key) + ")") + "}");
+                matcher = pattern.matcher(output);
+            } 
+        }
+        return output.toString();
+    }
+    
+    
     
     public static boolean wildCardExists(WildCard w)
     {
