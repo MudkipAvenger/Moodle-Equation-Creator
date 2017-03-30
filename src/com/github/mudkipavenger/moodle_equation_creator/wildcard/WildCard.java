@@ -5,11 +5,6 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.wildcard;
 
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,7 +25,13 @@ public class WildCard {
         setValue("");
         setMin("");
         setMax("");
+        setInterval("1");
         setDecimalPlaces(0);
+    }
+    
+    public WildCard(String name, String value, String min, String max, String interval)
+    {
+        
     }
     
     public String getName()
