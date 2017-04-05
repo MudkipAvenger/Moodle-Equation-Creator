@@ -96,6 +96,13 @@ public class MEC_GUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         QuestionPanel_questionTextArea = new javax.swing.JTextArea();
+        FeedbackPanel = new javax.swing.JPanel();
+        FeedbackPanel_newStepLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        FeedbackPanel_expressionTextArea = new javax.swing.JTextArea();
+        FeedbackPanel_enterTextLabel = new javax.swing.JLabel();
+        FeedbackPanel_insertWildcardsButton = new javax.swing.JButton();
+        FeedbackPanel_addStepButton = new javax.swing.JButton();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -611,6 +618,64 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         MainTabPane.addTab("Question", QuestionPanel);
 
+        FeedbackPanel_newStepLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        FeedbackPanel_newStepLabel.setText("New Step");
+
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        FeedbackPanel_expressionTextArea.setColumns(20);
+        FeedbackPanel_expressionTextArea.setRows(5);
+        jScrollPane4.setViewportView(FeedbackPanel_expressionTextArea);
+
+        FeedbackPanel_enterTextLabel.setText("Enter LaTex Expression");
+
+        FeedbackPanel_insertWildcardsButton.setText("<html><p style=\"text-align: center\">Insert<br />Wildcards</p></html>");
+
+        FeedbackPanel_addStepButton.setText("<html><p style=\"text-align: center\">Add<br />Step</p></html>");
+
+        javax.swing.GroupLayout FeedbackPanelLayout = new javax.swing.GroupLayout(FeedbackPanel);
+        FeedbackPanel.setLayout(FeedbackPanelLayout);
+        FeedbackPanelLayout.setHorizontalGroup(
+            FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(FeedbackPanel_newStepLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FeedbackPanelLayout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FeedbackPanel_enterTextLabel)
+                    .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FeedbackPanel_insertWildcardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {FeedbackPanel_addStepButton, FeedbackPanel_insertWildcardsButton});
+
+        FeedbackPanelLayout.setVerticalGroup(
+            FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(FeedbackPanel_newStepLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FeedbackPanel_enterTextLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(FeedbackPanel_insertWildcardsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(278, Short.MAX_VALUE))
+        );
+
+        FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {FeedbackPanel_addStepButton, FeedbackPanel_insertWildcardsButton});
+
+        MainTabPane.addTab("Feedback", FeedbackPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -876,8 +941,7 @@ public class MEC_GUI extends javax.swing.JFrame {
         NewWildCardFromExpressionDialog_inputNameTextField.addMouseListener(new ContextMenuMouseListener());
         NewWildCardFromExpressionDialog_inputValueTextArea.addMouseListener(new ContextMenuMouseListener());
         NewWildCardFromExpressionDialog_outputNameTextField.addMouseListener(new ContextMenuMouseListener());
-        NewWildCardFromExpressionDialog_outputValueTextArea.addMouseListener(new ContextMenuMouseListener());
-        
+        NewWildCardFromExpressionDialog_outputValueTextArea.addMouseListener(new ContextMenuMouseListener());        
     }
     
     /**
@@ -936,6 +1000,12 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel ExpressionsPanel_outputLabel;
     private javax.swing.JTextArea ExpressionsPanel_outputTextArea;
     private javax.swing.JScrollPane ExpressionsPanel_outputTextAreaScollPane;
+    private javax.swing.JPanel FeedbackPanel;
+    private javax.swing.JButton FeedbackPanel_addStepButton;
+    private javax.swing.JLabel FeedbackPanel_enterTextLabel;
+    private javax.swing.JTextArea FeedbackPanel_expressionTextArea;
+    private javax.swing.JButton FeedbackPanel_insertWildcardsButton;
+    private javax.swing.JLabel FeedbackPanel_newStepLabel;
     private javax.swing.JTabbedPane MainTabPane;
     private javax.swing.JDialog NewWildCardFromExpressionDialog;
     private javax.swing.JButton NewWildCardFromExpressionDialog_convertButton;
@@ -967,6 +1037,7 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JDialog newWildCardDialog;
