@@ -879,19 +879,48 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="FeedbackPanel_newStepLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="FeedbackPanel_enterTextLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FeedbackPanel_enterTextLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jScrollPane4" min="-2" pref="318" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="FeedbackPanel_insertWildcardsButton" linkSize="18" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="FeedbackPanel_addStepButton" linkSize="18" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FeedbackPanel_newStepLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane4" min="-2" pref="318" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="FeedbackPanel_insertWildcardsButton" linkSize="18" min="-2" pref="92" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="FeedbackPanel_newWildcardNameTextField" min="-2" pref="86" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="FeedbackPanel_equalSignLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="FeedbackPanel_newWildcardNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FeedbackPanel_addStepButton" linkSize="18" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="FeedbackPanel_newWildcardExpressionLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jScrollPane6" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jButton1" linkSize="18" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -913,7 +942,23 @@
                           </Group>
                           <Component id="FeedbackPanel_addStepButton" linkSize="20" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="278" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FeedbackPanel_newWildcardNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FeedbackPanel_newWildcardExpressionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="FeedbackPanel_newWildcardNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="FeedbackPanel_equalSignLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jButton1" linkSize="20" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -940,6 +985,7 @@
                 <Component class="javax.swing.JTextArea" name="FeedbackPanel_expressionTextArea">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                 </Component>
@@ -958,6 +1004,61 @@
             <Component class="javax.swing.JButton" name="FeedbackPanel_addStepButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Add&lt;br /&gt;Step&lt;/p&gt;&lt;/html&gt;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Ubuntu" size="24" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="New Wildcard"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FeedbackPanel_newWildcardNameTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_newWildcardNameTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FeedbackPanel_equalSignLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Ubuntu" size="24" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="="/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+              <Properties>
+                <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="FeedbackPanel_newWildcardExpressionTextArea">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Add&lt;br /&gt;Wildcard&lt;/p&gt;&lt;/html&gt;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FeedbackPanel_newWildcardNameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FeedbackPanel_newWildcardExpressionLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Expression"/>
               </Properties>
             </Component>
           </SubComponents>
