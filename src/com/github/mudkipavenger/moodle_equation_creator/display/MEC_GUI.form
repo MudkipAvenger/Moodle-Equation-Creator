@@ -880,26 +880,6 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="FeedbackPanel_enterTextLabel" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jScrollPane4" min="-2" pref="318" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="FeedbackPanel_insertWildcardsButton" linkSize="18" min="-2" pref="92" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="FeedbackPanel_addStepButton" linkSize="18" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="FeedbackPanel_newStepLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -911,14 +891,39 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="FeedbackPanel_newWildcardExpressionLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="jScrollPane6" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jButton1" linkSize="18" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FeedbackPanel_newStepLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FeedbackPanel_enterTextLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jScrollPane4" min="-2" pref="318" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="FeedbackPanel_insertWildcardsButton" linkSize="18" min="-2" pref="92" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="FeedbackPanel_changeSizeButton" linkSize="18" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="FeedbackPanel_addStepButton" min="-2" pref="190" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -935,16 +940,20 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="FeedbackPanel_enterTextLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="FeedbackPanel_insertWildcardsButton" linkSize="20" pref="82" max="32767" attributes="0"/>
-                              <Component id="jScrollPane4" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="FeedbackPanel_insertWildcardsButton" alignment="0" pref="64" max="32767" attributes="0"/>
+                                  <Component id="FeedbackPanel_changeSizeButton" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="FeedbackPanel_addStepButton" min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="FeedbackPanel_addStepButton" linkSize="20" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="FeedbackPanel_newWildcardNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FeedbackPanel_newWildcardExpressionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -955,10 +964,10 @@
                               <Component id="FeedbackPanel_newWildcardNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="FeedbackPanel_equalSignLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton1" linkSize="20" max="32767" attributes="0"/>
+                          <Component id="jButton1" max="32767" attributes="0"/>
                           <Component id="jScrollPane6" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="122" max="32767" attributes="0"/>
+                      <EmptySpace pref="74" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -975,6 +984,8 @@
             <Container class="javax.swing.JScrollPane" name="jScrollPane4">
               <Properties>
                 <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="verticalScrollBarPolicy" type="int" value="22"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -1001,9 +1012,9 @@
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Insert&lt;br /&gt;Wildcards&lt;/p&gt;&lt;/html&gt;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="FeedbackPanel_addStepButton">
+            <Component class="javax.swing.JButton" name="FeedbackPanel_changeSizeButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Add&lt;br /&gt;Step&lt;/p&gt;&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Change&lt;br /&gt;Size&lt;/p&gt;&lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -1059,6 +1070,11 @@
             <Component class="javax.swing.JLabel" name="FeedbackPanel_newWildcardExpressionLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Expression"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="FeedbackPanel_addStepButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Step"/>
               </Properties>
             </Component>
           </SubComponents>

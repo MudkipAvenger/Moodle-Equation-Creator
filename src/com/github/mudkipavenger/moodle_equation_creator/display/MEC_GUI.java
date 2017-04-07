@@ -102,7 +102,7 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_expressionTextArea = new javax.swing.JTextArea();
         FeedbackPanel_enterTextLabel = new javax.swing.JLabel();
         FeedbackPanel_insertWildcardsButton = new javax.swing.JButton();
-        FeedbackPanel_addStepButton = new javax.swing.JButton();
+        FeedbackPanel_changeSizeButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         FeedbackPanel_newWildcardNameTextField = new javax.swing.JTextField();
         FeedbackPanel_equalSignLabel = new javax.swing.JLabel();
@@ -111,6 +111,7 @@ public class MEC_GUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         FeedbackPanel_newWildcardNameLabel = new javax.swing.JLabel();
         FeedbackPanel_newWildcardExpressionLabel = new javax.swing.JLabel();
+        FeedbackPanel_addStepButton = new javax.swing.JButton();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -630,6 +631,8 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_newStepLabel.setText("New Step");
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setToolTipText("");
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         FeedbackPanel_expressionTextArea.setColumns(20);
         FeedbackPanel_expressionTextArea.setLineWrap(true);
@@ -640,7 +643,7 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         FeedbackPanel_insertWildcardsButton.setText("<html><p style=\"text-align: center\">Insert<br />Wildcards</p></html>");
 
-        FeedbackPanel_addStepButton.setText("<html><p style=\"text-align: center\">Add<br />Step</p></html>");
+        FeedbackPanel_changeSizeButton.setText("<html><p style=\"text-align: center\">Change<br />Size</p></html>");
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel3.setText("New Wildcard");
@@ -667,6 +670,8 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         FeedbackPanel_newWildcardExpressionLabel.setText("Expression");
 
+        FeedbackPanel_addStepButton.setText("Add Step");
+
         javax.swing.GroupLayout FeedbackPanelLayout = new javax.swing.GroupLayout(FeedbackPanel);
         FeedbackPanel.setLayout(FeedbackPanelLayout);
         FeedbackPanelLayout.setHorizontalGroup(
@@ -674,21 +679,6 @@ public class MEC_GUI extends javax.swing.JFrame {
             .addGroup(FeedbackPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FeedbackPanelLayout.createSequentialGroup()
-                        .addGap(0, 36, Short.MAX_VALUE)
-                        .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FeedbackPanel_enterTextLabel)
-                            .addGroup(FeedbackPanelLayout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(FeedbackPanel_insertWildcardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(FeedbackPanelLayout.createSequentialGroup()
-                        .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FeedbackPanel_newStepLabel)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(FeedbackPanelLayout.createSequentialGroup()
                         .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(FeedbackPanelLayout.createSequentialGroup()
@@ -704,11 +694,29 @@ public class MEC_GUI extends javax.swing.JFrame {
                             .addGroup(FeedbackPanelLayout.createSequentialGroup()
                                 .addComponent(jScrollPane6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                        .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FeedbackPanel_newStepLabel)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FeedbackPanelLayout.createSequentialGroup()
+                        .addGap(0, 36, Short.MAX_VALUE)
+                        .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FeedbackPanel_enterTextLabel)
+                            .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                                        .addComponent(FeedbackPanel_insertWildcardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(FeedbackPanel_changeSizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
 
-        FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {FeedbackPanel_addStepButton, FeedbackPanel_insertWildcardsButton, jButton1});
+        FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {FeedbackPanel_changeSizeButton, FeedbackPanel_insertWildcardsButton, jButton1});
 
         FeedbackPanelLayout.setVerticalGroup(
             FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -718,14 +726,17 @@ public class MEC_GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FeedbackPanel_enterTextLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(FeedbackPanel_insertWildcardsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                        .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(FeedbackPanel_insertWildcardsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                            .addComponent(FeedbackPanel_changeSizeButton, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4))
+                .addGap(27, 27, 27)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FeedbackPanel_newWildcardNameLabel)
                     .addComponent(FeedbackPanel_newWildcardExpressionLabel))
@@ -736,10 +747,8 @@ public class MEC_GUI extends javax.swing.JFrame {
                         .addComponent(FeedbackPanel_equalSignLabel))
                     .addComponent(jButton1)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
-
-        FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {FeedbackPanel_addStepButton, FeedbackPanel_insertWildcardsButton, jButton1});
 
         MainTabPane.addTab("Feedback", FeedbackPanel);
 
@@ -1073,6 +1082,7 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane ExpressionsPanel_outputTextAreaScollPane;
     private javax.swing.JPanel FeedbackPanel;
     private javax.swing.JButton FeedbackPanel_addStepButton;
+    private javax.swing.JButton FeedbackPanel_changeSizeButton;
     private javax.swing.JLabel FeedbackPanel_enterTextLabel;
     private javax.swing.JLabel FeedbackPanel_equalSignLabel;
     private javax.swing.JTextArea FeedbackPanel_expressionTextArea;
