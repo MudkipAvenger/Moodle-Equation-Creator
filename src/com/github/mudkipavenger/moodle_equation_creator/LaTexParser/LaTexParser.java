@@ -99,9 +99,11 @@ public class LaTexParser {
                 {
                     str.insert(i, '{');         //enclose next char in {}
                     str.insert(i + 2, '}');
+                    index = i;
                     break;
                 }
                 else if(str.charAt(i) == '{')
+                    index = i;
                     break;
             }
             
@@ -127,7 +129,6 @@ public class LaTexParser {
                     }
                 }
             }
-            //tempIndex = index;
             
             for(int i = index; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
             {
@@ -135,9 +136,11 @@ public class LaTexParser {
                 {
                     str.insert(i, '{');         //enclose next char in {}
                     str.insert(i + 2, '}');
+                    index = i;
                     break;
                 }
                 else if(str.charAt(i) == '{')
+                    index = i;
                     break;
             }
             
@@ -169,6 +172,89 @@ public class LaTexParser {
                 }
             }
             index = str.indexOf("\\\\frac");
+        }
+        return str.toString();
+    }
+    
+    public static String EnsureFracIsEnclosedInBraces(String in)
+    {
+        StringBuilder str = new StringBuilder(in);
+        int index = str.indexOf("\\frac"); 
+        
+        while(index != -1)
+        {
+            int startIndex = index;
+            for(int i = index + 5; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
+                {
+                    str.insert(i, '{');         //enclose next char in {}
+                    str.insert(i + 2, '}');
+                    index = i;
+                    break;
+                }
+                else if(str.charAt(i) == '{')
+                    index = i;
+                    break;
+            }
+            
+            for(int i = index+1, braceCnt = 0; i < str.length(); i++)
+            {
+                if(str.charAt(i) == '{')
+                    braceCnt++;
+                if(str.charAt(i) == '}')
+                {
+                    if(braceCnt == 0)
+                    {
+                        index = i + 1;
+                        break;
+                    }
+                    else
+                    {
+                        braceCnt--;
+                    }
+                }
+            }
+            
+            for(int i = index; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
+                {
+                    str.insert(i, '{');         //enclose next char in {}
+                    str.insert(i + 2, '}');
+                    break;
+                }
+                else if(str.charAt(i) == '{')
+                    break;
+            }
+            
+            index = str.indexOf("\\frac", startIndex + 6);
+        }
+        
+        return str.toString();
+    }
+    
+    public static String EnsureExponentIsEnclosedInBraces(String in)
+    {
+        StringBuilder str = new StringBuilder(in);
+        int index = str.indexOf("^");
+        int indexAfterExponent = 0;
+        
+        while(index != -1)
+        {
+            
+            for(int i = index + 1; i < str.length(); i++)   //find next char, if it is not {, then enclose next char in {}
+            {
+                if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
+                {
+                    str.insert(i, '{');         //enclose next char in {}
+                    str.insert(i + 2, '}');
+                    break;
+                }
+                else if(str.charAt(i) == '{')
+                    break;
+            }
+            index = str.indexOf("^", index + 1);
         }
         return str.toString();
     }
