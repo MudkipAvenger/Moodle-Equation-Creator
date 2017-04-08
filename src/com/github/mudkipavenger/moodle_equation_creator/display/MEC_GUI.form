@@ -930,6 +930,11 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
+                      <Component id="FeedbackPanel_viewStepsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -943,8 +948,8 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="FeedbackPanel_insertWildcardsButton" alignment="0" pref="64" max="32767" attributes="0"/>
-                                  <Component id="FeedbackPanel_changeSizeButton" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="FeedbackPanel_insertWildcardsButton" linkSize="19" alignment="0" pref="64" max="32767" attributes="0"/>
+                                  <Component id="FeedbackPanel_changeSizeButton" linkSize="19" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="FeedbackPanel_addStepButton" min="-2" pref="45" max="-2" attributes="0"/>
@@ -967,7 +972,9 @@
                           <Component id="jButton1" max="32767" attributes="0"/>
                           <Component id="jScrollPane6" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="FeedbackPanel_viewStepsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -999,6 +1006,9 @@
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextArea() {&#xa;            @Override&#xa;            public void paste() {&#xa;                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();&#xa;                try&#xa;                {&#xa;                    String s = (String) clipboard.getData(DataFlavor.stringFlavor);&#xa;                    s = LaTexParser.EnsureExponentIsEnclosedInBraces(s);&#xa;                    s = LaTexParser.EnsureFracIsEnclosedInBraces(s);&#xa;                    setText(s);&#xa;                    System.out.println(s.toUpperCase());&#xa;                }&#xa;                catch(Exception e)&#xa;                {&#xa;                    e.printStackTrace();&#xa;                }&#xa;            }&#xa;        };"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -1011,6 +1021,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Insert&lt;br /&gt;Wildcards&lt;/p&gt;&lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_insertWildcardsButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="FeedbackPanel_changeSizeButton">
               <Properties>
@@ -1076,6 +1089,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add Step"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_addStepButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="FeedbackPanel_viewStepsButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="view steps"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_viewStepsButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

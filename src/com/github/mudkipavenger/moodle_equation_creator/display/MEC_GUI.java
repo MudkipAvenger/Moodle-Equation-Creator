@@ -5,12 +5,15 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.display;
 
+import com.github.mudkipavenger.moodle_equation_creator.Feedback.FeedbackManager;
+import com.github.mudkipavenger.moodle_equation_creator.LaTexParser.LaTexParser;
 import com.github.mudkipavenger.moodle_equation_creator.Tree.NodeTreebuilder;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCard;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCardManager;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.util.Objects;
 
@@ -99,7 +102,24 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel = new javax.swing.JPanel();
         FeedbackPanel_newStepLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        FeedbackPanel_expressionTextArea = new javax.swing.JTextArea();
+        FeedbackPanel_expressionTextArea = new javax.swing.JTextArea() {
+            @Override
+            public void paste() {
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                try
+                {
+                    String s = (String) clipboard.getData(DataFlavor.stringFlavor);
+                    s = LaTexParser.EnsureExponentIsEnclosedInBraces(s);
+                    s = LaTexParser.EnsureFracIsEnclosedInBraces(s);
+                    setText(s);
+                    System.out.println(s.toUpperCase());
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        };
         FeedbackPanel_enterTextLabel = new javax.swing.JLabel();
         FeedbackPanel_insertWildcardsButton = new javax.swing.JButton();
         FeedbackPanel_changeSizeButton = new javax.swing.JButton();
@@ -112,6 +132,7 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_newWildcardNameLabel = new javax.swing.JLabel();
         FeedbackPanel_newWildcardExpressionLabel = new javax.swing.JLabel();
         FeedbackPanel_addStepButton = new javax.swing.JButton();
+        FeedbackPanel_viewStepsButton = new javax.swing.JButton();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -642,6 +663,11 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_enterTextLabel.setText("Enter LaTex Expression");
 
         FeedbackPanel_insertWildcardsButton.setText("<html><p style=\"text-align: center\">Insert<br />Wildcards</p></html>");
+        FeedbackPanel_insertWildcardsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FeedbackPanel_insertWildcardsButtonActionPerformed(evt);
+            }
+        });
 
         FeedbackPanel_changeSizeButton.setText("<html><p style=\"text-align: center\">Change<br />Size</p></html>");
 
@@ -671,6 +697,18 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_newWildcardExpressionLabel.setText("Expression");
 
         FeedbackPanel_addStepButton.setText("Add Step");
+        FeedbackPanel_addStepButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FeedbackPanel_addStepButtonActionPerformed(evt);
+            }
+        });
+
+        FeedbackPanel_viewStepsButton.setText("view steps");
+        FeedbackPanel_viewStepsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FeedbackPanel_viewStepsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FeedbackPanelLayout = new javax.swing.GroupLayout(FeedbackPanel);
         FeedbackPanel.setLayout(FeedbackPanelLayout);
@@ -714,6 +752,10 @@ public class MEC_GUI extends javax.swing.JFrame {
                                         .addComponent(FeedbackPanel_changeSizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
+            .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(FeedbackPanel_viewStepsButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {FeedbackPanel_changeSizeButton, FeedbackPanel_insertWildcardsButton, jButton1});
@@ -747,8 +789,12 @@ public class MEC_GUI extends javax.swing.JFrame {
                         .addComponent(FeedbackPanel_equalSignLabel))
                     .addComponent(jButton1)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(FeedbackPanel_viewStepsButton)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
+
+        FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {FeedbackPanel_changeSizeButton, FeedbackPanel_insertWildcardsButton});
 
         MainTabPane.addTab("Feedback", FeedbackPanel);
 
@@ -1002,6 +1048,26 @@ public class MEC_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FeedbackPanel_newWildcardNameTextFieldActionPerformed
 
+    private void FeedbackPanel_insertWildcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_insertWildcardsButtonActionPerformed
+        // TODO add your handling code here:
+        FeedbackPanel_expressionTextArea.setText(WildCardManager.insertWildCardsIntoQuestion(FeedbackPanel_expressionTextArea.getText()));
+    }//GEN-LAST:event_FeedbackPanel_insertWildcardsButtonActionPerformed
+
+    private void FeedbackPanel_viewStepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_viewStepsButtonActionPerformed
+        // TODO add your handling code here:
+        FeedbackManager.print();
+    }//GEN-LAST:event_FeedbackPanel_viewStepsButtonActionPerformed
+
+    private void FeedbackPanel_addStepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_addStepButtonActionPerformed
+        // TODO add your handling code here:
+        String s = FeedbackPanel_expressionTextArea.getText();
+        if(Objects.equals(s, ""))
+        {
+            return;
+        }
+        FeedbackManager.addExpression(s);
+    }//GEN-LAST:event_FeedbackPanel_addStepButtonActionPerformed
+
     public void displayErrorMessage(String message, Component parent)
     {
         ErrorDialog_errorMessageLabel.setText("<html><p style= \"text-align: center; width: 90%\">" + message + "</p></html>");
@@ -1022,6 +1088,9 @@ public class MEC_GUI extends javax.swing.JFrame {
         NewWildCardFromExpressionDialog_inputValueTextArea.addMouseListener(new ContextMenuMouseListener());
         NewWildCardFromExpressionDialog_outputNameTextField.addMouseListener(new ContextMenuMouseListener());
         NewWildCardFromExpressionDialog_outputValueTextArea.addMouseListener(new ContextMenuMouseListener());        
+        FeedbackPanel_expressionTextArea.addMouseListener(new ContextMenuMouseListener());
+        FeedbackPanel_newWildcardExpressionTextArea.addMouseListener(new ContextMenuMouseListener());
+        FeedbackPanel_newWildcardNameTextField.addMouseListener(new ContextMenuMouseListener());
     }
     
     /**
@@ -1092,6 +1161,7 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea FeedbackPanel_newWildcardExpressionTextArea;
     private javax.swing.JLabel FeedbackPanel_newWildcardNameLabel;
     private javax.swing.JTextField FeedbackPanel_newWildcardNameTextField;
+    private javax.swing.JButton FeedbackPanel_viewStepsButton;
     private javax.swing.JTabbedPane MainTabPane;
     private javax.swing.JDialog NewWildCardFromExpressionDialog;
     private javax.swing.JButton NewWildCardFromExpressionDialog_convertButton;
