@@ -236,6 +236,11 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         NewWildCardFromExpressionDialog.setModal(true);
         NewWildCardFromExpressionDialog.setSize(new java.awt.Dimension(500, 415));
+        NewWildCardFromExpressionDialog.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                NewWildCardFromExpressionDialogComponentShown(evt);
+            }
+        });
         NewWildCardFromExpressionDialog.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 NewWildCardFromExpressionDialogWindowActivated(evt);
@@ -980,10 +985,6 @@ public class MEC_GUI extends javax.swing.JFrame {
 
     private void NewWildCardFromExpressionDialogWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialogWindowActivated
         // TODO add your handling code here:
-        NewWildCardFromExpressionDialog_inputNameTextField.setText("");
-        NewWildCardFromExpressionDialog_inputValueTextArea.setText("");
-        NewWildCardFromExpressionDialog_outputValueTextArea.setText("");
-        NewWildCardFromExpressionDialog_outputNameTextField.setText("");
     }//GEN-LAST:event_NewWildCardFromExpressionDialogWindowActivated
 
     private void NewWildCardFromExpressionDialog_convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialog_convertButtonActionPerformed
@@ -1067,6 +1068,14 @@ public class MEC_GUI extends javax.swing.JFrame {
         }
         FeedbackManager.addExpression(s);
     }//GEN-LAST:event_FeedbackPanel_addStepButtonActionPerformed
+
+    private void NewWildCardFromExpressionDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialogComponentShown
+        // TODO add your handling code here:
+        NewWildCardFromExpressionDialog_inputNameTextField.setText("");
+        NewWildCardFromExpressionDialog_inputValueTextArea.setText("");
+        NewWildCardFromExpressionDialog_outputValueTextArea.setText("");
+        NewWildCardFromExpressionDialog_outputNameTextField.setText("");
+    }//GEN-LAST:event_NewWildCardFromExpressionDialogComponentShown
 
     public void displayErrorMessage(String message, Component parent)
     {

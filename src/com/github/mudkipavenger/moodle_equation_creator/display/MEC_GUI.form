@@ -161,6 +161,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="NewWildCardFromExpressionDialogComponentShown"/>
         <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="NewWildCardFromExpressionDialogWindowActivated"/>
       </Events>
 
