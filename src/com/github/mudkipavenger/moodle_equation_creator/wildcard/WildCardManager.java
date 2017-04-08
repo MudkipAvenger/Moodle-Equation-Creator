@@ -101,7 +101,7 @@ public class WildCardManager {
             Matcher matcher = pattern.matcher(output);
             while(matcher.find())
             {
-                output.replace(matcher.start(), matcher.end(), insertWildCardsIntoExpression("(" + wildcards.get(key) + ")"));
+                output.replace(matcher.start(), matcher.end(), insertWildCardsIntoExpression("(" + wildcards.get(key).getValue() + ")"));
                 matcher = pattern.matcher(output);
             }
         }
@@ -117,7 +117,7 @@ public class WildCardManager {
             Matcher matcher = pattern.matcher(output);
             while(matcher.find())
             {
-                output.replace(matcher.start(), matcher.end(), "{=" + insertWildCardsIntoExpression("(" + wildcards.get(key) + ")") + "}");
+                output.replace(matcher.start(), matcher.end(), "{=" + insertWildCardsIntoExpression("(" + wildcards.get(key).getValue() + ")") + "}");
                 matcher = pattern.matcher(output);
             } 
         }
