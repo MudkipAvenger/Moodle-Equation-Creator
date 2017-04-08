@@ -6,6 +6,7 @@
 package com.github.mudkipavenger.moodle_equation_creator.Feedback;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -38,6 +39,19 @@ public class FeedbackManager {
     public static void removeExpression(Feedback f)
     {
         expressions.remove(f);
+    }
+    
+    public static Iterator getIterator()
+    {
+        return expressions.iterator();
+    }
+    
+    public static void print()
+    {
+        for(int i = 0; i < expressions.size(); i++)
+        {
+            System.out.println(expressions.get(i).getExpression());
+        }
     }
     
 }
