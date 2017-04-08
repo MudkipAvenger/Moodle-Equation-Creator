@@ -113,7 +113,8 @@ public class WildCardManager {
         StringBuilder output = new StringBuilder(question);
         for ( String key : wildcards.keySet() ) 
         {
-            Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
+            //Pattern pattern = Pattern.compile("((\\b|^|\\()(?!\\{)" + key + "(?!\\})(\\)|\\b|$))");
+            Pattern pattern = Pattern.compile("((\\b|^)(?!\\{)" + key + "(?!\\})(\\b|$))");
             Matcher matcher = pattern.matcher(output);
             while(matcher.find())
             {
