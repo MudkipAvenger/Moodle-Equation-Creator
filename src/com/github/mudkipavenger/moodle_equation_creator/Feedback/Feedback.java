@@ -11,17 +11,27 @@ package com.github.mudkipavenger.moodle_equation_creator.Feedback;
  */
 public class Feedback {
     
+    
+    public static enum Size {normalSize, large, Large, LARGE, huge, HUGE};
+    
     private String expression;
-    private int size = 1;
+    private Size size;
     
     public Feedback()
     {
-        this("");
+        this("", Size.normalSize);
     }
     
     public Feedback(String e)
     {
         setExpression(e);
+        setSize(Size.normalSize);
+    }
+    
+    public Feedback(String e, Size s)
+    {
+        setExpression(e);
+        setSize(s);
     }
     
     public String getExpression()
@@ -34,12 +44,12 @@ public class Feedback {
         expression = e;
     }
     
-    public int getSize()
+    public Size getSize()
     {
         return size;
     }
     
-    public void setSize(int s)
+    public void setSize(Size s)
     {
         size = s;
     }
