@@ -22,6 +22,7 @@ public class LaTexParser {
         output = removeSpaces(output);
         output = replaceMult(output);
         output = replaceDiv(output);
+        output = removeDisplayStyle(output);
         output = replaceLaTexParenthesis(output);
         output = LaTexParser.replaceBracketsWithParenthesis(output);
         output = LaTexParser.replaceCurlyBracesWithParenthesis(output);
@@ -32,6 +33,7 @@ public class LaTexParser {
         output = LaTexParser.replaceSqrtWithPow(output);
         output = replaceParenthesisWithMult(output);
         output = replaceNegatives(output);
+        System.out.println(output);
         //System.out.println(output);
         return output;
     }
@@ -534,5 +536,18 @@ public class LaTexParser {
         }
         return output.toString();
  
+    }
+    
+    private static String removeDisplayStyle(String in)
+    {
+        StringBuilder str = new StringBuilder(in);
+        int index = str.indexOf("\\\\displaystyle");
+        
+        while(index != -1)
+        {
+            str = str.replace(index, index + 14, "");
+            index = str.indexOf("\\\\displaystyle");
+        }
+        return str.toString();
     }
 }
