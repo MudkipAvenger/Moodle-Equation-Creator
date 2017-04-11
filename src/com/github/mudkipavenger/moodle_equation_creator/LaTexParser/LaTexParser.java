@@ -190,8 +190,8 @@ public class LaTexParser {
             {
                 if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
                 {
-                    str.insert(i, '{');         //enclose next char in {}
-                    str.insert(i + 2, '}');
+                    str.insert(i, "{ ");         //enclose next char in {}
+                    str.insert(i + 3, " }");
                     index = i;
                     break;
                 }
@@ -222,8 +222,8 @@ public class LaTexParser {
             {
                 if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
                 {
-                    str.insert(i, '{');         //enclose next char in {}
-                    str.insert(i + 2, '}');
+                    str.insert(i, "{ ");         //enclose next char in {}
+                    str.insert(i + 3, " }");
                     break;
                 }
                 else if(str.charAt(i) == '{')
@@ -240,7 +240,6 @@ public class LaTexParser {
     {
         StringBuilder str = new StringBuilder(in);
         int index = str.indexOf("^");
-        int indexAfterExponent = 0;
         
         while(index != -1)
         {
@@ -249,12 +248,32 @@ public class LaTexParser {
             {
                 if(!InfixToPostfix.isSpace(str.charAt(i)) && str.charAt(i) != '{')  //not space or {
                 {
-                    str.insert(i, '{');         //enclose next char in {}
-                    str.insert(i + 2, '}');
+                    str.insert(i, "{ ");         //enclose next char in {}
+                    str.insert(i + 3, " }");
                     break;
                 }
                 else if(str.charAt(i) == '{')
-                    break;
+                {
+                    str.replace(i, i + 1, "{ ");
+                    for(int j = i + 2, braceCnt = 0; j < str.length(); j++)
+                    {
+                        if(str.charAt(j) == '{')
+                            braceCnt++;
+                        if(str.charAt(j) == '}')
+                        {
+                            if(braceCnt == 0)
+                            {
+                                str.replace(j, j + 1, " }");
+                                break;
+                            }
+                            else
+                            {
+                                braceCnt--;
+                            }
+                        }
+                    }
+                }
+                break;
             }
             index = str.indexOf("^", index + 1);
         }
