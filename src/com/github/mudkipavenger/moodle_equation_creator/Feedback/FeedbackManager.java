@@ -50,7 +50,7 @@ public class FeedbackManager {
     {
         for(int i = 0; i < expressions.size(); i++)
         {
-            System.out.println("\\( " + expressions.get(i).getExpression() + " \\)");
+            System.out.println("\\( \\" + expressions.get(i).getSize().name() + " " +  expressions.get(i).getExpression() + " \\)");
         }
     }
     
