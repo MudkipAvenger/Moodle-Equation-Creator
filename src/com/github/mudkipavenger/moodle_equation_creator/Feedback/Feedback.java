@@ -12,20 +12,19 @@ package com.github.mudkipavenger.moodle_equation_creator.Feedback;
 public class Feedback {
     
     
-    public static enum Size {normalSize, large, Large, LARGE, huge, HUGE};
+    public static enum Size {normalsize, large, Large, LARGE, huge, HUGE};
     
     private String expression;
     private Size size;
     
     public Feedback()
     {
-        this("", Size.normalSize);
+        this("", Size.normalsize);
     }
     
     public Feedback(String e)
     {
-        setExpression(e);
-        setSize(Size.normalSize);
+        this(e, Size.normalsize);
     }
     
     public Feedback(String e, Size s)
