@@ -12,7 +12,7 @@ package com.github.mudkipavenger.moodle_equation_creator.Feedback;
 public class Feedback {
     
     
-    public static enum Size {normalsize, large, Large, LARGE, huge, HUGE};
+    public static enum Size {normalsize, large, Large, LARGE, huge, Huge};
     
     private String expression;
     private Size size;
