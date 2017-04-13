@@ -457,6 +457,130 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="ChangeFeedbackSizeDialog">
+      <Properties>
+        <Property name="modal" type="boolean" value="true"/>
+        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[400, 300]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="ChangeFeedbackSizeDialogComponentShown"/>
+      </Events>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="ChangeFeedbackSizeDialog_okButton" alignment="2" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="ChangeFeedbackSizeDialog_HugeButton" linkSize="20" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChangeFeedbackSizeDialog_hugeButton" linkSize="20" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChangeFeedbackSizeDialog_LARGEButton" linkSize="20" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChangeFeedbackSizeDialog_LargeButton" linkSize="20" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChangeFeedbackSizeDialog_largeButton" linkSize="20" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChangeFeedbackSizeDialog_normalsizeButton" linkSize="20" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChangeFeedbackSizeDialog_label" alignment="2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="101" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_label" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_normalsizeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_largeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_LargeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_LARGEButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_hugeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_HugeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="ChangeFeedbackSizeDialog_okButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="java.awt.Label" name="ChangeFeedbackSizeDialog_label">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="36" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Select a Size"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="ChangeFeedbackSizeDialog_normalsizeButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="ChangeFeedbackSizeDialog_buttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="normalsize"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="ChangeFeedbackSizeDialog_largeButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="ChangeFeedbackSizeDialog_buttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="large"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="ChangeFeedbackSizeDialog_LargeButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="ChangeFeedbackSizeDialog_buttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Large"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="ChangeFeedbackSizeDialog_LARGEButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="ChangeFeedbackSizeDialog_buttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="LARGE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="ChangeFeedbackSizeDialog_hugeButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="ChangeFeedbackSizeDialog_buttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="huge"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="ChangeFeedbackSizeDialog_HugeButton">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="ChangeFeedbackSizeDialog_buttonGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Huge"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="ChangeFeedbackSizeDialog_okButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="OK"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChangeFeedbackSizeDialog_okButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.ButtonGroup" name="ChangeFeedbackSizeDialog_buttonGroup">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -926,6 +1050,11 @@
                                           <Component id="FeedbackPanel_addStepButton" min="-2" pref="190" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="FeedbackPanel_currentSizeLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="FeedbackPanel_sizeLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -945,9 +1074,14 @@
                       <Component id="FeedbackPanel_newStepLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="FeedbackPanel_enterTextLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FeedbackPanel_currentSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FeedbackPanel_sizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="FeedbackPanel_insertWildcardsButton" linkSize="19" alignment="0" pref="64" max="32767" attributes="0"/>
                                   <Component id="FeedbackPanel_changeSizeButton" linkSize="19" alignment="0" max="32767" attributes="0"/>
@@ -955,9 +1089,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="FeedbackPanel_addStepButton" min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane4" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" min="-2" pref="115" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -975,7 +1109,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="FeedbackPanel_viewStepsButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1030,6 +1164,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Change&lt;br /&gt;Size&lt;/p&gt;&lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_changeSizeButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -1040,9 +1177,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FeedbackPanel_newWildcardNameTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_newWildcardNameTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="FeedbackPanel_equalSignLabel">
               <Properties>
@@ -1101,6 +1235,16 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_viewStepsButtonActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FeedbackPanel_currentSizeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Current Size:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FeedbackPanel_sizeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="normalsize"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

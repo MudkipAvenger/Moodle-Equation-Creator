@@ -5,6 +5,7 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.display;
 
+import com.github.mudkipavenger.moodle_equation_creator.Feedback.Feedback;
 import com.github.mudkipavenger.moodle_equation_creator.Feedback.FeedbackManager;
 import com.github.mudkipavenger.moodle_equation_creator.LaTexParser.LaTexParser;
 import com.github.mudkipavenger.moodle_equation_creator.Tree.NodeTreebuilder;
@@ -16,6 +17,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.util.Objects;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -74,6 +76,16 @@ public class MEC_GUI extends javax.swing.JFrame {
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         ErrorDialog_errorMessageLabel = new javax.swing.JLabel();
+        ChangeFeedbackSizeDialog = new javax.swing.JDialog();
+        ChangeFeedbackSizeDialog_label = new java.awt.Label();
+        ChangeFeedbackSizeDialog_normalsizeButton = new javax.swing.JRadioButton();
+        ChangeFeedbackSizeDialog_largeButton = new javax.swing.JRadioButton();
+        ChangeFeedbackSizeDialog_LargeButton = new javax.swing.JRadioButton();
+        ChangeFeedbackSizeDialog_LARGEButton = new javax.swing.JRadioButton();
+        ChangeFeedbackSizeDialog_hugeButton = new javax.swing.JRadioButton();
+        ChangeFeedbackSizeDialog_HugeButton = new javax.swing.JRadioButton();
+        ChangeFeedbackSizeDialog_okButton = new javax.swing.JButton();
+        ChangeFeedbackSizeDialog_buttonGroup = new javax.swing.ButtonGroup();
         MainTabPane = new javax.swing.JTabbedPane();
         ExpressionsPanel = new javax.swing.JPanel();
         ExpressionsPanel_outputTextAreaScollPane = new javax.swing.JScrollPane();
@@ -133,6 +145,8 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_newWildcardExpressionLabel = new javax.swing.JLabel();
         FeedbackPanel_addStepButton = new javax.swing.JButton();
         FeedbackPanel_viewStepsButton = new javax.swing.JButton();
+        FeedbackPanel_currentSizeLabel = new javax.swing.JLabel();
+        FeedbackPanel_sizeLabel = new javax.swing.JLabel();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -411,6 +425,85 @@ public class MEC_GUI extends javax.swing.JFrame {
         ErrorDialog_errorMessageLabel.setText("ERROR");
         ErrorDialog.getContentPane().add(ErrorDialog_errorMessageLabel, java.awt.BorderLayout.CENTER);
 
+        ChangeFeedbackSizeDialog.setModal(true);
+        ChangeFeedbackSizeDialog.setSize(new java.awt.Dimension(400, 300));
+        ChangeFeedbackSizeDialog.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                ChangeFeedbackSizeDialogComponentShown(evt);
+            }
+        });
+
+        ChangeFeedbackSizeDialog_label.setEnabled(false);
+        ChangeFeedbackSizeDialog_label.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        ChangeFeedbackSizeDialog_label.setText("Select a Size");
+
+        ChangeFeedbackSizeDialog_buttonGroup.add(ChangeFeedbackSizeDialog_normalsizeButton);
+        ChangeFeedbackSizeDialog_normalsizeButton.setText("normalsize");
+
+        ChangeFeedbackSizeDialog_buttonGroup.add(ChangeFeedbackSizeDialog_largeButton);
+        ChangeFeedbackSizeDialog_largeButton.setText("large");
+
+        ChangeFeedbackSizeDialog_buttonGroup.add(ChangeFeedbackSizeDialog_LargeButton);
+        ChangeFeedbackSizeDialog_LargeButton.setText("Large");
+
+        ChangeFeedbackSizeDialog_buttonGroup.add(ChangeFeedbackSizeDialog_LARGEButton);
+        ChangeFeedbackSizeDialog_LARGEButton.setText("LARGE");
+
+        ChangeFeedbackSizeDialog_buttonGroup.add(ChangeFeedbackSizeDialog_hugeButton);
+        ChangeFeedbackSizeDialog_hugeButton.setText("huge");
+
+        ChangeFeedbackSizeDialog_buttonGroup.add(ChangeFeedbackSizeDialog_HugeButton);
+        ChangeFeedbackSizeDialog_HugeButton.setText("Huge");
+
+        ChangeFeedbackSizeDialog_okButton.setText("OK");
+        ChangeFeedbackSizeDialog_okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChangeFeedbackSizeDialog_okButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ChangeFeedbackSizeDialogLayout = new javax.swing.GroupLayout(ChangeFeedbackSizeDialog.getContentPane());
+        ChangeFeedbackSizeDialog.getContentPane().setLayout(ChangeFeedbackSizeDialogLayout);
+        ChangeFeedbackSizeDialogLayout.setHorizontalGroup(
+            ChangeFeedbackSizeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ChangeFeedbackSizeDialogLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addGroup(ChangeFeedbackSizeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(ChangeFeedbackSizeDialog_okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ChangeFeedbackSizeDialog_HugeButton)
+                    .addComponent(ChangeFeedbackSizeDialog_hugeButton)
+                    .addComponent(ChangeFeedbackSizeDialog_LARGEButton)
+                    .addComponent(ChangeFeedbackSizeDialog_LargeButton)
+                    .addComponent(ChangeFeedbackSizeDialog_largeButton)
+                    .addComponent(ChangeFeedbackSizeDialog_normalsizeButton)
+                    .addComponent(ChangeFeedbackSizeDialog_label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+
+        ChangeFeedbackSizeDialogLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ChangeFeedbackSizeDialog_HugeButton, ChangeFeedbackSizeDialog_LARGEButton, ChangeFeedbackSizeDialog_LargeButton, ChangeFeedbackSizeDialog_hugeButton, ChangeFeedbackSizeDialog_largeButton, ChangeFeedbackSizeDialog_normalsizeButton});
+
+        ChangeFeedbackSizeDialogLayout.setVerticalGroup(
+            ChangeFeedbackSizeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ChangeFeedbackSizeDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ChangeFeedbackSizeDialog_label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChangeFeedbackSizeDialog_normalsizeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChangeFeedbackSizeDialog_largeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChangeFeedbackSizeDialog_LargeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChangeFeedbackSizeDialog_LARGEButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChangeFeedbackSizeDialog_hugeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChangeFeedbackSizeDialog_HugeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ChangeFeedbackSizeDialog_okButton)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Moodle Equation Creator");
         setSize(new java.awt.Dimension(550, 480));
@@ -675,15 +768,14 @@ public class MEC_GUI extends javax.swing.JFrame {
         });
 
         FeedbackPanel_changeSizeButton.setText("<html><p style=\"text-align: center\">Change<br />Size</p></html>");
+        FeedbackPanel_changeSizeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FeedbackPanel_changeSizeButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel3.setText("New Wildcard");
-
-        FeedbackPanel_newWildcardNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FeedbackPanel_newWildcardNameTextFieldActionPerformed(evt);
-            }
-        });
 
         FeedbackPanel_equalSignLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         FeedbackPanel_equalSignLabel.setText("=");
@@ -714,6 +806,10 @@ public class MEC_GUI extends javax.swing.JFrame {
                 FeedbackPanel_viewStepsButtonActionPerformed(evt);
             }
         });
+
+        FeedbackPanel_currentSizeLabel.setText("Current Size:");
+
+        FeedbackPanel_sizeLabel.setText("normalsize");
 
         javax.swing.GroupLayout FeedbackPanelLayout = new javax.swing.GroupLayout(FeedbackPanel);
         FeedbackPanel.setLayout(FeedbackPanelLayout);
@@ -755,7 +851,11 @@ public class MEC_GUI extends javax.swing.JFrame {
                                         .addComponent(FeedbackPanel_insertWildcardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(FeedbackPanel_changeSizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(FeedbackPanelLayout.createSequentialGroup()
+                                .addComponent(FeedbackPanel_currentSizeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FeedbackPanel_sizeLabel)))))
                 .addContainerGap())
             .addGroup(FeedbackPanelLayout.createSequentialGroup()
                 .addGap(250, 250, 250)
@@ -772,6 +872,10 @@ public class MEC_GUI extends javax.swing.JFrame {
                 .addComponent(FeedbackPanel_newStepLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FeedbackPanel_enterTextLabel)
+                .addGap(1, 1, 1)
+                .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FeedbackPanel_currentSizeLabel)
+                    .addComponent(FeedbackPanel_sizeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(FeedbackPanelLayout.createSequentialGroup()
@@ -780,8 +884,8 @@ public class MEC_GUI extends javax.swing.JFrame {
                             .addComponent(FeedbackPanel_changeSizeButton, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FeedbackPanel_addStepButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4))
-                .addGap(27, 27, 27)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -796,7 +900,7 @@ public class MEC_GUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(FeedbackPanel_viewStepsButton)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {FeedbackPanel_changeSizeButton, FeedbackPanel_insertWildcardsButton});
@@ -1045,10 +1149,6 @@ public class MEC_GUI extends javax.swing.JFrame {
         newWildCardDialog_intervalTextField.setText("1");
     }//GEN-LAST:event_newWildCardDialogComponentShown
 
-    private void FeedbackPanel_newWildcardNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_newWildcardNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FeedbackPanel_newWildcardNameTextFieldActionPerformed
-
     private void FeedbackPanel_insertWildcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_insertWildcardsButtonActionPerformed
         // TODO add your handling code here:
         FeedbackPanel_expressionTextArea.setText(WildCardManager.insertWildCardsIntoQuestion(FeedbackPanel_expressionTextArea.getText()));
@@ -1061,12 +1161,26 @@ public class MEC_GUI extends javax.swing.JFrame {
 
     private void FeedbackPanel_addStepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_addStepButtonActionPerformed
         // TODO add your handling code here:
-        String s = FeedbackPanel_expressionTextArea.getText();
-        if(Objects.equals(s, ""))
+        String expression = FeedbackPanel_expressionTextArea.getText();
+        if(Objects.equals(expression, ""))
         {
+            Component source=(Component)evt.getSource();
+            displayErrorMessage("Enter an expression", source.getParent());
+            ErrorDialog.setVisible(true);
             return;
         }
-        FeedbackManager.addExpression(s);
+        String sizeLabel = FeedbackPanel_sizeLabel.getText();
+        Feedback.Size size = Feedback.Size.normalsize;
+        for(Feedback.Size s : Feedback.Size.values())
+        {
+            if(Objects.equals(s.name(), sizeLabel))
+            {
+                size = s;
+                break;
+            }
+        }
+        Feedback f = new Feedback(expression, size);
+        FeedbackManager.addExpression(f);
     }//GEN-LAST:event_FeedbackPanel_addStepButtonActionPerformed
 
     private void NewWildCardFromExpressionDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialogComponentShown
@@ -1076,6 +1190,72 @@ public class MEC_GUI extends javax.swing.JFrame {
         NewWildCardFromExpressionDialog_outputValueTextArea.setText("");
         NewWildCardFromExpressionDialog_outputNameTextField.setText("");
     }//GEN-LAST:event_NewWildCardFromExpressionDialogComponentShown
+
+    private void FeedbackPanel_changeSizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_changeSizeButtonActionPerformed
+        // TODO add your handling code here:
+        ChangeFeedbackSizeDialog.setVisible(true);
+    }//GEN-LAST:event_FeedbackPanel_changeSizeButtonActionPerformed
+
+    private void ChangeFeedbackSizeDialog_okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeFeedbackSizeDialog_okButtonActionPerformed
+        // TODO add your handling code here:
+        if(ChangeFeedbackSizeDialog_normalsizeButton.isSelected())
+        {
+            FeedbackPanel_sizeLabel.setText(Feedback.Size.normalsize.name());
+        }
+        else if(ChangeFeedbackSizeDialog_largeButton.isSelected())
+        {
+            FeedbackPanel_sizeLabel.setText(Feedback.Size.large.name());
+        }
+        else if(ChangeFeedbackSizeDialog_LargeButton.isSelected())
+        {
+            FeedbackPanel_sizeLabel.setText(Feedback.Size.Large.name());
+        }
+        else if(ChangeFeedbackSizeDialog_LARGEButton.isSelected())
+        {
+            FeedbackPanel_sizeLabel.setText(Feedback.Size.LARGE.name());
+        }
+        else if(ChangeFeedbackSizeDialog_hugeButton.isSelected())
+        {
+            FeedbackPanel_sizeLabel.setText(Feedback.Size.huge.name());
+        }
+        else if(ChangeFeedbackSizeDialog_HugeButton.isSelected())
+        {
+            FeedbackPanel_sizeLabel.setText(Feedback.Size.Huge.name());
+        }
+        ChangeFeedbackSizeDialog.setVisible(false);
+    }//GEN-LAST:event_ChangeFeedbackSizeDialog_okButtonActionPerformed
+
+    private void ChangeFeedbackSizeDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ChangeFeedbackSizeDialogComponentShown
+        // TODO add your handling code here:
+        String sizeStr = FeedbackPanel_sizeLabel.getText();
+        for(Feedback.Size size : Feedback.Size.values())
+        {
+            if(Objects.equals(sizeStr, size.name()))
+            {
+                switch(size)
+                {
+                    case normalsize:
+                        ChangeFeedbackSizeDialog_normalsizeButton.setSelected(true);
+                        break;
+                    case large:
+                        ChangeFeedbackSizeDialog_largeButton.setSelected(true);
+                        break;
+                    case Large:
+                        ChangeFeedbackSizeDialog_LargeButton.setSelected(true);
+                        break;
+                    case LARGE:
+                        ChangeFeedbackSizeDialog_LARGEButton.setSelected(true);
+                        break;
+                    case huge:
+                        ChangeFeedbackSizeDialog_hugeButton.setSelected(true);
+                        break; 
+                    case Huge:
+                        ChangeFeedbackSizeDialog_HugeButton.setSelected(true);
+                        break;   
+                }
+            }
+        }
+    }//GEN-LAST:event_ChangeFeedbackSizeDialogComponentShown
 
     public void displayErrorMessage(String message, Component parent)
     {
@@ -1143,6 +1323,16 @@ public class MEC_GUI extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog ChangeFeedbackSizeDialog;
+    private javax.swing.JRadioButton ChangeFeedbackSizeDialog_HugeButton;
+    private javax.swing.JRadioButton ChangeFeedbackSizeDialog_LARGEButton;
+    private javax.swing.JRadioButton ChangeFeedbackSizeDialog_LargeButton;
+    private javax.swing.ButtonGroup ChangeFeedbackSizeDialog_buttonGroup;
+    private javax.swing.JRadioButton ChangeFeedbackSizeDialog_hugeButton;
+    private java.awt.Label ChangeFeedbackSizeDialog_label;
+    private javax.swing.JRadioButton ChangeFeedbackSizeDialog_largeButton;
+    private javax.swing.JRadioButton ChangeFeedbackSizeDialog_normalsizeButton;
+    private javax.swing.JButton ChangeFeedbackSizeDialog_okButton;
     private javax.swing.JDialog ErrorDialog;
     private javax.swing.JLabel ErrorDialog_errorMessageLabel;
     private javax.swing.JButton ErrorDialog_okButton;
@@ -1161,6 +1351,7 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel FeedbackPanel;
     private javax.swing.JButton FeedbackPanel_addStepButton;
     private javax.swing.JButton FeedbackPanel_changeSizeButton;
+    private javax.swing.JLabel FeedbackPanel_currentSizeLabel;
     private javax.swing.JLabel FeedbackPanel_enterTextLabel;
     private javax.swing.JLabel FeedbackPanel_equalSignLabel;
     private javax.swing.JTextArea FeedbackPanel_expressionTextArea;
@@ -1170,6 +1361,7 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea FeedbackPanel_newWildcardExpressionTextArea;
     private javax.swing.JLabel FeedbackPanel_newWildcardNameLabel;
     private javax.swing.JTextField FeedbackPanel_newWildcardNameTextField;
+    private javax.swing.JLabel FeedbackPanel_sizeLabel;
     private javax.swing.JButton FeedbackPanel_viewStepsButton;
     private javax.swing.JTabbedPane MainTabPane;
     private javax.swing.JDialog NewWildCardFromExpressionDialog;
