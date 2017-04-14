@@ -57,14 +57,15 @@ public class FeedbackManager {
         return expressions.iterator();
     }
     
-    public static void print()
+    public static String print()
     {
-        System.out.println("----------------------------------------------------");
+        String out = "";
         for(int i = 0; i < expressions.size(); i++)
         {
-            System.out.println("\\( \\" + expressions.get(i).getSize().name() + " " +  expressions.get(i).getExpression() + " \\)");
+            out += "\\( \\" + expressions.get(i).getSize().name() + " " +  expressions.get(i).getExpression() + " \\)";
+            out += "\n";
         }
-        System.out.println("----------------------------------------------------");
+        return out;
     }
     
 }
