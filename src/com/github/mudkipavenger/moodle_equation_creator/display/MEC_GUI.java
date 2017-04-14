@@ -147,6 +147,24 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_viewStepsButton = new javax.swing.JButton();
         FeedbackPanel_currentSizeLabel = new javax.swing.JLabel();
         FeedbackPanel_sizeLabel = new javax.swing.JLabel();
+        FeedbackStepsPanel = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        FeedbackStepsPanel_feedbackTable = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -907,6 +925,183 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         MainTabPane.addTab("Feedback", FeedbackPanel);
 
+        FeedbackStepsPanel_feedbackTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Step", "Expression"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        FeedbackStepsPanel_feedbackTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        FeedbackStepsPanel_feedbackTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(FeedbackStepsPanel_feedbackTable);
+        if (FeedbackStepsPanel_feedbackTable.getColumnModel().getColumnCount() > 0) {
+            FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+            FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(0).setMaxWidth(50);
+            FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        }
+
+        javax.swing.GroupLayout FeedbackStepsPanelLayout = new javax.swing.GroupLayout(FeedbackStepsPanel);
+        FeedbackStepsPanel.setLayout(FeedbackStepsPanelLayout);
+        FeedbackStepsPanelLayout.setHorizontalGroup(
+            FeedbackStepsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+        );
+        FeedbackStepsPanelLayout.setVerticalGroup(
+            FeedbackStepsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FeedbackStepsPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 95, Short.MAX_VALUE))
+        );
+
+        MainTabPane.addTab("Feedback Steps", FeedbackStepsPanel);
+
+        jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel5.setText("Question Text");
+
+        jScrollPane9.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane9.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane9.setViewportView(jTextArea1);
+
+        jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel6.setText("General Feedback");
+
+        jScrollPane10.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane10.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(5);
+        jScrollPane10.setViewportView(jTextArea2);
+
+        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel7.setText("Answer Expression");
+
+        jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane11.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jTextArea3.setEditable(false);
+        jTextArea3.setColumns(20);
+        jTextArea3.setLineWrap(true);
+        jTextArea3.setRows(5);
+        jScrollPane11.setViewportView(jTextArea3);
+
+        jLabel8.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel8.setText("Wildcards");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Value", "Min", "Max"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane12.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                            .addComponent(jScrollPane9)
+                            .addComponent(jScrollPane12))))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jScrollPane8.setViewportView(jPanel3);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+        );
+
+        MainTabPane.addTab("Output", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1180,7 +1375,7 @@ public class MEC_GUI extends javax.swing.JFrame {
             }
         }
         Feedback f = new Feedback(expression, size);
-        FeedbackManager.addExpression(f);
+        FeedbackManager.addFeedback(f, FeedbackStepsPanel_feedbackTable);
     }//GEN-LAST:event_FeedbackPanel_addStepButtonActionPerformed
 
     private void NewWildCardFromExpressionDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialogComponentShown
@@ -1363,6 +1558,8 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JTextField FeedbackPanel_newWildcardNameTextField;
     private javax.swing.JLabel FeedbackPanel_sizeLabel;
     private javax.swing.JButton FeedbackPanel_viewStepsButton;
+    private javax.swing.JPanel FeedbackStepsPanel;
+    private javax.swing.JTable FeedbackStepsPanel_feedbackTable;
     private javax.swing.JTabbedPane MainTabPane;
     private javax.swing.JDialog NewWildCardFromExpressionDialog;
     private javax.swing.JButton NewWildCardFromExpressionDialog_convertButton;
@@ -1392,14 +1589,30 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JDialog newWildCardDialog;
     private javax.swing.JLabel newWildCardDialog_enterNameLabel;
     private javax.swing.JLabel newWildCardDialog_intervalLabel;
