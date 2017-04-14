@@ -7,6 +7,8 @@ package com.github.mudkipavenger.moodle_equation_creator.Feedback;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,28 +17,37 @@ import java.util.Iterator;
 public class FeedbackManager {
     
     private static ArrayList<Feedback> expressions = new ArrayList();
+    private static int step;
     
-    public static void addExpression(Feedback f)
+    public static void addFeedback(Feedback f, JTable feedbackTable)
+    {
+        f.setStep(++step);  //assign new feedback a step
+        addFeedbackToList(f);
+        addFeedbackToTable(f, feedbackTable);
+    }
+    
+    private static void addFeedbackToList(Feedback f)
     {
         expressions.add(f);
     }
     
-    public static void addExpression(String s)
+    private static void addFeedbackToTable(Feedback f, JTable table)
     {
-        expressions.add(new Feedback(s));
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.addRow(new Object[] {f.getStep(), f.getExpression()});
     }
     
-    public static Feedback getExpression(int index)
+    public static Feedback getFeedback(int index)
     {
         return expressions.get(index);
     }
     
-    public static void removeExpression(int index)
+    public static void removeFeedback(int index)
     {
         expressions.remove(index);
     }
     
-    public static void removeExpression(Feedback f)
+    public static void removeFeedback(Feedback f)
     {
         expressions.remove(f);
     }
