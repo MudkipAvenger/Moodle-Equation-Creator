@@ -17,7 +17,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.util.Objects;
-import javax.swing.JRadioButton;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -1467,6 +1468,27 @@ public class MEC_GUI extends javax.swing.JFrame {
         {
             System.out.println("output tab is selected");
             //set output text fields
+            OutputPanel_questionTextArea.setText(QuestionPanel_questionTextArea.getText());
+            OutputPanel_questionTextArea.setCaretPosition(0);
+            
+            OutputPanel_generalFeedbackTextArea.setText(FeedbackManager.print());
+            OutputPanel_generalFeedbackTextArea.setCaretPosition(0);
+            
+            OutputPanel_answerExpressionTextArea.setText(ExpressionsPanel_outputTextArea.getText());
+            OutputPanel_answerExpressionTextArea.setCaretPosition(0);
+            
+            DefaultTableModel OutputModel = (DefaultTableModel) OutputPanel_wildcardsTable.getModel();
+            OutputModel.setRowCount(0);
+            DefaultTableModel wildcardModel = (DefaultTableModel) WildcardPanel_wildcardTable.getModel();
+            for(int r = 0; r < wildcardModel.getRowCount(); r++)
+            {
+                if(!Objects.equals(wildcardModel.getValueAt(r, 2), "") && !Objects.equals(wildcardModel.getValueAt(r, 3), ""))
+                {
+                    OutputModel.addRow((Vector)wildcardModel.getDataVector().elementAt(r));
+                }
+            }
+            
+            
         }
     }//GEN-LAST:event_MainTabPaneStateChanged
 
