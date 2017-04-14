@@ -6,6 +6,7 @@
 package com.github.mudkipavenger.moodle_equation_creator.Feedback;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -57,8 +58,20 @@ public class FeedbackManager {
         return expressions.iterator();
     }
     
+    private static void sortArrayList()
+    {
+        expressions.sort(new Comparator() {
+            @Override
+            public int compare(Object f1, Object f2)
+            {
+                return ((Feedback) f1).getStep() < ((Feedback) f2).getStep() ? -1 : ((Feedback) f1).getStep() == ((Feedback) f2).getStep() ? 0 : 1;
+            }
+        });
+    }
+    
     public static String print()
     {
+        sortArrayList();
         String out = "";
         for(int i = 0; i < expressions.size(); i++)
         {
