@@ -16,6 +16,7 @@ public class Feedback {
     
     private String expression;
     private Size size;
+    private int step;
     
     public Feedback()
     {
@@ -51,6 +52,16 @@ public class Feedback {
     public void setSize(Size s)
     {
         size = s;
+    }
+    
+    public void setStep(int step)
+    {
+        this.step = step;
+    }
+    
+    public int getStep()
+    {
+        return step;
     }
     
 }
