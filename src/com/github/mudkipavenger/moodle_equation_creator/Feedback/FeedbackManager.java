@@ -76,7 +76,7 @@ public class FeedbackManager {
         for(int i = 0; i < expressions.size(); i++)
         {
             out += "\\( \\" + expressions.get(i).getSize().name() + " " +  expressions.get(i).getExpression() + " \\)";
-            out += "\n";
+            out += "\n\n";
         }
         return out;
     }
