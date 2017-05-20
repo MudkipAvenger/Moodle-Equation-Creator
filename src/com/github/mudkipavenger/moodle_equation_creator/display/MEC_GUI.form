@@ -1026,7 +1026,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jScrollPane6" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButton1" linkSize="18" min="-2" max="-2" attributes="0"/>
+                                      <Component id="FeedbackPanel_addWildcardButton" linkSize="18" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1107,7 +1107,7 @@
                               <Component id="FeedbackPanel_newWildcardNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="FeedbackPanel_equalSignLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton1" max="32767" attributes="0"/>
+                          <Component id="FeedbackPanel_addWildcardButton" max="32767" attributes="0"/>
                           <Component id="jScrollPane6" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1180,6 +1180,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="FeedbackPanel_newWildcardNameTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_newWildcardNameTextFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="FeedbackPanel_equalSignLabel">
               <Properties>
@@ -1208,10 +1211,13 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="FeedbackPanel_addWildcardButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Add&lt;br /&gt;Wildcard&lt;/p&gt;&lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeedbackPanel_addWildcardButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="FeedbackPanel_newWildcardNameLabel">
               <Properties>
