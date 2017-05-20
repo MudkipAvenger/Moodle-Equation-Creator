@@ -948,14 +948,14 @@ public class MEC_GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Step", "Expression"
+                "Step", "Size", "Expression"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -972,7 +972,8 @@ public class MEC_GUI extends javax.swing.JFrame {
         if (FeedbackStepsPanel_feedbackTable.getColumnModel().getColumnCount() > 0) {
             FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(0).setPreferredWidth(50);
             FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(0).setMaxWidth(50);
-            FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+            FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(1).setPreferredWidth(80);
+            FeedbackStepsPanel_feedbackTable.getColumnModel().getColumn(1).setMaxWidth(80);
         }
 
         javax.swing.GroupLayout FeedbackStepsPanelLayout = new javax.swing.GroupLayout(FeedbackStepsPanel);
