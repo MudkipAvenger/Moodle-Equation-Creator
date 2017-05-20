@@ -35,7 +35,7 @@ public class FeedbackManager {
     private static void addFeedbackToTable(Feedback f, JTable table)
     {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.addRow(new Object[] {f.getStep(), f.getExpression()});
+        model.addRow(new Object[] {f.getStep(), f.getSize().name(), f.getExpression()});
     }
     
     public static Feedback getFeedback(int index)
