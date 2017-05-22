@@ -60,6 +60,7 @@ public class WildCardManager {
         
         if(interval == 1)
         {
+            wildcard.setIsOutput(true);
             model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), wildcard.getMin(), wildcard.getMax()});
             addWildCardToHashMap(wildcard);
         }
@@ -76,12 +77,22 @@ public class WildCardManager {
             w1.setValue("(" + wildcard.getMin() + ") + ((" + w2.getName() + ") * (" + wildcard.getInterval() + "))");
             w2.setValue("{" + w2.getName() + "}");
             
-            w1.setMin("");
-            w1.setMax("");
+            w1.setMin(wildcard.getMin());
+            w1.setMax(wildcard.getMax());
             w2.setMin("0");
             w2.setMax("" + ((max - min) / (interval)));
             
             w1.setInterval(wildcard.getInterval());
+            w2.setInterval("1");
+            
+            w1.setIsTwoPartWildCard(true);
+            w2.setIsTwoPartWildCard(true);
+            
+            w1.setIsMaster(true);
+            w2.setIsMaster(false);
+            
+            w1.setIsOutput(false);
+            w2.setIsOutput(true);
             
             
             model.addRow(new Object[] {w1.getName(), w1.getValue(), w1.getMin(), w1.getMax()});
