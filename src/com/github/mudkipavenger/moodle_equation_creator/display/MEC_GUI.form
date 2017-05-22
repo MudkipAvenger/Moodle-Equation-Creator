@@ -907,8 +907,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="WildcardPanel_removeWildcardButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Remove&lt;br/&gt;Wildcard&lt;/p&gt;&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;p style=&quot;text-align: center&quot;&gt;Remove&lt;br/&gt;Wildcard(s)&lt;/p&gt;&lt;/html&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WildcardPanel_removeWildcardButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

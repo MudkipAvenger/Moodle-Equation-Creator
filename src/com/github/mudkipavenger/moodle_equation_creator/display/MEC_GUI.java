@@ -686,7 +686,12 @@ public class MEC_GUI extends javax.swing.JFrame {
             }
         });
 
-        WildcardPanel_removeWildcardButton.setText("<html><p style=\"text-align: center\">Remove<br/>Wildcard</p></html>");
+        WildcardPanel_removeWildcardButton.setText("<html><p style=\"text-align: center\">Remove<br/>Wildcard(s)</p></html>");
+        WildcardPanel_removeWildcardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WildcardPanel_removeWildcardButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout WildcardPanelLayout = new javax.swing.GroupLayout(WildcardPanel);
         WildcardPanel.setLayout(WildcardPanelLayout);
@@ -1348,24 +1353,39 @@ public class MEC_GUI extends javax.swing.JFrame {
     private void WildcardPanel_editWildcardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WildcardPanel_editWildcardButtonActionPerformed
         // TODO add your handling code here:
         Component source=(Component)evt.getSource();
-        displayErrorMessage("Hello world my name is error and I love pie apple pir dkhfsdjkfhsjkf asdkjfhs sdkjfhskf ddbd ddgad dadgadjsgfjasf", source.getParent());
+        //displayErrorMessage("Hello world my name is error and I love pie apple pir dkhfsdjkfhsjkf asdkjfhs sdkjfhskf ddbd ddgad dadgadjsgfjasf", source.getParent());
         
         int selectedRowIndex = WildcardPanel_wildcardTable.getSelectedRow();
+        int selectedRows = WildcardPanel_wildcardTable.getSelectedRowCount();
         if(selectedRowIndex == -1)
         {
-            //display error message
+            //display error message; no row selected
+            System.out.println("no row selected");
             return;
         }
-        WildCard wildcard = WildCardManager.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRowIndex, 0));
-        if(wildcard == null)
+        if(selectedRows != 1)
         {
+            //display error message; please only select 1 row to edit
+            System.out.println("more than one row selected");
             return;
         }
         
-        if(Objects.equals(wildcard.getMin(), "") || Objects.equals(wildcard.getMax(), ""))
+        //get the wildcard by using the selected rows name column
+        WildCard wildcard = WildCardManager.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRowIndex, 0));
+        
+        if(wildcard == null)
         {
-            //wildcard not editable
-            System.out.println("wildcard not editable");
+            //dispaly error wildcard not found
+            return;
+        }
+        
+        if(wildcard.isTwoPartWildCard())
+        {
+            //later
+            return;
+        }
+        else
+        {
             return;
         }
         //ErrorDialog.setVisible(true);
@@ -1564,6 +1584,27 @@ public class MEC_GUI extends javax.swing.JFrame {
     private void FeedbackPanel_newWildcardNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_newWildcardNameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FeedbackPanel_newWildcardNameTextFieldActionPerformed
+
+    private void WildcardPanel_removeWildcardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WildcardPanel_removeWildcardButtonActionPerformed
+        // TODO add your handling code here:
+        Component source=(Component)evt.getSource();
+        //displayErrorMessage("Hello world my name is error and I love pie apple pir dkhfsdjkfhsjkf asdkjfhs sdkjfhskf ddbd ddgad dadgadjsgfjasf", source.getParent());
+        
+        int [] selectedRows = WildcardPanel_wildcardTable.getSelectedRows();
+        if(selectedRows.length == 0)
+        {
+            //display error message; no row selected
+            System.out.println("no row selected");
+            return;
+        }
+        
+        for(int i = 0; i < selectedRows.length; i++)
+        {
+            WildCard wildcard = WildCardManager.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRows[i], 0));
+            WildCardManager.removeWildCard(wildcard);
+        }
+        WildCardManager.updateTable(WildcardPanel_wildcardTable);
+    }//GEN-LAST:event_WildcardPanel_removeWildcardButtonActionPerformed
 
     public void displayErrorMessage(String message, Component parent)
     {
