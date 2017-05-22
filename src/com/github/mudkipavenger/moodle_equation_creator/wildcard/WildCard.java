@@ -19,6 +19,10 @@ public class WildCard {
     private String interval;
     private int decimalPlaces;
     
+    private boolean isTwoPartWildCard;  //flag for if this wildcard has two parts
+    private boolean isMaster;           //flag for if this wildcard is the main part of the two (it contains the secondary wildcard)
+    private boolean isOutput;           //flag for if this wildcard needs to be displayed in the output pane (The user has to enter the wildcard info on moodle when making the question)
+    
     public WildCard()
     {
         setName("");
@@ -27,6 +31,9 @@ public class WildCard {
         setMax("");
         setInterval("1");
         setDecimalPlaces(0);
+        setIsTwoPartWildCard(false);
+        setIsMaster(false);
+        setIsOutput(true);
     }
     
     public WildCard(String name, String value, String min, String max, String interval)
@@ -92,6 +99,36 @@ public class WildCard {
     public void setDecimalPlaces(int n)
     {
         decimalPlaces = n;
+    }
+    
+    public void setIsTwoPartWildCard(boolean b)
+    {
+        isTwoPartWildCard = b;
+    }
+    
+    public boolean isTwoPartWildCard()
+    {
+        return isTwoPartWildCard;
+    }
+    
+    public void setIsMaster(boolean b)
+    {
+        isMaster = b;
+    }
+    
+    public boolean isMaster()
+    {
+        return isMaster;
+    }
+    
+    public void setIsOutput(boolean b)
+    {
+        isOutput = b;
+    }
+    
+    public boolean isOutput()
+    {
+        return isOutput;
     }
     
 }
