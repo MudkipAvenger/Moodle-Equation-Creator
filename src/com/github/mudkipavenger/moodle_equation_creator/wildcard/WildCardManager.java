@@ -40,7 +40,7 @@ public class WildCardManager {
     
     private static void addWildCardToHashMap(WildCard w)
     {
-            wildcards.put(w.getName(), w);
+        wildcards.put(w.getName(), w);
     }
     
     private static void addWildCardToTable(WildCard wildcard, JTable table)
@@ -90,6 +90,9 @@ public class WildCardManager {
             
             w1.setIsMaster(true);
             w2.setIsMaster(false);
+            
+            w1.setSecondRef(w2);
+            w2.setSecondRef(w1);
             
             w1.setIsOutput(false);
             w2.setIsOutput(true);
@@ -146,6 +149,33 @@ public class WildCardManager {
     public static boolean wildCardExists(String name)
     {
         return wildcards.containsKey(name);
+    }
+    
+    public static void removeWildCard(WildCard w)
+    {
+        if(w == null)
+            return;
+        if(w.isTwoPartWildCard())   //delete both parts
+        {
+            wildcards.remove(w.getSecondRef().getName());
+            wildcards.remove(w.getName());
+        }
+        else
+        {
+            wildcards.remove(w.getName());
+        }
+    }
+    
+    public static void updateTable(JTable table)
+    {
+        DefaultTableModel OutputModel = (DefaultTableModel) table.getModel();
+        OutputModel.setRowCount(0); //clear the table
+        HashMap<String, WildCard> wildcards = WildCardManager.getWildCards();
+        for(String key: wildcards.keySet())
+        {
+            WildCard w = wildcards.get(key);
+            OutputModel.addRow(new Object [] {w.getName(), w.getValue(), w.getMin(), w.getMax()});
+        }
     }
     
 }
