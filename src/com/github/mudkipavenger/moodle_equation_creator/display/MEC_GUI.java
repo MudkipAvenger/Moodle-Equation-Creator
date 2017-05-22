@@ -16,8 +16,8 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -1349,6 +1349,25 @@ public class MEC_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         Component source=(Component)evt.getSource();
         displayErrorMessage("Hello world my name is error and I love pie apple pir dkhfsdjkfhsjkf asdkjfhs sdkjfhskf ddbd ddgad dadgadjsgfjasf", source.getParent());
+        
+        int selectedRowIndex = WildcardPanel_wildcardTable.getSelectedRow();
+        if(selectedRowIndex == -1)
+        {
+            //display error message
+            return;
+        }
+        WildCard wildcard = WildCardManager.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRowIndex, 0));
+        if(wildcard == null)
+        {
+            return;
+        }
+        
+        if(Objects.equals(wildcard.getMin(), "") || Objects.equals(wildcard.getMax(), ""))
+        {
+            //wildcard not editable
+            System.out.println("wildcard not editable");
+            return;
+        }
         //ErrorDialog.setVisible(true);
     }//GEN-LAST:event_WildcardPanel_editWildcardButtonActionPerformed
 
@@ -1491,14 +1510,16 @@ public class MEC_GUI extends javax.swing.JFrame {
             
             DefaultTableModel OutputModel = (DefaultTableModel) OutputPanel_wildcardsTable.getModel();
             OutputModel.setRowCount(0);
-            DefaultTableModel wildcardModel = (DefaultTableModel) WildcardPanel_wildcardTable.getModel();
-            for(int r = 0; r < wildcardModel.getRowCount(); r++)
+            HashMap<String, WildCard> wildcards = WildCardManager.getWildCards();
+            for(String key: wildcards.keySet())
             {
-                if(!Objects.equals(wildcardModel.getValueAt(r, 2), "") && !Objects.equals(wildcardModel.getValueAt(r, 3), ""))
+                WildCard w = wildcards.get(key);
+                if(w.isOutput())
                 {
-                    OutputModel.addRow((Vector)wildcardModel.getDataVector().elementAt(r));
+                    OutputModel.addRow(new Object [] {w.getName(), w.getValue(), w.getMin(), w.getMax()});
                 }
             }
+            
             
             
         }
