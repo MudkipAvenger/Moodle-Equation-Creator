@@ -25,34 +25,25 @@ public class WildCardManager {
         return wildcards;
     }
     
-    public static void addWildCard(WildCard w, JTable table)
-    {
-        if(!wildCardExists(w))
-        {
-            addWildCardToTable(w, table);
-        }
-    }
     
     public static WildCard getWildCard(String key)
     {
         return wildcards.get(key);
     }
     
-    private static void addWildCardToHashMap(WildCard w)
+    public static void addWildCard(WildCard wildcard)
     {
-        wildcards.put(w.getName(), w);
-    }
-    
-    private static void addWildCardToTable(WildCard wildcard, JTable table)
-    {
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        //DefaultTableModel model = (DefaultTableModel) table.getModel();
         
-        if(Objects.equals(wildcard.getMin(), "") || Objects.equals(wildcard.getMax(), "") || Objects.equals(wildcard.getInterval(), ""))
+        /*if(Objects.equals(wildcard.getMin(), "") || Objects.equals(wildcard.getMax(), "") || Objects.equals(wildcard.getInterval(), ""))
         {
             model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), "", ""});
             addWildCardToHashMap(wildcard);
             return;
-        }
+        }*/
+        
+        if(wildCardExists(wildcard))
+            return;
         
         float min = (Float.valueOf(wildcard.getMin()));
         float max = (Float.valueOf(wildcard.getMax())); 
@@ -61,8 +52,8 @@ public class WildCardManager {
         if(interval == 1)
         {
             wildcard.setIsOutput(true);
-            model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), wildcard.getMin(), wildcard.getMax()});
-            addWildCardToHashMap(wildcard);
+            //model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), wildcard.getMin(), wildcard.getMax()});
+            wildcards.put(wildcard.getName(), wildcard);
         }
         else
         {
@@ -98,11 +89,11 @@ public class WildCardManager {
             w2.setIsOutput(true);
             
             
-            model.addRow(new Object[] {w1.getName(), w1.getValue(), w1.getMin(), w1.getMax()});
-            model.addRow(new Object[] {w2.getName(), w2.getValue(), w2.getMin(), w2.getMax()});
+            //model.addRow(new Object[] {w1.getName(), w1.getValue(), w1.getMin(), w1.getMax()});
+            //model.addRow(new Object[] {w2.getName(), w2.getValue(), w2.getMin(), w2.getMax()});
             
-            addWildCardToHashMap(w1);
-            addWildCardToHashMap(w2);
+            wildcards.put(w1.getName(), w1);
+            wildcards.put(w2.getName(), w2);
         }
     }
     
@@ -163,18 +154,6 @@ public class WildCardManager {
         else
         {
             wildcards.remove(w.getName());
-        }
-    }
-    
-    public static void updateTable(JTable table)
-    {
-        DefaultTableModel OutputModel = (DefaultTableModel) table.getModel();
-        OutputModel.setRowCount(0); //clear the table
-        HashMap<String, WildCard> wildcards = WildCardManager.getWildCards();
-        for(String key: wildcards.keySet())
-        {
-            WildCard w = wildcards.get(key);
-            OutputModel.addRow(new Object [] {w.getName(), w.getValue(), w.getMin(), w.getMax()});
         }
     }
     
