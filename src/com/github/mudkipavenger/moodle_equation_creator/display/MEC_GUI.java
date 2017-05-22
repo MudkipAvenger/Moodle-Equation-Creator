@@ -18,6 +18,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.util.HashMap;
 import java.util.Objects;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -1262,7 +1263,8 @@ public class MEC_GUI extends javax.swing.JFrame {
         wildcard.setMin(min);
         wildcard.setMax(max);
         wildcard.setInterval(interval);
-        WildCardManager.addWildCard(wildcard, WildcardPanel_wildcardTable);
+        WildCardManager.addWildCard(wildcard);
+        updateWildCardTable(WildcardPanel_wildcardTable);
         newWildCardDialog.setVisible(false);    
     }//GEN-LAST:event_newWildCardDialog_okButtonActionPerformed
 
@@ -1301,7 +1303,8 @@ public class MEC_GUI extends javax.swing.JFrame {
         WildCard wildcard = new WildCard();
         wildcard.setName(nameOut);
         wildcard.setValue(valueOut);
-        WildCardManager.addWildCard(wildcard, WildcardPanel_wildcardTable);
+        WildCardManager.addWildCard(wildcard);
+        updateWildCardTable(WildcardPanel_wildcardTable);
 
         
         
@@ -1578,7 +1581,8 @@ public class MEC_GUI extends javax.swing.JFrame {
         WildCard wildcard = new WildCard();
         wildcard.setName(name);
         wildcard.setValue(value);
-        WildCardManager.addWildCard(wildcard, WildcardPanel_wildcardTable);
+        WildCardManager.addWildCard(wildcard);
+        updateWildCardTable(WildcardPanel_wildcardTable);
     }//GEN-LAST:event_FeedbackPanel_addWildcardButtonActionPerformed
 
     private void FeedbackPanel_newWildcardNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_newWildcardNameTextFieldActionPerformed
@@ -1603,7 +1607,7 @@ public class MEC_GUI extends javax.swing.JFrame {
             WildCard wildcard = WildCardManager.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRows[i], 0));
             WildCardManager.removeWildCard(wildcard);
         }
-        WildCardManager.updateTable(WildcardPanel_wildcardTable);
+        updateWildCardTable(WildcardPanel_wildcardTable);
     }//GEN-LAST:event_WildcardPanel_removeWildcardButtonActionPerformed
 
     public void displayErrorMessage(String message, Component parent)
@@ -1629,6 +1633,18 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_expressionTextArea.addMouseListener(new ContextMenuMouseListener());
         FeedbackPanel_newWildcardExpressionTextArea.addMouseListener(new ContextMenuMouseListener());
         FeedbackPanel_newWildcardNameTextField.addMouseListener(new ContextMenuMouseListener());
+    }
+    
+    public void updateWildCardTable(JTable table)
+    {
+        DefaultTableModel OutputModel = (DefaultTableModel) table.getModel();
+        OutputModel.setRowCount(0); //clear the table
+        HashMap<String, WildCard> wildcards = WildCardManager.getWildCards();
+        for(String key: wildcards.keySet())
+        {
+            WildCard w = wildcards.get(key);
+            OutputModel.addRow(new Object [] {w.getName(), w.getValue(), w.getMin(), w.getMax()});
+        }
     }
     
     /**
