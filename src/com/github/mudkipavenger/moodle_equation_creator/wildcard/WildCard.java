@@ -21,6 +21,7 @@ public class WildCard {
     
     private boolean isTwoPartWildCard;  //flag for if this wildcard has two parts
     private boolean isMaster;           //flag for if this wildcard is the main part of the two (it contains the secondary wildcard)
+    private WildCard secondRef;         //reference to the second wildcard if this wildcard is a two part wildcard
     private boolean isOutput;           //flag for if this wildcard needs to be displayed in the output pane (The user has to enter the wildcard info on moodle when making the question)
     
     public WildCard()
@@ -34,6 +35,7 @@ public class WildCard {
         setIsTwoPartWildCard(false);
         setIsMaster(false);
         setIsOutput(true);
+        setSecondRef(null);
     }
     
     public WildCard(String name, String value, String min, String max, String interval)
@@ -129,6 +131,16 @@ public class WildCard {
     public boolean isOutput()
     {
         return isOutput;
+    }
+    
+    public void setSecondRef(WildCard w)
+    {
+        secondRef = w;
+    }
+    
+    public WildCard getSecondRef()
+    {
+        return secondRef;
     }
     
 }
