@@ -811,16 +811,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="55" max="32767" attributes="0"/>
-                  <Component id="newWildCardDialog_enterNameLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="EditWildCardDialog_enterNameLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="newWildCardDialog_nameTextField1" min="-2" pref="142" max="-2" attributes="0"/>
+                  <Component id="EditWildCardDialog_nameTextField" min="-2" pref="142" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="newWildCardDialog_rangeLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="EditWildCardDialog_rangeLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -828,23 +828,23 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-                          <Component id="newWildCardDialog_okButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="EditWildCardDialogokButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                  <Component id="newWildCardDialog_intervalLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EditWildCardDialog_intervalLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="newWildCardDialog_intervalTextField1" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Component id="EditWildCardDialog_intervalTextField" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="newWildCardDialog_minTextField1" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <Component id="EditWildCardDialog_minTextField" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="newWildCardDialog_toLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EditWildCardDialog_toLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="newWildCardDialog_maxTextField1" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="EditWildCardDialog_maxTextField" min="-2" pref="94" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -860,24 +860,24 @@
                   <Component id="EditWildCardDialog_nameLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="newWildCardDialog_enterNameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="newWildCardDialog_nameTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditWildCardDialog_enterNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditWildCardDialog_nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="newWildCardDialog_rangeLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="EditWildCardDialog_rangeLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="newWildCardDialog_minTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="newWildCardDialog_toLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="newWildCardDialog_maxTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditWildCardDialog_minTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditWildCardDialog_toLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditWildCardDialog_maxTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="newWildCardDialog_intervalLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="newWildCardDialog_intervalTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditWildCardDialog_intervalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditWildCardDialog_intervalTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="newWildCardDialog_okButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="EditWildCardDialogokButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -895,15 +895,15 @@
             <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="newWildCardDialog_okButton1">
+        <Component class="javax.swing.JButton" name="EditWildCardDialogokButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newWildCardDialog_okButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditWildCardDialogokButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="newWildCardDialog_rangeLabel1">
+        <Component class="javax.swing.JLabel" name="EditWildCardDialog_rangeLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="24" style="0"/>
@@ -911,40 +911,94 @@
             <Property name="text" type="java.lang.String" value="Range"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="newWildCardDialog_enterNameLabel1">
+        <Component class="javax.swing.JLabel" name="EditWildCardDialog_enterNameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enter Wildcard Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="newWildCardDialog_nameTextField1">
+        <Component class="javax.swing.JTextField" name="EditWildCardDialog_nameTextField">
         </Component>
-        <Component class="javax.swing.JTextField" name="newWildCardDialog_minTextField1">
+        <Component class="javax.swing.JTextField" name="EditWildCardDialog_minTextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="newWildCardDialog_toLabel1">
+        <Component class="javax.swing.JLabel" name="EditWildCardDialog_toLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="To"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="newWildCardDialog_maxTextField1">
+        <Component class="javax.swing.JTextField" name="EditWildCardDialog_maxTextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="10"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="newWildCardDialog_intervalLabel1">
+        <Component class="javax.swing.JLabel" name="EditWildCardDialog_intervalLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="By Intervals of:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="newWildCardDialog_intervalTextField1">
+        <Component class="javax.swing.JTextField" name="EditWildCardDialog_intervalTextField">
           <Properties>
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="File"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="37" green="3b" red="3c" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d2" green="db" red="df" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Save Question"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder thickness="5"/>
+                  </Border>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="37" green="3b" red="3c" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="d2" green="db" red="df" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Save Question"/>
+                <Property name="actionCommand" type="java.lang.String" value="Load Question"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder thickness="5"/>
+                  </Border>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+          </Properties>
+        </Menu>
+      </SubComponents>
+    </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -954,6 +1008,7 @@
     </Property>
   </Properties>
   <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>

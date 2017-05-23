@@ -16,6 +16,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 import javax.swing.JTable;
@@ -25,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author levi
  */
-public class MEC_GUI extends javax.swing.JFrame {
+public class MEC_GUI extends javax.swing.JFrame implements Serializable {
 
     /**
      * Creates new form TestGui
@@ -105,15 +106,15 @@ public class MEC_GUI extends javax.swing.JFrame {
         EditExpressionWildCardDialog_infoCorrectLabel = new javax.swing.JLabel();
         EditWildCardDialog = new javax.swing.JDialog();
         EditWildCardDialog_nameLabel = new java.awt.Label();
-        newWildCardDialog_okButton1 = new javax.swing.JButton();
-        newWildCardDialog_rangeLabel1 = new javax.swing.JLabel();
-        newWildCardDialog_enterNameLabel1 = new javax.swing.JLabel();
-        newWildCardDialog_nameTextField1 = new javax.swing.JTextField();
-        newWildCardDialog_minTextField1 = new javax.swing.JTextField();
-        newWildCardDialog_toLabel1 = new javax.swing.JLabel();
-        newWildCardDialog_maxTextField1 = new javax.swing.JTextField();
-        newWildCardDialog_intervalLabel1 = new javax.swing.JLabel();
-        newWildCardDialog_intervalTextField1 = new javax.swing.JTextField();
+        EditWildCardDialogokButton = new javax.swing.JButton();
+        EditWildCardDialog_rangeLabel = new javax.swing.JLabel();
+        EditWildCardDialog_enterNameLabel = new javax.swing.JLabel();
+        EditWildCardDialog_nameTextField = new javax.swing.JTextField();
+        EditWildCardDialog_minTextField = new javax.swing.JTextField();
+        EditWildCardDialog_toLabel = new javax.swing.JLabel();
+        EditWildCardDialog_maxTextField = new javax.swing.JTextField();
+        EditWildCardDialog_intervalLabel = new javax.swing.JLabel();
+        EditWildCardDialog_intervalTextField = new javax.swing.JTextField();
         MainTabPane = new javax.swing.JTabbedPane();
         ExpressionsPanel = new javax.swing.JPanel();
         ExpressionsPanel_outputTextAreaScollPane = new javax.swing.JScrollPane();
@@ -193,6 +194,11 @@ public class MEC_GUI extends javax.swing.JFrame {
         OutputPanel_wildcardsLabel = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
         OutputPanel_wildcardsTable = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         newWildCardDialog.setTitle("Add New WildCard");
         newWildCardDialog.setName(""); // NOI18N
@@ -703,27 +709,27 @@ public class MEC_GUI extends javax.swing.JFrame {
         EditWildCardDialog_nameLabel.setForeground(new java.awt.Color(76, 76, 76));
         EditWildCardDialog_nameLabel.setText("Name");
 
-        newWildCardDialog_okButton1.setText("OK");
-        newWildCardDialog_okButton1.addActionListener(new java.awt.event.ActionListener() {
+        EditWildCardDialogokButton.setText("OK");
+        EditWildCardDialogokButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newWildCardDialog_okButton1ActionPerformed(evt);
+                EditWildCardDialogokButtonActionPerformed(evt);
             }
         });
 
-        newWildCardDialog_rangeLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        newWildCardDialog_rangeLabel1.setText("Range");
+        EditWildCardDialog_rangeLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        EditWildCardDialog_rangeLabel.setText("Range");
 
-        newWildCardDialog_enterNameLabel1.setText("Enter Wildcard Name:");
+        EditWildCardDialog_enterNameLabel.setText("Enter Wildcard Name:");
 
-        newWildCardDialog_minTextField1.setText("1");
+        EditWildCardDialog_minTextField.setText("1");
 
-        newWildCardDialog_toLabel1.setText("To");
+        EditWildCardDialog_toLabel.setText("To");
 
-        newWildCardDialog_maxTextField1.setText("10");
+        EditWildCardDialog_maxTextField.setText("10");
 
-        newWildCardDialog_intervalLabel1.setText("By Intervals of:");
+        EditWildCardDialog_intervalLabel.setText("By Intervals of:");
 
-        newWildCardDialog_intervalTextField1.setText("1");
+        EditWildCardDialog_intervalTextField.setText("1");
 
         javax.swing.GroupLayout EditWildCardDialogLayout = new javax.swing.GroupLayout(EditWildCardDialog.getContentPane());
         EditWildCardDialog.getContentPane().setLayout(EditWildCardDialogLayout);
@@ -731,35 +737,35 @@ public class MEC_GUI extends javax.swing.JFrame {
             EditWildCardDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditWildCardDialogLayout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
-                .addComponent(newWildCardDialog_enterNameLabel1)
+                .addComponent(EditWildCardDialog_enterNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newWildCardDialog_nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EditWildCardDialog_nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
             .addGroup(EditWildCardDialogLayout.createSequentialGroup()
                 .addGroup(EditWildCardDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EditWildCardDialogLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(newWildCardDialog_rangeLabel1))
+                        .addComponent(EditWildCardDialog_rangeLabel))
                     .addGroup(EditWildCardDialogLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(EditWildCardDialog_nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EditWildCardDialogLayout.createSequentialGroup()
                         .addGap(182, 182, 182)
-                        .addComponent(newWildCardDialog_okButton1))
+                        .addComponent(EditWildCardDialogokButton))
                     .addGroup(EditWildCardDialogLayout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addGroup(EditWildCardDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EditWildCardDialogLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(newWildCardDialog_intervalLabel1)
+                                .addComponent(EditWildCardDialog_intervalLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(newWildCardDialog_intervalTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(EditWildCardDialog_intervalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(EditWildCardDialogLayout.createSequentialGroup()
-                                .addComponent(newWildCardDialog_minTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EditWildCardDialog_minTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(newWildCardDialog_toLabel1)
+                                .addComponent(EditWildCardDialog_toLabel)
                                 .addGap(18, 18, 18)
-                                .addComponent(newWildCardDialog_maxTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(EditWildCardDialog_maxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         EditWildCardDialogLayout.setVerticalGroup(
@@ -769,21 +775,21 @@ public class MEC_GUI extends javax.swing.JFrame {
                 .addComponent(EditWildCardDialog_nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addGroup(EditWildCardDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newWildCardDialog_enterNameLabel1)
-                    .addComponent(newWildCardDialog_nameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EditWildCardDialog_enterNameLabel)
+                    .addComponent(EditWildCardDialog_nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(newWildCardDialog_rangeLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(EditWildCardDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newWildCardDialog_minTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newWildCardDialog_toLabel1)
-                    .addComponent(newWildCardDialog_maxTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(EditWildCardDialog_rangeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(EditWildCardDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newWildCardDialog_intervalLabel1)
-                    .addComponent(newWildCardDialog_intervalTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EditWildCardDialog_minTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditWildCardDialog_toLabel)
+                    .addComponent(EditWildCardDialog_maxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(EditWildCardDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditWildCardDialog_intervalLabel)
+                    .addComponent(EditWildCardDialog_intervalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(newWildCardDialog_okButton1)
+                .addComponent(EditWildCardDialogokButton)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -1392,6 +1398,31 @@ public class MEC_GUI extends javax.swing.JFrame {
 
         MainTabPane.addTab("Output", OutputPanel);
 
+        jMenu1.setBorder(null);
+        jMenu1.setText("File");
+
+        jMenuItem1.setBackground(new java.awt.Color(60, 59, 55));
+        jMenuItem1.setForeground(new java.awt.Color(223, 219, 210));
+        jMenuItem1.setText("Save Question");
+        jMenuItem1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jMenuItem1.setOpaque(true);
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setBackground(new java.awt.Color(60, 59, 55));
+        jMenuItem2.setForeground(new java.awt.Color(223, 219, 210));
+        jMenuItem2.setText("Save Question");
+        jMenuItem2.setActionCommand("Load Question");
+        jMenuItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jMenuItem2.setOpaque(true);
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1408,6 +1439,13 @@ public class MEC_GUI extends javax.swing.JFrame {
 
     private void ExpressionsPanel_convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionsPanel_convertButtonActionPerformed
         // TODO add your handling code here:
+        Component source = (Component)evt.getSource();
+        String text = ExpressionsPanel_inputTextArea.getText();
+        if(Objects.equals(text, ""))
+        {
+            displayErrorMessage("LaTex Equation is needed to convert", source.getParent());
+            return;
+        }
         ExpressionsPanel_outputTextArea.setText(NodeTreebuilder.buildTreeFromLaTex(ExpressionsPanel_inputTextArea.getText()).printExpression());
     }//GEN-LAST:event_ExpressionsPanel_convertButtonActionPerformed
 
@@ -1657,10 +1695,10 @@ public class MEC_GUI extends javax.swing.JFrame {
         }
         else
         {
-            newWildCardDialog_nameTextField1.setText(wildcard.getName());
-            newWildCardDialog_minTextField1.setText(wildcard.getMin());
-            newWildCardDialog_maxTextField1.setText(wildcard.getMax());
-            newWildCardDialog_intervalTextField1.setText(wildcard.getInterval());
+            EditWildCardDialog_nameTextField.setText(wildcard.getName());
+            EditWildCardDialog_minTextField.setText(wildcard.getMin());
+            EditWildCardDialog_maxTextField.setText(wildcard.getMax());
+            EditWildCardDialog_intervalTextField.setText(wildcard.getInterval());
             
             EditWildCardDialog.setVisible(true);
         }
@@ -1950,12 +1988,12 @@ public class MEC_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EditExpressionWildCardDialogWindowActivated
 
-    private void newWildCardDialog_okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWildCardDialog_okButton1ActionPerformed
+    private void EditWildCardDialogokButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditWildCardDialogokButtonActionPerformed
         // TODO add your handling code here:
-        String name = newWildCardDialog_nameTextField1.getText().trim();
-        String min = newWildCardDialog_minTextField1.getText().trim();
-        String max = newWildCardDialog_maxTextField1.getText().trim();
-        String interval = newWildCardDialog_intervalTextField1.getText().trim();
+        String name = EditWildCardDialog_nameTextField.getText().trim();
+        String min = EditWildCardDialog_minTextField.getText().trim();
+        String max = EditWildCardDialog_maxTextField.getText().trim();
+        String interval = EditWildCardDialog_intervalTextField.getText().trim();
         
         Component source = (Component)evt.getSource();
         Component parent = source.getParent();
@@ -2049,7 +2087,7 @@ public class MEC_GUI extends javax.swing.JFrame {
         WildCardManager.pushChangesToEditingWildCards(wildcard);
         updateWildCardTable(WildcardPanel_wildcardTable);
         EditWildCardDialog.setVisible(false);    
-    }//GEN-LAST:event_newWildCardDialog_okButton1ActionPerformed
+    }//GEN-LAST:event_EditWildCardDialogokButtonActionPerformed
 
     private void EditWildCardDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_EditWildCardDialogComponentShown
         // TODO add your handling code here:
@@ -2078,6 +2116,14 @@ public class MEC_GUI extends javax.swing.JFrame {
         FeedbackPanel_expressionTextArea.addMouseListener(new ContextMenuMouseListener());
         FeedbackPanel_newWildcardExpressionTextArea.addMouseListener(new ContextMenuMouseListener());
         FeedbackPanel_newWildcardNameTextField.addMouseListener(new ContextMenuMouseListener());
+        EditExpressionWildCardDialog_inputValueTextArea.addMouseListener(new ContextMenuMouseListener());
+        EditExpressionWildCardDialog_inputNameTextField.addMouseListener(new ContextMenuMouseListener());
+        EditExpressionWildCardDialog_outputNameTextField.addMouseListener(new ContextMenuMouseListener());
+        EditExpressionWildCardDialog_outputValueTextArea.addMouseListener(new ContextMenuMouseListener());
+        EditWildCardDialog_nameTextField.addMouseListener(new ContextMenuMouseListener());
+        EditWildCardDialog_minTextField.addMouseListener(new ContextMenuMouseListener());
+        EditWildCardDialog_maxTextField.addMouseListener(new ContextMenuMouseListener());
+        EditWildCardDialog_intervalTextField.addMouseListener(new ContextMenuMouseListener());
     }
     
     public void updateWildCardTable(JTable table)
@@ -2166,7 +2212,16 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel EditExpressionWildCardDialog_wildcardValueLabel;
     private javax.swing.JButton EditExpressionWildCardDialogokButton;
     private javax.swing.JDialog EditWildCardDialog;
+    private javax.swing.JLabel EditWildCardDialog_enterNameLabel;
+    private javax.swing.JLabel EditWildCardDialog_intervalLabel;
+    private javax.swing.JTextField EditWildCardDialog_intervalTextField;
+    private javax.swing.JTextField EditWildCardDialog_maxTextField;
+    private javax.swing.JTextField EditWildCardDialog_minTextField;
     private java.awt.Label EditWildCardDialog_nameLabel;
+    private javax.swing.JTextField EditWildCardDialog_nameTextField;
+    private javax.swing.JLabel EditWildCardDialog_rangeLabel;
+    private javax.swing.JLabel EditWildCardDialog_toLabel;
+    private javax.swing.JButton EditWildCardDialogokButton;
     private javax.swing.JDialog ErrorDialog;
     private javax.swing.JLabel ErrorDialog_errorMessageLabel;
     private javax.swing.JButton ErrorDialog_okButton;
@@ -2240,6 +2295,11 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -2259,23 +2319,14 @@ public class MEC_GUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JDialog newWildCardDialog;
     private javax.swing.JLabel newWildCardDialog_enterNameLabel;
-    private javax.swing.JLabel newWildCardDialog_enterNameLabel1;
     private javax.swing.JLabel newWildCardDialog_intervalLabel;
-    private javax.swing.JLabel newWildCardDialog_intervalLabel1;
     private javax.swing.JTextField newWildCardDialog_intervalTextField;
-    private javax.swing.JTextField newWildCardDialog_intervalTextField1;
     private javax.swing.JTextField newWildCardDialog_maxTextField;
-    private javax.swing.JTextField newWildCardDialog_maxTextField1;
     private javax.swing.JTextField newWildCardDialog_minTextField;
-    private javax.swing.JTextField newWildCardDialog_minTextField1;
     private java.awt.Label newWildCardDialog_nameLabel;
     private javax.swing.JTextField newWildCardDialog_nameTextField;
-    private javax.swing.JTextField newWildCardDialog_nameTextField1;
     private javax.swing.JButton newWildCardDialog_okButton;
-    private javax.swing.JButton newWildCardDialog_okButton1;
     private javax.swing.JLabel newWildCardDialog_rangeLabel;
-    private javax.swing.JLabel newWildCardDialog_rangeLabel1;
     private javax.swing.JLabel newWildCardDialog_toLabel;
-    private javax.swing.JLabel newWildCardDialog_toLabel1;
     // End of variables declaration//GEN-END:variables
 }
