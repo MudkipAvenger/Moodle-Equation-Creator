@@ -25,6 +25,8 @@ public class WildCard {
     private boolean isOutput;           //flag for if this wildcard needs to be displayed in the output pane (The user has to enter the wildcard info on moodle when making the question)
     private boolean isExpression;       //flag for if this wildcard was made from an expression
     
+    private String originalLaTexExpression;
+    
     public WildCard()
     {
         setName("");
@@ -38,6 +40,7 @@ public class WildCard {
         setIsOutput(true);
         setSecondRef(null);
         setIsExpression(false);
+        setOriginalLaTexExpression("");
     }
     
     
@@ -151,4 +154,13 @@ public class WildCard {
         isExpression = b;
     }
     
+    public void setOriginalLaTexExpression(String expression)
+    {
+        originalLaTexExpression = expression;
+    }
+    
+    public String getOriginalLaTexExpression()
+    {
+        return originalLaTexExpression;
+    }
 }
