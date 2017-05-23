@@ -6,7 +6,6 @@
 package com.github.mudkipavenger.moodle_equation_creator.wildcard;
 
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,15 +34,18 @@ public class WildCardManager {
     {
         //DefaultTableModel model = (DefaultTableModel) table.getModel();
         
-        /*if(Objects.equals(wildcard.getMin(), "") || Objects.equals(wildcard.getMax(), "") || Objects.equals(wildcard.getInterval(), ""))
-        {
-            model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), "", ""});
-            addWildCardToHashMap(wildcard);
+        if(wildCardExists(wildcard))    //dont add wildcards already added
             return;
-        }*/
         
-        if(wildCardExists(wildcard))
+        //catch expression wildcards
+        if(wildcard.isExpresion())
+        {
+            wildcard.setIsOutput(false);
+            wildcard.setIsMaster(true);
+            wildcard.setIsTwoPartWildCard(false);
+            wildcards.put(wildcard.getName(), wildcard);
             return;
+        }
         
         float min = (Float.valueOf(wildcard.getMin()));
         float max = (Float.valueOf(wildcard.getMax())); 
@@ -52,7 +54,9 @@ public class WildCardManager {
         if(interval == 1)
         {
             wildcard.setIsOutput(true);
-            //model.addRow(new Object[] {wildcard.getName(), wildcard.getValue(), wildcard.getMin(), wildcard.getMax()});
+            wildcard.setIsTwoPartWildCard(false);
+            wildcard.setIsMaster(true);
+            wildcard.setIsExpression(false);
             wildcards.put(wildcard.getName(), wildcard);
         }
         else
@@ -87,10 +91,6 @@ public class WildCardManager {
             
             w1.setIsOutput(false);
             w2.setIsOutput(true);
-            
-            
-            //model.addRow(new Object[] {w1.getName(), w1.getValue(), w1.getMin(), w1.getMax()});
-            //model.addRow(new Object[] {w2.getName(), w2.getValue(), w2.getMin(), w2.getMax()});
             
             wildcards.put(w1.getName(), w1);
             wildcards.put(w2.getName(), w2);
@@ -188,6 +188,18 @@ public class WildCardManager {
         }
         addWildCard(newWildCard);
         clearEditingWildCards();
+    }
+    
+    public static void pushChangesToEditingExpressionWildCards(WildCard newWildCard, String originalLaTex)
+    {
+        if(!wildcardBeingEdited.isExpresion())
+        {
+            pushChangesToEditingWildCards(newWildCard);
+            return;
+        }
+        newWildCard.setOriginalLaTexExpression(originalLaTex);
+        newWildCard.setIsExpression(true);
+        pushChangesToEditingWildCards(newWildCard);
     }
     
     public static void clearEditingWildCards()
