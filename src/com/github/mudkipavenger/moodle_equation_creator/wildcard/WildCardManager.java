@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
 public class WildCardManager {
     
     private static final HashMap<String, WildCard> wildcards = new HashMap();
+    private static WildCard wildcardBeingEdited = null;  //at most 2 wildcards can be edited at a time
+    
     
     public static HashMap getWildCards()
     {
@@ -155,6 +155,49 @@ public class WildCardManager {
         {
             wildcards.remove(w.getName());
         }
+    }
+    
+    public static void addWildCardToEdit(WildCard w)
+    {
+        if(wildcardBeingEdited != null)
+        {
+            //error
+            return;
+        }
+        else
+        {
+            wildcardBeingEdited = w;
+        }
+    }
+    
+    public static void pushChangesToEditingWildCards(WildCard newWildCard)
+    {
+        if(wildcardBeingEdited == null)
+        {
+            return;
+        }
+        
+        if(wildcardBeingEdited.isTwoPartWildCard())
+        {
+            removeWildCard(wildcardBeingEdited.getSecondRef());
+            removeWildCard(wildcardBeingEdited);
+        }
+        else
+        {
+            removeWildCard(wildcardBeingEdited);
+        }
+        addWildCard(newWildCard);
+        clearEditingWildCards();
+    }
+    
+    public static void clearEditingWildCards()
+    {
+        wildcardBeingEdited = null;
+    }
+    
+    public static WildCard getWildCardBeingEdited()
+    {
+        return wildcardBeingEdited;
     }
     
 }
