@@ -115,6 +115,8 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         EditWildCardDialog_maxTextField = new javax.swing.JTextField();
         EditWildCardDialog_intervalLabel = new javax.swing.JLabel();
         EditWildCardDialog_intervalTextField = new javax.swing.JTextField();
+        FileDialog = new javax.swing.JDialog();
+        FileChooser = new javax.swing.JFileChooser();
         MainTabPane = new javax.swing.JTabbedPane();
         ExpressionsPanel = new javax.swing.JPanel();
         ExpressionsPanel_outputTextAreaScollPane = new javax.swing.JScrollPane();
@@ -793,6 +795,27 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
+        FileChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FileChooserActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout FileDialogLayout = new javax.swing.GroupLayout(FileDialog.getContentPane());
+        FileDialog.getContentPane().setLayout(FileDialogLayout);
+        FileDialogLayout.setHorizontalGroup(
+            FileDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FileDialogLayout.createSequentialGroup()
+                .addComponent(FileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        FileDialogLayout.setVerticalGroup(
+            FileDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FileDialogLayout.createSequentialGroup()
+                .addComponent(FileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Moodle Equation Creator");
         setSize(new java.awt.Dimension(550, 480));
@@ -1439,14 +1462,16 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
 
     private void ExpressionsPanel_convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionsPanel_convertButtonActionPerformed
         // TODO add your handling code here:
-        Component source = (Component)evt.getSource();
+        //FileDialog.setVisible(true);
+        this.FileChooser.showOpenDialog(null);
+        /*Component source = (Component)evt.getSource();
         String text = ExpressionsPanel_inputTextArea.getText();
         if(Objects.equals(text, ""))
         {
             displayErrorMessage("LaTex Equation is needed to convert", source.getParent());
             return;
         }
-        ExpressionsPanel_outputTextArea.setText(NodeTreebuilder.buildTreeFromLaTex(ExpressionsPanel_inputTextArea.getText()).printExpression());
+        ExpressionsPanel_outputTextArea.setText(NodeTreebuilder.buildTreeFromLaTex(ExpressionsPanel_inputTextArea.getText()).printExpression());*/
     }//GEN-LAST:event_ExpressionsPanel_convertButtonActionPerformed
 
     private void ExpressionsPanel_copyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionsPanel_copyButtonActionPerformed
@@ -2093,6 +2118,10 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
     }//GEN-LAST:event_EditWildCardDialogComponentShown
 
+    private void FileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChooserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FileChooserActionPerformed
+
     public void displayErrorMessage(String message, Component parent)
     {
         ErrorDialog_errorMessageLabel.setText("<html><p style= \"text-align: center; width: 90%\">" + message + "</p></html>");
@@ -2255,6 +2284,8 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton FeedbackPanel_viewStepsButton;
     private javax.swing.JPanel FeedbackStepsPanel;
     private javax.swing.JTable FeedbackStepsPanel_feedbackTable;
+    private javax.swing.JFileChooser FileChooser;
+    private javax.swing.JDialog FileDialog;
     private javax.swing.JTabbedPane MainTabPane;
     private javax.swing.JDialog NewWildCardFromExpressionDialog;
     private javax.swing.JButton NewWildCardFromExpressionDialog_convertButton;
