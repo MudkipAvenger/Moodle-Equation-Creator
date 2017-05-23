@@ -602,15 +602,15 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="NewWildCardFromExpressionDialog_outputNameTextField1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EditExpressionWildCardDialog_outputNameTextField" linkSize="22" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="NewWildCardFromExpressionDialog_enterNameLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="NewWildCardFromExpressionDialog_inputNameTextField1" alignment="1" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <Component id="EditExpressionWildCardDialog_enterNameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EditExpressionWildCardDialog_inputNameTextField" linkSize="22" alignment="1" min="-2" pref="94" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -624,7 +624,7 @@
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="NewWildCardFromExpressionDialog_convertButton1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="EditExpressionWildCardDialog_convertButton" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -638,16 +638,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="203" pref="203" max="-2" attributes="0"/>
-                                  <Component id="NewWildCardFromExpressionDialog_okButton1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="186" pref="186" max="-2" attributes="0"/>
-                                  <Component id="NewWildCardFromExpressionDialog_wildcardValueLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EditExpressionWildCardDialog_wildcardValueLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                                  <Component id="NewWildCardFromExpressionDialog_infoCorrectLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EditExpressionWildCardDialog_infoCorrectLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -655,42 +651,47 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                  <Component id="EditExpressionWildCardDialogokButton" min="-2" pref="98" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Group type="102" alignment="2" attributes="0">
-                          <Component id="NewWildCardFromExpressionDialog_wildcardValueLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="EditExpressionWildCardDialog_wildcardValueLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="jLabel5" alignment="2" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="jScrollPane13" alignment="2" min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="jScrollPane13" linkSize="21" alignment="2" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="2" attributes="0">
-                          <Component id="NewWildCardFromExpressionDialog_enterNameLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="EditExpressionWildCardDialog_enterNameLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="NewWildCardFromExpressionDialog_inputNameTextField1" min="-2" max="-2" attributes="0"/>
+                          <Component id="EditExpressionWildCardDialog_inputNameTextField" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="NewWildCardFromExpressionDialog_convertButton1" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="EditExpressionWildCardDialog_convertButton" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="NewWildCardFromExpressionDialog_outputNameTextField1" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="EditExpressionWildCardDialog_outputNameTextField" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="2" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jScrollPane14" alignment="2" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jScrollPane14" linkSize="21" alignment="2" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="NewWildCardFromExpressionDialog_infoCorrectLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="NewWildCardFromExpressionDialog_okButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="EditExpressionWildCardDialog_infoCorrectLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="EditExpressionWildCardDialogokButton" min="-2" pref="39" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -706,7 +707,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="NewWildCardFromExpressionDialog_inputValueTextArea1">
+            <Component class="javax.swing.JTextArea" name="EditExpressionWildCardDialog_inputValueTextArea">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
@@ -723,29 +724,29 @@
             <Property name="text" type="java.lang.String" value="="/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NewWildCardFromExpressionDialog_inputNameTextField1">
+        <Component class="javax.swing.JTextField" name="EditExpressionWildCardDialog_inputNameTextField">
         </Component>
-        <Component class="javax.swing.JLabel" name="NewWildCardFromExpressionDialog_enterNameLabel1">
+        <Component class="javax.swing.JLabel" name="EditExpressionWildCardDialog_enterNameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enter Wildcard Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="NewWildCardFromExpressionDialog_wildcardValueLabel1">
+        <Component class="javax.swing.JLabel" name="EditExpressionWildCardDialog_wildcardValueLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enter Wildcard value as LaTex expression"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="NewWildCardFromExpressionDialog_convertButton1">
+        <Component class="javax.swing.JButton" name="EditExpressionWildCardDialog_convertButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Convert"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewWildCardFromExpressionDialog_convertButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditExpressionWildCardDialog_convertButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
-        <Component class="javax.swing.JTextField" name="NewWildCardFromExpressionDialog_outputNameTextField1">
+        <Component class="javax.swing.JTextField" name="EditExpressionWildCardDialog_outputNameTextField">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
@@ -769,7 +770,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="NewWildCardFromExpressionDialog_outputValueTextArea1">
+            <Component class="javax.swing.JTextArea" name="EditExpressionWildCardDialog_outputValueTextArea">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
@@ -778,15 +779,15 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="NewWildCardFromExpressionDialog_okButton1">
+        <Component class="javax.swing.JButton" name="EditExpressionWildCardDialogokButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewWildCardFromExpressionDialog_okButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditExpressionWildCardDialogokButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="NewWildCardFromExpressionDialog_infoCorrectLabel1">
+        <Component class="javax.swing.JLabel" name="EditExpressionWildCardDialog_infoCorrectLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="If the information above is correct click OK"/>
           </Properties>
@@ -810,16 +811,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="55" max="32767" attributes="0"/>
-                  <Component id="EditWildCardDialog_enterNameLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="newWildCardDialog_enterNameLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="EditWildCardDialog_nameTextField" min="-2" pref="142" max="-2" attributes="0"/>
+                  <Component id="newWildCardDialog_nameTextField1" min="-2" pref="142" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EditWildCardDialog_rangeLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="newWildCardDialog_rangeLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -827,23 +828,23 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-                          <Component id="EditWildCardDialog_okButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="newWildCardDialog_okButton1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                                  <Component id="EditWildCardDialog_intervalLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newWildCardDialog_intervalLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EditWildCardDialog_intervalTextField" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Component id="newWildCardDialog_intervalTextField1" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="EditWildCardDialog_minTextField" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <Component id="newWildCardDialog_minTextField1" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EditWildCardDialog_toLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newWildCardDialog_toLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="EditWildCardDialog_maxTextField" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="newWildCardDialog_maxTextField1" min="-2" pref="94" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -859,24 +860,24 @@
                   <Component id="EditWildCardDialog_nameLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EditWildCardDialog_enterNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EditWildCardDialog_nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newWildCardDialog_enterNameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newWildCardDialog_nameTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="EditWildCardDialog_rangeLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="newWildCardDialog_rangeLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EditWildCardDialog_minTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EditWildCardDialog_toLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EditWildCardDialog_maxTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newWildCardDialog_minTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newWildCardDialog_toLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newWildCardDialog_maxTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EditWildCardDialog_intervalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EditWildCardDialog_intervalTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newWildCardDialog_intervalLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="newWildCardDialog_intervalTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="EditWildCardDialog_okButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="newWildCardDialog_okButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -894,15 +895,15 @@
             <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="EditWildCardDialog_okButton">
+        <Component class="javax.swing.JButton" name="newWildCardDialog_okButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="OK"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditWildCardDialog_okButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newWildCardDialog_okButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="EditWildCardDialog_rangeLabel">
+        <Component class="javax.swing.JLabel" name="newWildCardDialog_rangeLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ubuntu" size="24" style="0"/>
@@ -910,34 +911,34 @@
             <Property name="text" type="java.lang.String" value="Range"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="EditWildCardDialog_enterNameLabel">
+        <Component class="javax.swing.JLabel" name="newWildCardDialog_enterNameLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enter Wildcard Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="EditWildCardDialog_nameTextField">
+        <Component class="javax.swing.JTextField" name="newWildCardDialog_nameTextField1">
         </Component>
-        <Component class="javax.swing.JTextField" name="EditWildCardDialog_minTextField">
+        <Component class="javax.swing.JTextField" name="newWildCardDialog_minTextField1">
           <Properties>
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="EditWildCardDialog_toLabel">
+        <Component class="javax.swing.JLabel" name="newWildCardDialog_toLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="To"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="EditWildCardDialog_maxTextField">
+        <Component class="javax.swing.JTextField" name="newWildCardDialog_maxTextField1">
           <Properties>
             <Property name="text" type="java.lang.String" value="10"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="EditWildCardDialog_intervalLabel">
+        <Component class="javax.swing.JLabel" name="newWildCardDialog_intervalLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="By Intervals of:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="EditWildCardDialog_intervalTextField">
+        <Component class="javax.swing.JTextField" name="newWildCardDialog_intervalTextField1">
           <Properties>
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
