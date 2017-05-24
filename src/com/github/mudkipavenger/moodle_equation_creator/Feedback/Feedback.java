@@ -5,11 +5,13 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.Feedback;
 
+import java.io.Serializable;
+
 /**
  *
  * @author levi
  */
-public class Feedback {
+public class Feedback implements Serializable {
     
     
     public static enum Size {normalsize, large, Large, LARGE, huge, Huge};
