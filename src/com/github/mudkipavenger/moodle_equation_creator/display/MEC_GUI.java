@@ -16,24 +16,29 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author levi
  */
-public class MEC_GUI extends javax.swing.JFrame implements Serializable {
+public class MEC_GUI extends javax.swing.JFrame{
 
+    
+    private WildCardManager wildcardManger = new WildCardManager();
+    private FeedbackManager feedbackManager = new FeedbackManager();
     /**
      * Creates new form TestGui
      */
     public MEC_GUI() {
         initComponents();
         addRightClickMenuMouseListeners();
+        //custom file filter for moodle question files
+        FileChooser.setFileFilter(new FileNameExtensionFilter("Moodle Question File", "mqf"));
     }
 
     /**
@@ -1511,7 +1516,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         }
         else
         {
-            if(WildCardManager.wildCardExists(name))
+            if(wildcardManger.wildCardExists(name))
             {
                 displayErrorMessage("Name " + name + " is already taken", parent);
                 return;
@@ -1596,7 +1601,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
     private void ExpressionsPanel_insertWildcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionsPanel_insertWildcardsButtonActionPerformed
         // TODO add your handling code here:
         
-        String output = WildCardManager.insertWildCardsIntoExpression(ExpressionsPanel_outputTextArea.getText());
+        String output = wildcardManger.insertWildCardsIntoExpression(ExpressionsPanel_outputTextArea.getText());
         ExpressionsPanel_outputTextArea.setText(output);
         
     }//GEN-LAST:event_ExpressionsPanel_insertWildcardsButtonActionPerformed
@@ -1651,7 +1656,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         }
         else
         {
-            if(WildCardManager.wildCardExists(nameIn))
+            if(wildcardManger.wildCardExists(nameIn))
             {
                 displayErrorMessage("Name " + nameIn + " is already defined", parent);
                 return;
@@ -1670,7 +1675,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
 
     private void QuestionPanel_insertWildcardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuestionPanel_insertWildcardButtonActionPerformed
         // TODO add your handling code here:
-        QuestionPanel_questionTextArea.setText(WildCardManager.insertWildCardsIntoQuestion(QuestionPanel_questionTextArea.getText()));
+        QuestionPanel_questionTextArea.setText(wildcardManger.insertWildCardsIntoQuestion(QuestionPanel_questionTextArea.getText()));
         
     }//GEN-LAST:event_QuestionPanel_insertWildcardButtonActionPerformed
 
@@ -1695,7 +1700,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         }
         
         //get the wildcard by using the selected rows name column
-        WildCard wildcard = WildCardManager.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRowIndex, 0));
+        WildCard wildcard = wildcardManger.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRowIndex, 0));
         
         if(wildcard == null)
         {
@@ -1708,7 +1713,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
             if(!wildcard.isMaster())
                 wildcard = wildcard.getSecondRef();
         }
-        WildCardManager.addWildCardToEdit(wildcard);
+        wildcardManger.addWildCardToEdit(wildcard);
         if(wildcard.isExpresion())
         {
             EditExpressionWildCardDialog_outputNameTextField.setText(wildcard.getName());
@@ -1746,12 +1751,12 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
 
     private void FeedbackPanel_insertWildcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_insertWildcardsButtonActionPerformed
         // TODO add your handling code here:
-        FeedbackPanel_expressionTextArea.setText(WildCardManager.insertWildCardsIntoQuestion(FeedbackPanel_expressionTextArea.getText()));
+        FeedbackPanel_expressionTextArea.setText(wildcardManger.insertWildCardsIntoQuestion(FeedbackPanel_expressionTextArea.getText()));
     }//GEN-LAST:event_FeedbackPanel_insertWildcardsButtonActionPerformed
 
     private void FeedbackPanel_viewStepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_viewStepsButtonActionPerformed
         // TODO add your handling code here:
-        FeedbackManager.print();
+        feedbackManager.print();
     }//GEN-LAST:event_FeedbackPanel_viewStepsButtonActionPerformed
 
     private void FeedbackPanel_addStepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_addStepButtonActionPerformed
@@ -1775,7 +1780,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
             }
         }
         Feedback f = new Feedback(expression, size);
-        FeedbackManager.addFeedback(f, FeedbackStepsPanel_feedbackTable);
+        feedbackManager.addFeedback(f, FeedbackStepsPanel_feedbackTable);
     }//GEN-LAST:event_FeedbackPanel_addStepButtonActionPerformed
 
     private void NewWildCardFromExpressionDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialogComponentShown
@@ -1862,7 +1867,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
             OutputPanel_questionTextArea.setText(QuestionPanel_questionTextArea.getText());
             OutputPanel_questionTextArea.setCaretPosition(0);
             
-            OutputPanel_generalFeedbackTextArea.setText(FeedbackManager.print());
+            OutputPanel_generalFeedbackTextArea.setText(feedbackManager.print());
             OutputPanel_generalFeedbackTextArea.setCaretPosition(0);
             
             OutputPanel_answerExpressionTextArea.setText(ExpressionsPanel_outputTextArea.getText());
@@ -1870,7 +1875,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
             
             DefaultTableModel OutputModel = (DefaultTableModel) OutputPanel_wildcardsTable.getModel();
             OutputModel.setRowCount(0);
-            HashMap<String, WildCard> wildcards = WildCardManager.getWildCards();
+            HashMap<String, WildCard> wildcards = wildcardManger.getWildCards();
             for(String key: wildcards.keySet())
             {
                 WildCard w = wildcards.get(key);
@@ -1899,7 +1904,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         }
         else
         {
-            if(WildCardManager.wildCardExists(name))
+            if(wildcardManger.wildCardExists(name))
             {
                 displayErrorMessage("Name " + name + " is already defined", parent);
                 return;
@@ -1939,8 +1944,8 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         
         for(int i = 0; i < selectedRows.length; i++)
         {
-            WildCard wildcard = WildCardManager.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRows[i], 0));
-            WildCardManager.removeWildCard(wildcard);
+            WildCard wildcard = wildcardManger.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRows[i], 0));
+            wildcardManger.removeWildCard(wildcard);
         }
         updateWildCardTable(WildcardPanel_wildcardTable);
     }//GEN-LAST:event_WildcardPanel_removeWildcardButtonActionPerformed
@@ -1960,7 +1965,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         }
         else
         {
-            if(WildCardManager.wildCardExists(nameIn) && !Objects.equals(nameIn, WildCardManager.getWildCardBeingEdited().getName()))
+            if(wildcardManger.wildCardExists(nameIn) && !Objects.equals(nameIn, wildcardManger.getWildCardBeingEdited().getName()))
             {
                 displayErrorMessage("Name " + nameIn + " is already defined", parent);
                 return;
@@ -2000,7 +2005,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         wildcard.setName(nameOut);
         wildcard.setValue(valueOut);
         //addExpressionWildcard(wildcard, original);   
-        WildCardManager.pushChangesToEditingExpressionWildCards(wildcard, original);
+        wildcardManger.pushChangesToEditingExpressionWildCards(wildcard, original);
         EditExpressionWildCardDialog.setVisible(false);
         updateWildCardTable(WildcardPanel_wildcardTable);
     }//GEN-LAST:event_EditExpressionWildCardDialogokButtonActionPerformed
@@ -2031,7 +2036,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         }
         else
         {
-            if(WildCardManager.wildCardExists(name) && !Objects.equals(name, WildCardManager.getWildCardBeingEdited().getName()))
+            if(wildcardManger.wildCardExists(name) && !Objects.equals(name, wildcardManger.getWildCardBeingEdited().getName()))
             {
                 displayErrorMessage("Name " + name + " is already taken", parent);
                 return;
@@ -2109,7 +2114,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
         wildcard.setMin(min);
         wildcard.setMax(max);
         wildcard.setInterval(interval);
-        WildCardManager.pushChangesToEditingWildCards(wildcard);
+        wildcardManger.pushChangesToEditingWildCards(wildcard);
         updateWildCardTable(WildcardPanel_wildcardTable);
         EditWildCardDialog.setVisible(false);    
     }//GEN-LAST:event_EditWildCardDialogokButtonActionPerformed
@@ -2159,7 +2164,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
     {
         DefaultTableModel OutputModel = (DefaultTableModel) table.getModel();
         OutputModel.setRowCount(0); //clear the table
-        HashMap<String, WildCard> wildcards = WildCardManager.getWildCards();
+        HashMap<String, WildCard> wildcards = wildcardManger.getWildCards();
         for(String key: wildcards.keySet())
         {
             WildCard w = wildcards.get(key);
@@ -2176,7 +2181,7 @@ public class MEC_GUI extends javax.swing.JFrame implements Serializable {
     
     public void addWildCard(WildCard w)
     {
-        WildCardManager.addWildCard(w);
+        wildcardManger.addWildCard(w);
         updateWildCardTable(WildcardPanel_wildcardTable);
     }
     
