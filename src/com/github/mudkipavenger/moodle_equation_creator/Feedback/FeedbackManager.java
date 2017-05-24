@@ -5,17 +5,16 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.Feedback;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author levi
  */
-public class FeedbackManager {
+public class FeedbackManager implements Serializable {
     
     private ArrayList<Feedback> expressions;
     private int step;
@@ -26,23 +25,12 @@ public class FeedbackManager {
         step = 0;
     }
     
-    public void addFeedback(Feedback f, JTable feedbackTable)
+    public void addFeedback(Feedback f)
     {
         f.setStep(++step);  //assign new feedback a step
-        addFeedbackToList(f);
-        addFeedbackToTable(f, feedbackTable);
-    }
-    
-    private void addFeedbackToList(Feedback f)
-    {
         expressions.add(f);
     }
     
-    private void addFeedbackToTable(Feedback f, JTable table)
-    {
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.addRow(new Object[] {f.getStep(), f.getSize().name(), f.getExpression()});
-    }
     
     public Feedback getFeedback(int index)
     {
