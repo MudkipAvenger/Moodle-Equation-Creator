@@ -15,22 +15,27 @@ import java.util.regex.Pattern;
  */
 public class WildCardManager {
     
-    private static final HashMap<String, WildCard> wildcards = new HashMap();
-    private static WildCard wildcardBeingEdited = null;  //at most 2 wildcards can be edited at a time
+    private HashMap<String, WildCard> wildcards;
+    private WildCard wildcardBeingEdited;  //only one wildcard can be edited at a time
     
+    public WildCardManager()
+    {
+        wildcards = new HashMap<String, WildCard>();
+        wildcardBeingEdited = null;
+    }
     
-    public static HashMap getWildCards()
+    public HashMap getWildCards()
     {
         return wildcards;
     }
     
     
-    public static WildCard getWildCard(String key)
+    public WildCard getWildCard(String key)
     {
         return wildcards.get(key);
     }
     
-    public static void addWildCard(WildCard wildcard)
+    public void addWildCard(WildCard wildcard)
     {
         //DefaultTableModel model = (DefaultTableModel) table.getModel();
         
@@ -97,7 +102,7 @@ public class WildCardManager {
         }
     }
     
-    public static String insertWildCardsIntoExpression(String expression)
+    public String insertWildCardsIntoExpression(String expression)
     {
         StringBuilder output = new StringBuilder(expression);
         for ( String key : wildcards.keySet() ) 
@@ -113,7 +118,7 @@ public class WildCardManager {
         return output.toString();
     }
     
-    public static String insertWildCardsIntoQuestion(String question)
+    public String insertWildCardsIntoQuestion(String question)
     {
         StringBuilder output = new StringBuilder(question);
         for ( String key : wildcards.keySet() ) 
@@ -132,17 +137,17 @@ public class WildCardManager {
     
     
     
-    public static boolean wildCardExists(WildCard w)
+    public boolean wildCardExists(WildCard w)
     {
         return wildcards.containsKey(w.getName());
     }
     
-    public static boolean wildCardExists(String name)
+    public boolean wildCardExists(String name)
     {
         return wildcards.containsKey(name);
     }
     
-    public static void removeWildCard(WildCard w)
+    public void removeWildCard(WildCard w)
     {
         if(w == null)
             return;
@@ -157,7 +162,7 @@ public class WildCardManager {
         }
     }
     
-    public static void addWildCardToEdit(WildCard w)
+    public void addWildCardToEdit(WildCard w)
     {
         if(wildcardBeingEdited != null)
         {
@@ -170,7 +175,7 @@ public class WildCardManager {
         }
     }
     
-    public static void pushChangesToEditingWildCards(WildCard newWildCard)
+    public void pushChangesToEditingWildCards(WildCard newWildCard)
     {
         if(wildcardBeingEdited == null)
         {
@@ -190,7 +195,7 @@ public class WildCardManager {
         clearEditingWildCards();
     }
     
-    public static void pushChangesToEditingExpressionWildCards(WildCard newWildCard, String originalLaTex)
+    public void pushChangesToEditingExpressionWildCards(WildCard newWildCard, String originalLaTex)
     {
         if(!wildcardBeingEdited.isExpresion())
         {
@@ -202,12 +207,12 @@ public class WildCardManager {
         pushChangesToEditingWildCards(newWildCard);
     }
     
-    public static void clearEditingWildCards()
+    public void clearEditingWildCards()
     {
         wildcardBeingEdited = null;
     }
     
-    public static WildCard getWildCardBeingEdited()
+    public WildCard getWildCardBeingEdited()
     {
         return wildcardBeingEdited;
     }
