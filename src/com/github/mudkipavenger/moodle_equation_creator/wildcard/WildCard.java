@@ -5,12 +5,14 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.wildcard;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author levi
  */
-public class WildCard {
+public class WildCard implements Serializable {
 
     private String name;
     private String value;
