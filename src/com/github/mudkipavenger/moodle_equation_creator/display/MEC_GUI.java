@@ -8,6 +8,7 @@ package com.github.mudkipavenger.moodle_equation_creator.display;
 import com.github.mudkipavenger.moodle_equation_creator.Feedback.Feedback;
 import com.github.mudkipavenger.moodle_equation_creator.Feedback.FeedbackManager;
 import com.github.mudkipavenger.moodle_equation_creator.LaTexParser.LaTexParser;
+import com.github.mudkipavenger.moodle_equation_creator.SaveStructure.SaveStructure;
 import com.github.mudkipavenger.moodle_equation_creator.Tree.NodeTreebuilder;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCard;
 import com.github.mudkipavenger.moodle_equation_creator.wildcard.WildCardManager;
@@ -16,9 +17,13 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Objects;
-import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,6 +36,8 @@ public class MEC_GUI extends javax.swing.JFrame{
     
     private WildCardManager wildcardManger = new WildCardManager();
     private FeedbackManager feedbackManager = new FeedbackManager();
+    
+    private SaveStructure save = null;
     /**
      * Creates new form TestGui
      */
@@ -1434,6 +1441,11 @@ public class MEC_GUI extends javax.swing.JFrame{
         jMenuItem1.setText("Save Question");
         jMenuItem1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         jMenuItem1.setOpaque(true);
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setBackground(new java.awt.Color(60, 59, 55));
@@ -1442,6 +1454,11 @@ public class MEC_GUI extends javax.swing.JFrame{
         jMenuItem2.setActionCommand("Load Question");
         jMenuItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         jMenuItem2.setOpaque(true);
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -1780,7 +1797,8 @@ public class MEC_GUI extends javax.swing.JFrame{
             }
         }
         Feedback f = new Feedback(expression, size);
-        feedbackManager.addFeedback(f, FeedbackStepsPanel_feedbackTable);
+        feedbackManager.addFeedback(f);
+        updateFeedbackTable();
     }//GEN-LAST:event_FeedbackPanel_addStepButtonActionPerformed
 
     private void NewWildCardFromExpressionDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_NewWildCardFromExpressionDialogComponentShown
@@ -1947,7 +1965,7 @@ public class MEC_GUI extends javax.swing.JFrame{
             WildCard wildcard = wildcardManger.getWildCard((String)WildcardPanel_wildcardTable.getValueAt(selectedRows[i], 0));
             wildcardManger.removeWildCard(wildcard);
         }
-        updateWildCardTable(WildcardPanel_wildcardTable);
+        updateWildCardTable();
     }//GEN-LAST:event_WildcardPanel_removeWildcardButtonActionPerformed
 
     private void EditExpressionWildCardDialog_convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditExpressionWildCardDialog_convertButtonActionPerformed
@@ -2007,7 +2025,7 @@ public class MEC_GUI extends javax.swing.JFrame{
         //addExpressionWildcard(wildcard, original);   
         wildcardManger.pushChangesToEditingExpressionWildCards(wildcard, original);
         EditExpressionWildCardDialog.setVisible(false);
-        updateWildCardTable(WildcardPanel_wildcardTable);
+        updateWildCardTable();
     }//GEN-LAST:event_EditExpressionWildCardDialogokButtonActionPerformed
 
     private void EditExpressionWildCardDialogComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_EditExpressionWildCardDialogComponentShown
@@ -2115,7 +2133,7 @@ public class MEC_GUI extends javax.swing.JFrame{
         wildcard.setMax(max);
         wildcard.setInterval(interval);
         wildcardManger.pushChangesToEditingWildCards(wildcard);
-        updateWildCardTable(WildcardPanel_wildcardTable);
+        updateWildCardTable();
         EditWildCardDialog.setVisible(false);    
     }//GEN-LAST:event_EditWildCardDialogokButtonActionPerformed
 
@@ -2126,6 +2144,16 @@ public class MEC_GUI extends javax.swing.JFrame{
     private void FileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChooserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FileChooserActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        saveToFile();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        loadFromFile();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public void displayErrorMessage(String message, Component parent)
     {
@@ -2160,15 +2188,27 @@ public class MEC_GUI extends javax.swing.JFrame{
         EditWildCardDialog_intervalTextField.addMouseListener(new ContextMenuMouseListener());
     }
     
-    public void updateWildCardTable(JTable table)
+    public void updateWildCardTable()
     {
-        DefaultTableModel OutputModel = (DefaultTableModel) table.getModel();
+        DefaultTableModel OutputModel = (DefaultTableModel) WildcardPanel_wildcardTable.getModel();
         OutputModel.setRowCount(0); //clear the table
         HashMap<String, WildCard> wildcards = wildcardManger.getWildCards();
         for(String key: wildcards.keySet())
         {
             WildCard w = wildcards.get(key);
             OutputModel.addRow(new Object [] {w.getName(), w.getValue(), w.getMin(), w.getMax()});
+        }
+    }
+    
+    public void updateFeedbackTable()
+    {
+        DefaultTableModel OutputModel = (DefaultTableModel) FeedbackStepsPanel_feedbackTable.getModel();
+        OutputModel.setRowCount(0); //clear the table
+        Iterator i = feedbackManager.getIterator();
+        while(i.hasNext())
+        {
+            Feedback f = (Feedback)i.next();
+            OutputModel.addRow(new Object [] {f.getStep(), f.getSize().name(), f.getExpression()});
         }
     }
     
@@ -2182,7 +2222,45 @@ public class MEC_GUI extends javax.swing.JFrame{
     public void addWildCard(WildCard w)
     {
         wildcardManger.addWildCard(w);
-        updateWildCardTable(WildcardPanel_wildcardTable);
+        updateWildCardTable();
+    }
+    
+    public void saveToFile()
+    {
+        save = new SaveStructure();
+        save.setFeedbackManager(feedbackManager);
+        save.setWildCardManager(wildcardManger);
+        try
+        {
+            FileOutputStream fos = new FileOutputStream("test.mqf");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(save);
+            oos.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void loadFromFile()
+    {
+        try
+        {
+            FileInputStream fis = new FileInputStream("test.mqf");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            save = (SaveStructure) ois.readObject();
+            ois.close();
+            
+            this.feedbackManager = save.getFeedbackManager();
+            this.wildcardManger = save.getWildCardManager();
+            this.updateFeedbackTable();
+            this.updateWildCardTable();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
     /**
