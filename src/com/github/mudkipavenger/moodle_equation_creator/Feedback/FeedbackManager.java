@@ -17,48 +17,54 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FeedbackManager {
     
-    private static ArrayList<Feedback> expressions = new ArrayList();
-    private static int step;
+    private ArrayList<Feedback> expressions;
+    private int step;
     
-    public static void addFeedback(Feedback f, JTable feedbackTable)
+    public FeedbackManager()
+    {
+        expressions = new ArrayList();
+        step = 0;
+    }
+    
+    public void addFeedback(Feedback f, JTable feedbackTable)
     {
         f.setStep(++step);  //assign new feedback a step
         addFeedbackToList(f);
         addFeedbackToTable(f, feedbackTable);
     }
     
-    private static void addFeedbackToList(Feedback f)
+    private void addFeedbackToList(Feedback f)
     {
         expressions.add(f);
     }
     
-    private static void addFeedbackToTable(Feedback f, JTable table)
+    private void addFeedbackToTable(Feedback f, JTable table)
     {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.addRow(new Object[] {f.getStep(), f.getSize().name(), f.getExpression()});
     }
     
-    public static Feedback getFeedback(int index)
+    public Feedback getFeedback(int index)
     {
         return expressions.get(index);
     }
     
-    public static void removeFeedback(int index)
+    public void removeFeedback(int index)
     {
         expressions.remove(index);
     }
     
-    public static void removeFeedback(Feedback f)
+    public void removeFeedback(Feedback f)
     {
         expressions.remove(f);
     }
     
-    public static Iterator getIterator()
+    public Iterator getIterator()
     {
         return expressions.iterator();
     }
     
-    private static void sortArrayList()
+    private void sortArrayList()
     {
         expressions.sort(new Comparator() {
             @Override
@@ -69,7 +75,7 @@ public class FeedbackManager {
         });
     }
     
-    public static String print()
+    public String print()
     {
         sortArrayList();
         String out = "";
