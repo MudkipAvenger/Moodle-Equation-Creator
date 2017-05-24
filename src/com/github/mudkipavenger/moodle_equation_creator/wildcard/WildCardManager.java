@@ -5,6 +5,7 @@
  */
 package com.github.mudkipavenger.moodle_equation_creator.wildcard;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,7 +14,7 @@ import java.util.regex.Pattern;
  *
  * @author levi
  */
-public class WildCardManager {
+public class WildCardManager implements Serializable {
     
     private HashMap<String, WildCard> wildcards;
     private WildCard wildcardBeingEdited;  //only one wildcard can be edited at a time
