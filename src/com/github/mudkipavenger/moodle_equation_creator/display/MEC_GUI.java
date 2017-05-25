@@ -1499,16 +1499,14 @@ public class MEC_GUI extends javax.swing.JFrame{
 
     private void ExpressionsPanel_convertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionsPanel_convertButtonActionPerformed
         // TODO add your handling code here:
-        //FileDialog.setVisible(true);
-        this.FileChooser.showOpenDialog(null);
-        /*Component source = (Component)evt.getSource();
+        Component source = (Component)evt.getSource();
         String text = ExpressionsPanel_inputTextArea.getText();
         if(Objects.equals(text, ""))
         {
             displayErrorMessage("LaTex Equation is needed to convert", source.getParent());
             return;
         }
-        ExpressionsPanel_outputTextArea.setText(NodeTreebuilder.buildTreeFromLaTex(ExpressionsPanel_inputTextArea.getText()).printExpression());*/
+        ExpressionsPanel_outputTextArea.setText(NodeTreebuilder.buildTreeFromLaTex(ExpressionsPanel_inputTextArea.getText()).printExpression());
     }//GEN-LAST:event_ExpressionsPanel_convertButtonActionPerformed
 
     private void ExpressionsPanel_copyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpressionsPanel_copyButtonActionPerformed
