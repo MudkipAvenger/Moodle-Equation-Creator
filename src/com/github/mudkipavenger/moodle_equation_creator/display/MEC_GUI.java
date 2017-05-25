@@ -940,7 +940,7 @@ public class MEC_GUI extends javax.swing.JFrame{
                     .addComponent(ExpressionsPanel_copyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ExpressionsPanel_outputTextAreaScollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ExpressionsPanel_insertWildcardsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         ExpressionsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ExpressionsPanel_convertButton, ExpressionsPanel_copyButton, ExpressionsPanel_insertWildcardsButton});
@@ -1025,7 +1025,7 @@ public class MEC_GUI extends javax.swing.JFrame{
         WildcardPanelLayout.setVerticalGroup(
             WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WildcardPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(WildcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(WildcardPanel_removeWildcardButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1251,7 +1251,7 @@ public class MEC_GUI extends javax.swing.JFrame{
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(FeedbackPanel_viewStepsButton)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         FeedbackPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {FeedbackPanel_changeSizeButton, FeedbackPanel_insertWildcardsButton});
@@ -1301,7 +1301,7 @@ public class MEC_GUI extends javax.swing.JFrame{
             FeedbackStepsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FeedbackStepsPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 95, Short.MAX_VALUE))
+                .addGap(0, 99, Short.MAX_VALUE))
         );
 
         MainTabPane.addTab("Feedback Steps", FeedbackStepsPanel);
@@ -1433,12 +1433,11 @@ public class MEC_GUI extends javax.swing.JFrame{
         );
         OutputPanelLayout.setVerticalGroup(
             OutputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
         );
 
         MainTabPane.addTab("Output", OutputPanel);
 
-        jMenu1.setBorder(null);
         jMenu1.setText("File");
 
         jMenuItem1.setBackground(new java.awt.Color(60, 59, 55));
@@ -1456,6 +1455,7 @@ public class MEC_GUI extends javax.swing.JFrame{
         jMenuItem3.setBackground(new java.awt.Color(60, 59, 55));
         jMenuItem3.setForeground(new java.awt.Color(223, 219, 210));
         jMenuItem3.setText("Save Question As");
+        jMenuItem3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         jMenuItem3.setOpaque(true);
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2293,7 +2293,7 @@ public class MEC_GUI extends javax.swing.JFrame{
                 FileChooser.setSelectedFile(saveFile);
             else
                 FileChooser.setSelectedFile(new File("untitled.mqf"));
-            int returnVal = this.FileChooser.showOpenDialog(null);
+            int returnVal = this.FileChooser.showSaveDialog(null);
             
             if(returnVal == JFileChooser.APPROVE_OPTION) 
             {
