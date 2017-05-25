@@ -17,6 +17,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -24,6 +25,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Objects;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,6 +38,8 @@ public class MEC_GUI extends javax.swing.JFrame{
     
     private WildCardManager wildcardManger = new WildCardManager();
     private FeedbackManager feedbackManager = new FeedbackManager();
+    
+    private File saveFile = null;
     
     private SaveStructure save = null;
     /**
@@ -211,6 +215,7 @@ public class MEC_GUI extends javax.swing.JFrame{
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -1448,10 +1453,20 @@ public class MEC_GUI extends javax.swing.JFrame{
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem3.setBackground(new java.awt.Color(60, 59, 55));
+        jMenuItem3.setForeground(new java.awt.Color(223, 219, 210));
+        jMenuItem3.setText("Save Question As");
+        jMenuItem3.setOpaque(true);
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuItem2.setBackground(new java.awt.Color(60, 59, 55));
         jMenuItem2.setForeground(new java.awt.Color(223, 219, 210));
-        jMenuItem2.setText("Save Question");
-        jMenuItem2.setActionCommand("Load Question");
+        jMenuItem2.setText("Load Question");
         jMenuItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         jMenuItem2.setOpaque(true);
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -1880,31 +1895,35 @@ public class MEC_GUI extends javax.swing.JFrame{
         Component c = MainTabPane.getSelectedComponent();
         if(Objects.equals(c.getName(), "OutputPanel"))
         {
-            System.out.println("output tab is selected");
-            //set output text fields
-            OutputPanel_questionTextArea.setText(QuestionPanel_questionTextArea.getText());
-            OutputPanel_questionTextArea.setCaretPosition(0);
-            
-            OutputPanel_generalFeedbackTextArea.setText(feedbackManager.print());
-            OutputPanel_generalFeedbackTextArea.setCaretPosition(0);
-            
-            OutputPanel_answerExpressionTextArea.setText(ExpressionsPanel_outputTextArea.getText());
-            OutputPanel_answerExpressionTextArea.setCaretPosition(0);
-            
-            DefaultTableModel OutputModel = (DefaultTableModel) OutputPanel_wildcardsTable.getModel();
-            OutputModel.setRowCount(0);
-            HashMap<String, WildCard> wildcards = wildcardManger.getWildCards();
-            for(String key: wildcards.keySet())
-            {
-                WildCard w = wildcards.get(key);
-                if(w.isOutput())
-                {
-                    OutputModel.addRow(new Object [] {w.getName(), w.getValue(), w.getMin(), w.getMax()});
-                }
-            }  
+            updateOutputPane(); 
         }
     }//GEN-LAST:event_MainTabPaneStateChanged
 
+    private void updateOutputPane()
+    {
+        //set output text fields
+        OutputPanel_questionTextArea.setText(QuestionPanel_questionTextArea.getText());
+        OutputPanel_questionTextArea.setCaretPosition(0);
+
+        OutputPanel_generalFeedbackTextArea.setText(feedbackManager.print());
+        OutputPanel_generalFeedbackTextArea.setCaretPosition(0);
+
+        OutputPanel_answerExpressionTextArea.setText(ExpressionsPanel_outputTextArea.getText());
+        OutputPanel_answerExpressionTextArea.setCaretPosition(0);
+
+        DefaultTableModel OutputModel = (DefaultTableModel) OutputPanel_wildcardsTable.getModel();
+        OutputModel.setRowCount(0);
+        HashMap<String, WildCard> wildcards = wildcardManger.getWildCards();
+        for(String key: wildcards.keySet())
+        {
+            WildCard w = wildcards.get(key);
+            if(w.isOutput())
+            {
+                OutputModel.addRow(new Object [] {w.getName(), w.getValue(), w.getMin(), w.getMax()});
+            }
+        }
+    }
+    
     private void FeedbackPanel_addWildcardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackPanel_addWildcardButtonActionPerformed
         // TODO add your handling code here:
         String name = FeedbackPanel_newWildcardNameTextField.getText().trim();
@@ -2155,6 +2174,11 @@ public class MEC_GUI extends javax.swing.JFrame{
         loadFromFile();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        saveAsToFile();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     public void displayErrorMessage(String message, Component parent)
     {
         ErrorDialog_errorMessageLabel.setText("<html><p style= \"text-align: center; width: 90%\">" + message + "</p></html>");
@@ -2227,15 +2251,88 @@ public class MEC_GUI extends javax.swing.JFrame{
     
     public void saveToFile()
     {
+        if(saveFile == null)
+            saveAsToFile();
+        else
+        {
+            save = new SaveStructure();
+            save.setFeedbackManager(feedbackManager);
+            save.setWildCardManager(wildcardManger);
+            save.setExpressionsPanel_inputTextArea_text(ExpressionsPanel_inputTextArea.getText());
+            save.setExpressionsPanel_outputTextArea_text(ExpressionsPanel_outputTextArea.getText());
+            save.setFeedbackPanel_expressionTextArea_text(FeedbackPanel_expressionTextArea.getText());
+            save.setFeedbackPanel_newWildcardExpressionTextArea_text(FeedbackPanel_newWildcardExpressionTextArea.getName());
+            save.setFeedbackPanel_newWildcardNameTextField_text(FeedbackPanel_newWildcardNameTextField.getText());
+            save.setQuestionPanel_questionTextArea_text(QuestionPanel_questionTextArea.getText());
+            try
+            {
+                FileOutputStream fos = new FileOutputStream(saveFile);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(save);
+                oos.close();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public void saveAsToFile()
+    {
         save = new SaveStructure();
         save.setFeedbackManager(feedbackManager);
         save.setWildCardManager(wildcardManger);
+        save.setExpressionsPanel_inputTextArea_text(ExpressionsPanel_inputTextArea.getText());
+        save.setExpressionsPanel_outputTextArea_text(ExpressionsPanel_outputTextArea.getText());
+        save.setFeedbackPanel_expressionTextArea_text(FeedbackPanel_expressionTextArea.getText());
+        save.setFeedbackPanel_newWildcardExpressionTextArea_text(FeedbackPanel_newWildcardExpressionTextArea.getName());
+        save.setFeedbackPanel_newWildcardNameTextField_text(FeedbackPanel_newWildcardNameTextField.getText());
+        save.setQuestionPanel_questionTextArea_text(QuestionPanel_questionTextArea.getText());
         try
         {
-            FileOutputStream fos = new FileOutputStream("test.mqf");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(save);
-            oos.close();
+            if(saveFile != null)
+                FileChooser.setSelectedFile(saveFile);
+            else
+                FileChooser.setSelectedFile(new File("untitled.mqf"));
+            int returnVal = this.FileChooser.showOpenDialog(null);
+            
+            if(returnVal == JFileChooser.APPROVE_OPTION) 
+            {
+                File file = FileChooser.getSelectedFile();
+                int index = file.getName().lastIndexOf('.');
+                
+                if(index > 0)
+                {
+                    String extension = file.getName().substring(index + 1);
+                    System.out.println(extension);
+                    if(Objects.equals(extension, "mqf"))
+                    {
+                        saveFile = file;
+                        FileOutputStream fos = new FileOutputStream(file);
+                        ObjectOutputStream oos = new ObjectOutputStream(fos);
+                        oos.writeObject(save);
+                        oos.close();
+                    }
+                }
+                else
+                {
+                    System.out.println(file.getName());
+                    File file2 = new File(file.getAbsoluteFile() + ".mqf");
+                    System.out.println(file2.getName());
+                    saveFile = file2;
+                    FileOutputStream fos = new FileOutputStream(file2);
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(save);
+                    oos.close();
+                }
+            }
+            save = null;
+            
+            //FileOutputStream fos = new FileOutputStream("test.mqf");
+            //ObjectOutputStream oos = new ObjectOutputStream(fos);
+            //oos.writeObject(save);
+            //oos.close();
         }
         catch(Exception e)
         {
@@ -2246,16 +2343,61 @@ public class MEC_GUI extends javax.swing.JFrame{
     public void loadFromFile()
     {
         try
-        {
-            FileInputStream fis = new FileInputStream("test.mqf");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            save = (SaveStructure) ois.readObject();
-            ois.close();
+        {   
+            int returnVal = this.FileChooser.showOpenDialog(null);
             
-            this.feedbackManager = save.getFeedbackManager();
-            this.wildcardManger = save.getWildCardManager();
-            this.updateFeedbackTable();
-            this.updateWildCardTable();
+            if(returnVal == JFileChooser.APPROVE_OPTION)
+            {
+                File file = FileChooser.getSelectedFile();
+                int index = file.getName().lastIndexOf('.');
+                
+                if(index > 0)
+                {
+                    String extension = file.getName().substring(index + 1);
+                    if(Objects.equals(extension, "mqf"))
+                    {
+                        FileInputStream fis = new FileInputStream(file);
+                        ObjectInputStream ois = new ObjectInputStream(fis);
+                        save = (SaveStructure) ois.readObject();
+                        ois.close();
+                        
+                        saveFile = file;
+
+                        this.feedbackManager = save.getFeedbackManager();
+                        this.wildcardManger = save.getWildCardManager();
+                        this.updateFeedbackTable();
+                        this.updateWildCardTable();
+                        this.ExpressionsPanel_inputTextArea.setText(save.getExpressionsPanel_inputTextArea_text());
+                        this.ExpressionsPanel_outputTextArea.setText(save.getExpressionsPanel_outputTextArea_text());
+                        this.FeedbackPanel_expressionTextArea.setText(save.getFeedbackPanel_expressionTextArea_text());
+                        this.FeedbackPanel_newWildcardExpressionTextArea.setText(save.getFeedbackPanel_newWildcardExpressionTextArea_text());
+                        this.FeedbackPanel_newWildcardNameTextField.setText(save.getFeedbackPanel_newWildcardNameTextField_text());
+                        this.QuestionPanel_questionTextArea.setText(save.getQuestionPanel_questionTextArea_text());
+                        
+                        save = null;
+                        
+                        updateOutputPane();
+                    }
+                    else
+                    {
+                        System.out.println("Error wrong extension");
+                    }
+                }
+                else
+                {
+                    System.out.println("Error wrong extension");
+                }
+            }
+            
+            //FileInputStream fis = new FileInputStream("test.mqf");
+            //ObjectInputStream ois = new ObjectInputStream(fis);
+            //save = (SaveStructure) ois.readObject();
+            //ois.close();
+            
+            //this.feedbackManager = save.getFeedbackManager();
+            //this.wildcardManger = save.getWildCardManager();
+            //this.updateFeedbackTable();
+            //this.updateWildCardTable();
         }
         catch(Exception e)
         {
@@ -2414,6 +2556,7 @@ public class MEC_GUI extends javax.swing.JFrame{
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
